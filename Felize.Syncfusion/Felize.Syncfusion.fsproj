@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<PackageId>Felize.Syncfusion</PackageId>
+		<Title>Felize.Syncfusion</Title>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<Version>0.1.0</Version>
+		<Authors>Rasheed Aboud</Authors>
+		<Company>ARMM Services</Company>
+		<Description>Felize style bindings for a handfull of Syncfusion React controls. </Description>
+		<Summary>Felize style bindings for a handfull of Syncfusion React controls.</Summary>
+		<PackageTags>felize fsharp syncfusion fable safe</PackageTags>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Include="SfGrid.fs" />
+		<Compile Include="SfInputs.fs" />
+		<Compile Include="SfModal.fs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Feliz" Version="1.58.1" />
+	</ItemGroup>
+	<!-- Add source files to "fable" folder in Nuget package -->
+	<ItemGroup>
+		<Content Include="*.fsproj; **\*.fs; **\*.fsi" PackagePath="fable\" />
+	</ItemGroup>
+</Project>
+
+
