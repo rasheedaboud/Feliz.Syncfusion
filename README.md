@@ -1,4 +1,4 @@
-# Feliz.Syncfusion 
+# Felize.Syncfusion 
 
 A wrapper around a hanfull of Syncfusion React controls.
 
