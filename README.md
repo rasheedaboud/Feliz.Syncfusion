@@ -12,9 +12,15 @@ A wrapper around a hanfull of Syncfusion React controls.
 
 ### Examples
 
-Before using any of these components, make sure you install the nessessary npm packages for example to use grid you will need
+Install the package
 
-```js
+```fs
+ dotnet add package Felize.Syncfusion
+```
+
+Before using any of these components, make sure you install the nessessary npm packages for example to use grid you will need the following:
+
+```fs
   npm install @syncfusion/ej2-react-grids
 ```
 You will also need to load the styles, they offer bootstrap 4/5, material ui and fluent ui.
