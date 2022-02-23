@@ -248,6 +248,7 @@ SfDatePicker.create [
  SfDatePicker.min (DateTime.UtcNow.AddDays(-365))
  SfDatePicker.max (DateTime.UtcNow.AddDays(365))
  SfDatePicker.cssClass "some-css-class"
+]
 ```
 Here is example using Datamanager to populate data for a grid:
 
