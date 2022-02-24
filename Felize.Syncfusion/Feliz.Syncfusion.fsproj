@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<PackageId>Felize.Syncfusion</PackageId>
-		<Title>Felize.Syncfusion</Title>
+		<PackageId>Feliz.Syncfusion</PackageId>
+		<Title>Feliz.Syncfusion</Title>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Version>0.1.0</Version>
 		<Authors>Rasheed Aboud</Authors>
@@ -12,21 +12,27 @@
 		<Description>Felize style bindings for a handfull of Syncfusion React controls. </Description>
 		<Summary>Felize style bindings for a handfull of Syncfusion React controls.</Summary>
 		<PackageTags>felize fsharp syncfusion fable safe</PackageTags>
+		<RepositoryUrl>https://github.com/rasheedaboud/Felize.Syncfusion</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/rasheedaboud/Felize.Syncfusion</PackageProjectUrl>
+		<PackageReleaseNotes>
+			Added Chip control and Datamanger
+		</PackageReleaseNotes>
+		
 	</PropertyGroup>
 
 	<ItemGroup>
+		<Content Include="*.fsproj; **\*.fs; **\*.fsi" PackagePath="fable\" />
+		<Compile Include="SfDataManager.fs" />
 		<Compile Include="SfGrid.fs" />
 		<Compile Include="SfInputs.fs" />
 		<Compile Include="SfModal.fs" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Fable.Core" Version="3.6.2" />
 		<PackageReference Include="Feliz" Version="1.58.1" />
 	</ItemGroup>
-	<!-- Add source files to "fable" folder in Nuget package -->
-	<ItemGroup>
-		<Content Include="*.fsproj; **\*.fs; **\*.fsi" PackagePath="fable\" />
-	</ItemGroup>
+
 </Project>
 
 
