@@ -1,4 +1,4 @@
-# Felize.Syncfusion 
+# Feliz.Syncfusion 
 
 A wrapper around a hanfull of Syncfusion React controls.
 
@@ -25,6 +25,7 @@ Before using any of these components, make sure you install the nessessary npm p
 
 ```fs
   npm install @syncfusion/ej2-react-grids
+  npm install @syncfusion/ej2
 ```
 You will also need to load the styles, they offer bootstrap 4/5, material ui and fluent ui.
 
@@ -259,7 +260,11 @@ open Feliz
 open SfGrid
 open SfDataManager
 
-let data = new DataManager({url="odata/Clients"; adaptor= OdataV4Adaptor})
+ let options = {|
+     url ="https://services.odata.org/V4/(S(50tkajnxavrtffka05w4ebbb))/TripPinServiceRW/People"
+     adaptor= new OdataV4Adaptor()|} 
+     
+ let manager  = new DataManager(options)
 
 SfGrid.create [
             SfGrid.dataSource data                    
@@ -268,6 +273,8 @@ SfGrid.create [
 ### Documentation
 
 Syncfusion documentation can be found [here](https://ej2.syncfusion.com/react/documentation/getting-started/quick-start).
+
+### License
 
 These controls are a commercial product and requires a paid license for possession or use. Syncfusion’s licensed software, including this component, is subject to the terms and conditions of Syncfusion's EULA (https://www.syncfusion.com/eula/es/). To acquire a license, you can purchase one at https://www.syncfusion.com/sales/products or start a free 30-day trial here (https://www.syncfusion.com/account/manage-trials/start-trials).
 
