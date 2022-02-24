@@ -1,4 +1,4 @@
-# Feliz.Syncfusion 
+# Felize.Syncfusion 
 
 A wrapper around a hanfull of Syncfusion React controls.
 
@@ -9,6 +9,9 @@ A wrapper around a hanfull of Syncfusion React controls.
 - NumericTextBox
 - Autocomplete
 - ProgressButton
+- FileUploader
+- Chip
+- DataManager
 
 ### Examples
 
@@ -171,7 +174,7 @@ SfModal.create [
     ]
   ]
 ```
-Here is how a numeric text box would look:
+Here is how a text box would look:
 
 ```fs
 module App
@@ -207,6 +210,59 @@ SfNumericTextBox.create [
     SfNumericTextBox.format "C2"
     SfNumericTextBox.value (Values.Decimal hourlyRate)
     SfNumericTextBox.blur handleHourlyRateChanged
+  ]
+```
+Here is how a numeric file uploader would look:
+
+```fs
+module App
+
+open Feliz
+open SfFileUploader
+
+FileUploader.create [
+   FileUploader.allowedExtensions ".pdf,.jpeg,.jpg,.svg"
+   FileUploader.buttons { browse = Some "Select Logo"; clear=Some ""; upload = Some "" }
+   FileUploader.cssClass  $"{css.``mb-5``} {css.``mt-3``}"
+   FileUploader.maxFileSize  5_242_881
+   FileUploader.multiple false
+   FileUploader.selected (fun x -> handleFileEvent x)
+ ]
+```
+Here is how a numeric date picker would look:
+
+```fs
+module App
+
+open Feliz
+open SfDatePicker
+
+SfDatePicker.create [
+ SfDatePicker.floatLabelType FloatLabelType.Always
+ SfDatePicker.placeholder "Start Date"
+ SfDatePicker.format "yyy-MM-dd"
+ SfDatePicker.showClearButton false
+ SfDatePicker.value startDate
+ SfDatePicker.change handleStartDateChanged
+ SfDatePicker.strictMode true
+ SfDatePicker.min (DateTime.UtcNow.AddDays(-365))
+ SfDatePicker.max (DateTime.UtcNow.AddDays(365))
+ SfDatePicker.cssClass "some-css-class"
+]
+```
+Here is example using Datamanager to populate data for a grid:
+
+```fs
+module App
+
+open Feliz
+open SfGrid
+open SfDataManager
+
+let data = new DataManager({url="odata/Clients"; adaptor= OdataV4Adaptor})
+
+SfGrid.create [
+            SfGrid.dataSource data                    
   ]
 ```
 ### Documentation
