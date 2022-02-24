@@ -25,6 +25,7 @@ Before using any of these components, make sure you install the nessessary npm p
 
 ```fs
   npm install @syncfusion/ej2-react-grids
+  npm install @syncfusion/ej2
 ```
 You will also need to load the styles, they offer bootstrap 4/5, material ui and fluent ui.
 
