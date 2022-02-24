@@ -260,16 +260,75 @@ open Feliz
 open SfGrid
 open SfDataManager
 
- let options = {|
-     url ="https://services.odata.org/V4/(S(50tkajnxavrtffka05w4ebbb))/TripPinServiceRW/People"
-     adaptor= new OdataV4Adaptor()|} 
-     
- let manager  = new DataManager(options)
+let options =
+        {| url = "https://services.odata.org/V4/(S(50tkajnxavrtffka05w4ebbb))/TripPinServiceRW/People"
+           adaptor = new OdataV4Adaptor() |}
 
-SfGrid.create [
-            SfGrid.dataSource data                    
-  ]
+    let manager = new DataManager(options)
+
+
+    Html.div [
+        prop.children [
+            SfGrid.create [
+                prop.id (System.Guid.NewGuid().ToString())
+                SfGrid.dataSource manager
+                SfGrid.height "100%"
+                SfGrid.enableAdaptiveUI false
+                SfGrid.allowGrouping true
+                SfGrid.allowFiltering true
+                SfGrid.allowPaging true
+                SfGrid.allowSorting true
+                SfGrid.allowExcelExport true
+                SfGrid.showColumnChooser true
+                SfGrid.pageSettings PageSettingsModel.Default
+                SfGrid.editSettings EditSettingsModel.Default
+                SfGrid.filterSettings FilterSettingsModel.Default
+                SfGrid.selectionSettings SelectionSettingsModel.Default
+                prop.children [
+                    columns.create [
+                        prop.children [
+                            column.create [
+                                column.field "UserName"
+                                column.headerText "User Name"
+                                column.width 200
+                            ]
+                            column.create [
+                                column.field "FirstName"
+                                column.headerText "First Name"
+                                column.width 200
+                            ]
+                            column.create [
+                                column.field "LastName"
+                                column.headerText "Last Name"
+                                column.width 200
+                            ]
+                        ]
+                    ]
+                    inject.create [
+                        inject.services [|
+                          Services.Page
+                          Services.Aggregate
+                          Services.Sort
+                          Services.Filter
+                          Services.Group
+                          Services.ColumnChooser
+                          Services.Edit
+                          Services.ToolBar
+                          Services.Resize
+                          Services.ExcelExport
+                          Services.DetailRow
+                        |]
+                      ]  
+                ]
+            ]
+        ]
+    ]
 ```
+Which will render the following:
+
+![Grid](https://github.com/rasheedaboud/Feliz.Syncfusion/blob/cf0b44904760ed47cda7361a38941a2a43aae9ea/Felize.Syncfusion/grid.PNG)
+
+
 ### Documentation
 
 Syncfusion documentation can be found [here](https://ej2.syncfusion.com/react/documentation/getting-started/quick-start).
