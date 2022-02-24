@@ -259,7 +259,11 @@ open Feliz
 open SfGrid
 open SfDataManager
 
-let data = new DataManager({url="odata/Clients"; adaptor= OdataV4Adaptor})
+ let options = {|
+     url ="https://services.odata.org/V4/(S(50tkajnxavrtffka05w4ebbb))/TripPinServiceRW/People"
+     adaptor= new OdataV4Adaptor()|} 
+     
+ let manager  = new DataManager(options)
 
 SfGrid.create [
             SfGrid.dataSource data                    
