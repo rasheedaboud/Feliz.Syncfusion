@@ -12,6 +12,7 @@ A wrapper around a hanfull of Syncfusion React controls.
 - FileUploader
 - Chip
 - DataManager
+- MenuBar
 
 ### Examples
 
