@@ -12,6 +12,7 @@ A wrapper around a hanfull of Syncfusion React controls.
 - FileUploader
 - Chip
 - DataManager
+- MenuBar
 
 ### Examples
 
@@ -170,9 +171,6 @@ SfModal.create [
     SfModal.isModal true
     SfModal.close (fun x -> DisplayGrid |> dispatch)
     SfModal.width (length.percent 90)
-    prop.children [
-      AddClient(state,dispatch)
-    ]
   ]
 ```
 Here is how a text box would look:
@@ -188,7 +186,7 @@ SfTextBox.create [
     SfTextBox.floatLabelType FloatLabelType.Always
     SfTextBox.readonly false
     SfTextBox.value ""
-    SfTextBox.change handleContractNumberChanged
+    SfTextBox.change handleChange
   ]
 ```
 Here is how a numeric text box would look:
@@ -210,7 +208,7 @@ SfNumericTextBox.create [
     SfNumericTextBox.currency CurrencyCode.CAD
     SfNumericTextBox.format "C2"
     SfNumericTextBox.value (Values.Decimal hourlyRate)
-    SfNumericTextBox.blur handleHourlyRateChanged
+    SfNumericTextBox.blur handleChanged
   ]
 ```
 Here is how a numeric file uploader would look:
@@ -223,8 +221,8 @@ open SfFileUploader
 
 FileUploader.create [
    FileUploader.allowedExtensions ".pdf,.jpeg,.jpg,.svg"
-   FileUploader.buttons { browse = Some "Select Logo"; clear=Some ""; upload = Some "" }
-   FileUploader.cssClass  $"{css.``mb-5``} {css.``mt-3``}"
+   FileUploader.buttons { browse = Some "Select File"; clear=Some ""; upload = Some "" }
+   FileUploader.cssClass  "some-css-class"
    FileUploader.maxFileSize  5_242_881
    FileUploader.multiple false
    FileUploader.selected (fun x -> handleFileEvent x)
@@ -244,7 +242,7 @@ SfDatePicker.create [
  SfDatePicker.format "yyy-MM-dd"
  SfDatePicker.showClearButton false
  SfDatePicker.value startDate
- SfDatePicker.change handleStartDateChanged
+ SfDatePicker.change handleChanged
  SfDatePicker.strictMode true
  SfDatePicker.min (DateTime.UtcNow.AddDays(-365))
  SfDatePicker.max (DateTime.UtcNow.AddDays(365))
@@ -260,16 +258,75 @@ open Feliz
 open SfGrid
 open SfDataManager
 
- let options = {|
-     url ="https://services.odata.org/V4/(S(50tkajnxavrtffka05w4ebbb))/TripPinServiceRW/People"
-     adaptor= new OdataV4Adaptor()|} 
-     
- let manager  = new DataManager(options)
+    let options =
+       {| url = "https://services.odata.org/V4/(S(50tkajnxavrtffka05w4ebbb))/TripPinServiceRW/People"
+           adaptor = new OdataV4Adaptor() |}
 
-SfGrid.create [
-            SfGrid.dataSource data                    
-  ]
+    let manager = new DataManager(options)
+
+
+    Html.div [
+        prop.children [
+            SfGrid.create [
+                prop.id (System.Guid.NewGuid().ToString())
+                SfGrid.dataSource manager
+                SfGrid.height "100%"
+                SfGrid.enableAdaptiveUI false
+                SfGrid.allowGrouping true
+                SfGrid.allowFiltering true
+                SfGrid.allowPaging true
+                SfGrid.allowSorting true
+                SfGrid.allowExcelExport true
+                SfGrid.showColumnChooser true
+                SfGrid.pageSettings PageSettingsModel.Default
+                SfGrid.editSettings EditSettingsModel.Default
+                SfGrid.filterSettings FilterSettingsModel.Default
+                SfGrid.selectionSettings SelectionSettingsModel.Default
+                prop.children [
+                    columns.create [
+                        prop.children [
+                            column.create [
+                                column.field "UserName"
+                                column.headerText "User Name"
+                                column.width 200
+                            ]
+                            column.create [
+                                column.field "FirstName"
+                                column.headerText "First Name"
+                                column.width 200
+                            ]
+                            column.create [
+                                column.field "LastName"
+                                column.headerText "Last Name"
+                                column.width 200
+                            ]
+                        ]
+                    ]
+                    inject.create [
+                        inject.services [|
+                          Services.Page
+                          Services.Aggregate
+                          Services.Sort
+                          Services.Filter
+                          Services.Group
+                          Services.ColumnChooser
+                          Services.Edit
+                          Services.ToolBar
+                          Services.Resize
+                          Services.ExcelExport
+                          Services.DetailRow
+                        |]
+                      ]  
+                ]
+            ]
+        ]
+    ]
 ```
+Which will render the following:
+
+![Grid](https://github.com/rasheedaboud/Feliz.Syncfusion/blob/cf0b44904760ed47cda7361a38941a2a43aae9ea/Felize.Syncfusion/grid.PNG)
+
+
 ### Documentation
 
 Syncfusion documentation can be found [here](https://ej2.syncfusion.com/react/documentation/getting-started/quick-start).
