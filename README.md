@@ -13,6 +13,8 @@ A wrapper around a hanfull of Syncfusion React controls.
 - Chip
 - DataManager
 - MenuBar
+- Button
+- SplitButton
 
 ### Examples
 
