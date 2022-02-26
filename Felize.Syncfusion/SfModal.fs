@@ -432,7 +432,7 @@ module SfModal =
         static member inline buttons(buttons: ButtonPropsModel[])                         = Interop.mkAttr "buttons"  buttons
         static member inline closeOnEscape(closeOnEscape: bool)                           = Interop.mkAttr "closeOnEscape"  closeOnEscape
         static member inline animationSettings(animationSettings: AnimationSettingsModel) = Interop.mkAttr "animationSettings"  animationSettings
-        static member inline close callback                                 = prop.custom("close",fun x -> x.close |> callback)
+        static member inline close callback = prop.custom("close",fun x -> x.close |> callback)
     
 
         static member inline create (props:IReactProperty list) = Interop.reactApi.createElement (DialogComponent , createObj !!props)
