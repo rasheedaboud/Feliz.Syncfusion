@@ -595,8 +595,8 @@ module SfGrid =
         text: string;
     }
 
-
-    module SfGridToolBar = 
+    [<AutoOpen>]
+    module ToolBar = 
       type ClickEventArgs = 
         abstract item: ItemModelBase with get, set
         abstract originalEvent: Event with get, set
@@ -637,18 +637,17 @@ module SfGrid =
         | WordExport
 
       [<Erase>]
-      type ToolbarChoices =
+      type ToolbarItems =
         | ToolbarItem of Item
         | ItemModel of ItemModel
         | String of string
 
 
 
-    type Toolbar = SfGridToolBar.ToolbarChoices []
 
     module GridEvents = 
       type ClickEventArgs = 
-        abstract item: SfGridToolBar.ItemModel with get, set
+        abstract item: ToolBar.ItemModel with get, set
         abstract originalEvent: Event with get, set
         abstract cancel: bool with get, set
       type RowSelectEventArgs<'a> = 
@@ -772,7 +771,7 @@ module SfGrid =
       columns:Columns<'a>
       dataSource: 'a[] 
       queryString:string
-      toolbar: Toolbar
+      toolbar: ToolbarItems[]
       rowSelected:(GridEvents.RowSelectEventArgs<'a>->unit) option
       actionBegin:(GridEvents.ActionEventArgs->unit) option
     }
@@ -1033,7 +1032,7 @@ module SfGrid =
         /// {% codeBlock src='grid/toolbar/index.md' %}{% endcodeBlock %}
         /// </summary>
         /// <default>null</default>
-        abstract toolbar: Toolbar with get, set
+        abstract toolbar: ToolbarItems with get, set
 
 
         /// <summary>It used to render toolbar template</summary>
@@ -1665,7 +1664,7 @@ module SfGrid =
         static member inline height (height: string) =Interop.mkAttr "height"  height
         static member inline editSettings (editSettings: EditSettingsModel) =Interop.mkAttr "editSettings"  editSettings
         static member inline pageSettings (pageSettings: PageSettingsModel) =Interop.mkAttr "pageSettings"  pageSettings
-        static member inline toolbar (toolbar: Toolbar) =Interop.mkAttr "toolbar"  toolbar
+        static member inline toolbar (toolbar: ToolbarItems[]) =Interop.mkAttr "toolbar"  toolbar
         static member inline filterSettings(filterSettings:FilterSettingsModel) =Interop.mkAttr "filterSettings" filterSettings
         static member inline selectionSettings(selectionSettings:SelectionSettingsModel) =Interop.mkAttr "selectionSettings" selectionSettings
         static member inline actionBegin(actionBegin:(GridEvents.ActionEventArgs->unit)) =Interop.mkAttr "actionBegin" actionBegin

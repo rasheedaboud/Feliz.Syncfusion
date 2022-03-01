@@ -188,15 +188,8 @@ module SfInputs =
 
     module SfAutoComplete =
 
-        importAll "@syncfusion/ej2-base/styles/bootstrap4.css"
-        importAll "@syncfusion/ej2-react-inputs/styles/bootstrap4.css"
-        importAll "@syncfusion/ej2-react-dropdowns/styles/bootstrap4.css"
-
         let autoComplete: obj =
             import "AutoCompleteComponent" "@syncfusion/ej2-react-dropdowns"
-
-
-
 
         type FieldSettingsModel =
             {

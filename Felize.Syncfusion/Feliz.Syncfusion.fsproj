@@ -6,7 +6,7 @@
 		<PackageId>Feliz.Syncfusion</PackageId>
 		<Title>Feliz.Syncfusion</Title>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<Version>0.1.13</Version>
+		<Version>0.1.14</Version>
 		<Authors>Rasheed Aboud</Authors>
 		<Company>ARMM Services</Company>
 		<Description>Felize style bindings for a handfull of Syncfusion React controls. </Description>
@@ -16,7 +16,7 @@
 		<PackageProjectUrl>https://github.com/rasheedaboud/Felize.Syncfusion</PackageProjectUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageReleaseNotes>
-			Added SfButton, SfSplitButton, 
+			fixed bug in SfAutocomplete style import, refactored grid toolbarItems
 		</PackageReleaseNotes>
 		
 	</PropertyGroup>
