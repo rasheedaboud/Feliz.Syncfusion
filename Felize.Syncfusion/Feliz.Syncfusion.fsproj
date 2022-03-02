@@ -6,7 +6,7 @@
 		<PackageId>Feliz.Syncfusion</PackageId>
 		<Title>Feliz.Syncfusion</Title>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<Version>0.1.15</Version>
+		<Version>0.1.16</Version>
 		<Authors>Rasheed Aboud</Authors>
 		<Company>ARMM Services</Company>
 		<Description>Felize style bindings for a handfull of Syncfusion React controls. </Description>
@@ -16,7 +16,7 @@
 		<PackageProjectUrl>https://github.com/rasheedaboud/Felize.Syncfusion</PackageProjectUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageReleaseNotes>
-			matched feliz version to safe stack default
+			cleaned up npm package versions, fixed bug in datamanager
 		</PackageReleaseNotes>
 		
 	</PropertyGroup>
@@ -33,28 +33,32 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Fable.Core" Version="3.6.2" />
+		<PackageReference Include="Fable.Core" Version="3.2.8" />
 		<PackageReference Include="Feliz" Version="1.47" />
-		<PackageReference Update="FSharp.Core" Version="5.0.2" />
 	</ItemGroup>
 
-
+	<ItemGroup>
+	  <PackageReference Update="FSharp.Core" Version="5.0.1" />
+	</ItemGroup>
+	  <ItemGroup>
+		<Content Include="*.fsproj; **\*.fs; **\*.fsi" PackagePath="fable\" />
+	  </ItemGroup>
 	<PropertyGroup>
 		<NpmDependencies>
 			<NpmPackage Name="@syncfusion/ej2-react-navigations" Version="gte 19.4.53" ResolutionStrategy="Max" />
 			<NpmPackage Name="@syncfusion/ej2-data" Version="gte 19.4.53" ResolutionStrategy="Max" />
-			<NpmPackage Name="@syncfusion/ej2-base" Version="gte 19.4.53" ResolutionStrategy="Max" />
+			<NpmPackage Name="@syncfusion/ej2-base" Version="gte 19.4.52" ResolutionStrategy="Max" />
 			<NpmPackage Name="@syncfusion/ej2-react-grids" Version="gte 19.4.53" ResolutionStrategy="Max" />
 			<NpmPackage Name="@syncfusion/ej2-react-buttons" Version="gte 19.4.53" ResolutionStrategy="Max" />
 			<NpmPackage Name="@syncfusion/ej2-react-dropdowns" Version="gte 19.4.53" ResolutionStrategy="Max" />
 			<NpmPackage Name="@syncfusion/ej2-react-calendars" Version="gte 19.4.53" ResolutionStrategy="Max" />
-			<NpmPackage Name="@syncfusion/ej2-react-inputs" Version="gte 19.4.53" ResolutionStrategy="Max" />
+			<NpmPackage Name="@syncfusion/ej2-react-inputs" Version="gte 19.4.52" ResolutionStrategy="Max" />
 			<NpmPackage Name="@syncfusion/ej2-react-charts" Version="gte 19.4.53" ResolutionStrategy="Max" />
 			<NpmPackage Name="@syncfusion/ej2-react-popups" Version="gte 19.4.53" ResolutionStrategy="Max" />
-			<NpmPackage Name="@syncfusion/ej2-react-schedule" Version="gte 19.4.53" ResolutionStrategy="Max" />
+			<NpmPackage Name="@syncfusion/ej2-react-schedule" Version="gte 19.4.52" ResolutionStrategy="Max" />
 			<NpmPackage Name="@syncfusion/ej2-react-gantt" Version="gte 19.4.53" ResolutionStrategy="Max" />
-			<NpmPackage Name="@syncfusion/ej2-react-notifications" Version="gte 19.4.53" ResolutionStrategy="Max" />
-			<NpmPackage Name="@syncfusion/ej2-react-filemanager" Version="gte 19.4.53" ResolutionStrategy="Max" />
+			<NpmPackage Name="@syncfusion/ej2-react-notifications" Version="gte 19.4.52" ResolutionStrategy="Max" />
+			<NpmPackage Name="@syncfusion/ej2-react-filemanager" Version="gte 19.4.52" ResolutionStrategy="Max" />
 			<NpmPackage Name="@syncfusion/ej2-react-charts" Version="gte 19.4.53" ResolutionStrategy="Max" />
 			<NpmPackage Name="@syncfusion/ej2-react-treegrid" Version="gte 19.4.53" ResolutionStrategy="Max" />
 			<NpmPackage Name="@syncfusion/ej2-react-progressbar" Version="gte 19.4.53" ResolutionStrategy="Max" />
