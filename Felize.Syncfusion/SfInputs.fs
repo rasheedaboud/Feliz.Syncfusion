@@ -516,7 +516,6 @@ module SfInputs =
             static member inline create(props: IReactProperty list) =
                 Interop.reactApi.createElement (numericTextBoxComponent, createObj !!props)
 
-    open SfNumericTextBox
 
     module ProgressButton =
 
