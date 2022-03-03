@@ -30,6 +30,16 @@ Before using any of these components, make sure you install the nessessary npm p
   npm install @syncfusion/ej2-react-grids
   npm install @syncfusion/ej2
 ```
+
+As an alternative use femto, below assumes youre using default SAFE template. Run following from root project folder:
+```fs
+ dotnet tool install femto 
+ 
+ femto install Felize.Syncfusion
+
+```
+
+
 You will also need to load the styles, they offer bootstrap 4/5, material ui and fluent ui.
 
 ```fs
@@ -52,7 +62,7 @@ In order to access some of the functionality of these components you must use re
  ```fs
    let onToolBarButtonClicked =
     fun (args:SfGridToolBar.ClickEventArgs) ->
-      if args.item.id = ExcelExport.value then
+      if args.item.id = "ExcelExport" then
         export()
 ```
 
