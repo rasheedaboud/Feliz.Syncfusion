@@ -31,7 +31,7 @@ Before using any of these components, make sure you install the nessessary npm p
   npm install @syncfusion/ej2
 ```
 
-As an alternative use femto, below assumes youre using default SAFE template. Run following from root project folder:
+As an alternative use femto, below assumes youre using default SAFE template. Run following from client project folder:
 ```fs
  dotnet tool install femto 
  
