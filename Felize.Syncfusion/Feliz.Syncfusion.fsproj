@@ -6,7 +6,7 @@
 		<PackageId>Feliz.Syncfusion</PackageId>
 		<Title>Feliz.Syncfusion</Title>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<Version>0.1.20</Version>
+		<Version>0.1.21</Version>
 		<Authors>Rasheed Aboud</Authors>
 		<Company>ARMM Services</Company>
 		<Description>Feliz style bindings for a handfull of Syncfusion React controls. </Description>
@@ -16,13 +16,15 @@
 		<PackageProjectUrl>https://github.com/rasheedaboud/Felize.Syncfusion</PackageProjectUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageReleaseNotes>
-			Added registerLicense from base module.
+			Added Appbar and Sidebar components.
 		</PackageReleaseNotes>
 		
 	</PropertyGroup>
 
 	<ItemGroup>
 		<Content Include="*.fsproj; **\*.fs; **\*.fsi" PackagePath="fable\" />
+		<Compile Include="SfSideBar.fs" />
+		<Compile Include="SfAppBar.fs" />
 		<Compile Include="SfButton.fs" />
 		<Compile Include="SfSplitButton.fs" />
 		<Compile Include="SfDataManager.fs" />
@@ -41,7 +43,6 @@
 	<ItemGroup>
 	  <PackageReference Update="FSharp.Core" Version="6.0.3" />
 	</ItemGroup>
-	  <ItemGroup />
 	<PropertyGroup>
 		<NpmDependencies>
 			<NpmPackage Name="@syncfusion/ej2-base" Version="gte 20.3.48" ResolutionStrategy="Max" />

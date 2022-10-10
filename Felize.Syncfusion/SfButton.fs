@@ -36,7 +36,7 @@ module SfButton =
         static member inline iconCss(iconCss: string option )= Interop.mkAttr "iconCss" iconCss
         /// <summary>Specifies a value that indicates whether the Button is <c>disabled</c> or not.</summary>
         /// <default>false.</default>
-        static member inline iconCss(iconCss: bool option )= Interop.mkAttr "iconCss" iconCss
+        static member inline disabled(iconCss: bool option )= Interop.mkAttr "iconCss" iconCss
         /// <summary>Allows the appearance of the Button to be enhanced and visually appealing when set to <c>true</c>.</summary>
         /// <default>false</default>
         static member inline isPrimary(isPrimary: bool option )= Interop.mkAttr "isPrimary" isPrimary
