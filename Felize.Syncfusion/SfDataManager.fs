@@ -6,9 +6,6 @@ module rec SfDataManagerTypes =
     open System
     open Fable.Core
     open Fable.Core.JS
-
-
-    type Function = System.Action
     
     /// An event which takes place in the DOM.
     type [<AllowNullLiteral>] Event =
