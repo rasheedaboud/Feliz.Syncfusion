@@ -1,124 +1,102 @@
 ﻿namespace Feliz.Syncfusion
 
-
-
-module SfSplitButton = 
-
+[<AutoOpen>]
+module SfAppBar =
+    
     open Feliz
     open Fable.Core
     open Fable.Core.JsInterop
-    open Browser.Types
 
-    let sfSplitButton:obj = import "SplitButtonComponent" "@syncfusion/ej2-react-splitbuttons"
+    let appbar: obj =
+        import "AppBarComponent " "@syncfusion/ej2-react-navigations"
+    /// <summary>
+    /// Specifies the height mode of the AppBar component which defines the height of the AppBar.
+    ///
+    /// * <c>Regular</c> - Specifies default height for the AppBar.
+    /// * <c>Prominent</c> - Specifies longer height for the AppBar to show the longer titles and images, or to provide a stronger presence.
+    /// * <c>Dense</c> - Specifies compressed (short) height for the AppBar to accommodate all the app bar content in a denser layout.
+    /// </summary>
+    type [<StringEnum>] [<RequireQualifiedAccess>] AppBarMode =
+    | [<CompiledName("Regular")>] Regular
+    | [<CompiledName("Prominent")>] Prominent
+    | [<CompiledName("Dense")>] Dense
 
-    /// <summary>Common Event argument for all base Essential JavaScript 2 Events.</summary>
-    type [<AllowNullLiteral>] BaseEventArgs =
-        /// Specifies name of the event.
-        abstract name: string option with get, set
+    /// <summary>
+    /// Specifies the position of the AppBar.
+    ///
+    /// * <c>Top</c> - Position the AppBar at the top.
+    /// * <c>Bottom</c> - Position the AppBar at the bottom.
+    /// </summary>
+    type [<StringEnum>] [<RequireQualifiedAccess>] AppBarPosition =
+    | [<CompiledName("Top")>] Top
+    | [<CompiledName("Bottom")>] Bottom
 
-    /// Defines the icon position of Split Button.
-    type [<StringEnum>] [<RequireQualifiedAccess>] SplitButtonIconPosition =
-        | [<CompiledName "Left">] Left
-        | [<CompiledName "Top">] Top
+    /// <summary>
+    /// Specifies the color of the AppBar component.
+    ///
+    /// * <c>Light</c> - Specifies the AppBar in light color.
+    /// * <c>Dark</c> - Specifies the AppBar in dark color.
+    /// * <c>Primary</c> - Specifies the AppBar in a primary color.
+    /// * <c>Inherit</c> - Inherit color from parent for AppBar. AppBar background and colors are inherited from its parent element.
+    /// </summary>
+    type [<StringEnum>] [<RequireQualifiedAccess>] AppBarColor =
+    | [<CompiledName("Light")>] Light
+    | [<CompiledName("Dark")>] Dark
+    | [<CompiledName("Primary")>] Primary
+    | [<CompiledName("Inherit")>] Inherit
 
-    /// Interface for a class Item
-    type ItemModel ={
+
+    [<Erase>]
+    type Spacer =
+        static member inline create xs = Interop.createElement "div" [prop.className "e-appbar-spacer"]
+        static member inline cssClass (value: string list) = Interop.mkAttr "cssClass" [(["e-appbar-spacer"] @value |> prop.classes)]
+
+    [<Erase>]
+    type Separator =
+        static member inline create xs = Interop.createElement "div" [prop.className "e-appbar-separator"]
+        static member inline cssClass (value: string list) = Interop.mkAttr "cssClass" [(["e-appbar-separator"] @value |> prop.classes)]
+
+
+    [<Erase>]
+    type SfAppBar  =
+
+        static member inline appBarComponent(children: #seq<ReactElement>) =
+            Interop.reactElementWithChildren "AppBarComponent" children
         /// <summary>
-        /// Defines class/multiple classes separated by a space for the item that is used to include an icon.
-        /// Action item can include font icon and sprite image.
+        /// Specifies the mode of the AppBar that defines the AppBar height. The possible values for this property are as follows:
+        /// * Regular
+        /// * Prominent
+        /// * Dense
         /// </summary>
-        /// <default>''</default>
-        iconCss: string option 
-        /// <summary>Specifies the id for item.</summary>
-        /// <default>''</default>
-        id: string option 
-        /// <summary>Specifies separator between the items. Separator are horizontal lines used to group action items.</summary>
+        /// <default>'Regular'</default>
+        static member inline mode(mode: AppBarMode) = Interop.mkAttr "mode" mode
+        /// <summary>
+        /// Specifies the position of the AppBar. The possible values for this property are as follows:
+        /// * Top
+        /// * Bottom
+        /// </summary>
+        /// <default>'Top'</default>
+        static member inline position(position: AppBarPosition option) = Interop.mkAttr (nameof position) position
+        /// <summary>Accepts single/multiple CSS classes (separated by a space) to be used for AppBar customization.</summary>
+        /// <default>null</default>
+        static member inline cssClass(cssClass: string option) = Interop.mkAttr (nameof cssClass) cssClass
+        /// <summary>
+        /// Defines whether the AppBar position is fixed or not while scrolling the page.
+        /// When set to <c>true</c>, the AppBar will be sticky while scrolling.
+        /// </summary>
         /// <default>false</default>
-        separator: bool option
-        /// <summary>Specifies text for item.</summary>
-        /// <default>''</default>
-        text: string option 
-        /// <summary>Specifies url for item that creates the anchor link to navigate to the url provided.</summary>
-        /// <default>''</default>
-        url: string option 
-        /// <summary>Used to enable or disable the item.</summary>
-        /// <default>false</default>
-        disabled: bool option}
+        static member inline isSticky(isSticky: bool option) = Interop.mkAttr (nameof isSticky) isSticky
+        /// <summary>Accepts HTML attributes/custom attributes that will be applied to the AppBar element.</summary>
+        /// <default>null</default>
+        static member inline colorMode(colorMode: AppBarColor option) = Interop.mkAttr (nameof colorMode) colorMode
+        static member inline create(props: IReactProperty list) =
+            Interop.reactApi.createElement (appbar, createObj !!props)
 
-    /// Interface for before item render / select event.
-    type [<AllowNullLiteral>] MenuEventArgs =
-        inherit BaseEventArgs
-        abstract element: HTMLElement with get, set
-        abstract item: ItemModel with get, set
 
-    /// Interface for before open / close event.
-    type [<AllowNullLiteral>] BeforeOpenCloseMenuEventArgs =
-        inherit BaseEventArgs
-        abstract element: HTMLElement with get, set
-        abstract items: ResizeArray<ItemModel> with get, set
-        abstract ``event``: Event with get, set
-        abstract cancel: bool option with get, set
-    
-    /// Interface for open/close event.
-    type [<AllowNullLiteral>] OpenCloseMenuEventArgs =
-        inherit BaseEventArgs
-        abstract element: HTMLElement with get, set
-        abstract items: ResizeArray<ItemModel> with get, set
-        abstract parentItem: ItemModel option with get, set
 
-    type SfSplitButton =
 
-        /// <summary>Defines the content of the SplitButton primary action button can either be a text or HTML elements.</summary>
-        /// <default>""</default>
-        static member inline content(content: string) = Interop.mkAttr "content" content
-        /// <summary>
-        /// Defines class/multiple classes separated by a space in the SplitButton element. The SplitButton
-        /// size and styles can be customized by using this.
-        /// </summary>
-        /// <default>""</default>
-        static member inline cssClass(cssClass: string) = Interop.mkAttr "cssClass" cssClass
-        /// <summary>Specifies a value that indicates whether the SplitButton is disabled or not.</summary>
-        /// <default>false.</default>
-        static member inline disabled(disabled: bool) = Interop.mkAttr "disabled" disabled
-        /// <summary>
-        /// Defines class/multiple classes separated by a space for the SplitButton that is used to include an
-        /// icon. SplitButton can also include font icon and sprite image.
-        /// </summary>
-        /// <default>""</default>
-        static member inline iconCss(iconCss: string) = Interop.mkAttr "iconCss" iconCss
-        /// <summary>
-        /// Positions the icon before/top of the text content in the SplitButton. The possible values are
-        /// * Left: The icon will be positioned to the left of the text content.
-        /// * Top: The icon will be positioned to the top of the text content.
-        /// </summary>
-        /// <default>"Left"</default>
-        static member inline iconPosition(iconPosition: SplitButtonIconPosition) = Interop.mkAttr "iconPosition" iconPosition
-        /// <summary>Specifies the popup element creation on open.</summary>
-        /// <default>false</default>
-        static member inline createPopupOnClick(createPopupOnClick: bool) = Interop.mkAttr "createPopupOnClick" createPopupOnClick
-        /// <summary>Specifies action items with its properties which will be rendered as SplitButton secondary button popup.</summary>
-        /// <default>[]</default>
-        static member inline items(items: ResizeArray<ItemModel> )= Interop.mkAttr "items" items
-        /// <summary>Allows to specify the SplitButton popup item element.</summary>
-        /// <default>""</default>
-        static member inline target(target: string )= Interop.mkAttr "target" target
-        /// <summary>Triggers while rendering each Popup item of SplitButton.</summary>
-        static member inline beforeItemRender(callback: (MenuEventArgs -> unit))= Interop.mkAttr "beforeItemRender" callback
-        /// <summary>Triggers before opening the SplitButton popup.</summary>
-        static member inline beforeOpen(callback: (BeforeOpenCloseMenuEventArgs->unit))= Interop.mkAttr "beforeOpen" callback
-        /// <summary>Triggers before closing the SplitButton popup.</summary>
-        static member inline beforeClose(callback: (BeforeOpenCloseMenuEventArgs->unit))= Interop.mkAttr "beforeClose" callback
-        /// <summary>Triggers when the primary button of SplitButton has been clicked.</summary>
-        static member inline click(callback:(MouseEvent -> unit))=Interop.mkAttr "click" callback
-        /// <summary>Triggers while closing the SplitButton popup.</summary>
-        static member inline close(callback: (OpenCloseMenuEventArgs-> unit))= Interop.mkAttr "close" callback
-        /// <summary>Triggers while opening the SplitButton popup.</summary>
-        static member inline ``open``(callback: (OpenCloseMenuEventArgs-> unit))= Interop.mkAttr "open" callback
-        /// <summary>Triggers while selecting action item of SplitButton popup.</summary>
-        static member inline select(callback: (MenuEventArgs-> unit))= Interop.mkAttr "select" callback
 
-        
-        static member inline create (props:IReactProperty list) = Interop.reactApi.createElement (sfSplitButton , createObj !!props)
 
+   
 
 
