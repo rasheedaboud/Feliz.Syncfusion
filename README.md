@@ -36,6 +36,7 @@ As an alternative use femto, below assumes youre using default SAFE template. Ru
  dotnet tool install femto 
  
  femto install Felize.Syncfusion
+ femto --resolve
 
 ```
 
