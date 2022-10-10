@@ -16,13 +16,19 @@ A wrapper around a hanfull of Syncfusion React controls.
 - Button
 - SplitButton
 
-### Examples
+### Installation
 
-Install the package
+#### 1. Install the package
 
 ```fs
  dotnet add package Felize.Syncfusion
 ```
+or 
+
+```fs
+ dotnet paket add Felize.Syncfusion -p <CLIENT  PROJECT>
+```
+#### 2. NPM Packages
 
 Before using any of these components, make sure you install the nessessary npm packages for example to use grid you will need the following:
 
@@ -36,16 +42,35 @@ As an alternative use femto, below assumes youre using default SAFE template. Ru
  dotnet tool install femto 
  
  femto install Felize.Syncfusion
+ femto --resolve
 
 ```
-
+#### 3. Styles
 
 You will also need to load the styles, they offer bootstrap 4/5, material ui and fluent ui.
 
 ```fs
 importAll "@syncfusion/ej2/<style>.css";
 ```
+Or as an alternative simply add cnd link to head of your index.html
 
+```html
+<head>
+ <link href="https://cdn.syncfusion.com/ej2/ej2-react-inputs/styles/<style>.css" rel="stylesheet" />
+</head>
+```
+#### 4. Liscense
+
+These controls are a commercial product and requires a paid license for possession or use. Syncfusion does offer a community license. more information can be found [here](https://www.syncfusion.com/sales/communitylicense).
+
+Add the following line of code to Index.fs:
+
+```fs
+ Feliz.Syncfusion.License.register("<YOUR KEY HERE>")
+```
+
+
+### Examples
 
 In order to access some of the functionality of these components you must use react userRef hook:
 
