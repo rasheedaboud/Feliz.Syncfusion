@@ -6,7 +6,7 @@
 		<PackageId>Feliz.Syncfusion</PackageId>
 		<Title>Feliz.Syncfusion</Title>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<Version>0.1.22</Version>
+		<Version>0.1.23</Version>
 		<Authors>Rasheed Aboud</Authors>
 		<Company>ARMM Services</Company>
 		<Description>Feliz style bindings for a handfull of Syncfusion React controls. </Description>
@@ -22,7 +22,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Content Include="*.fsproj; **\*.fs; **\*.fsi" PackagePath="fable\" />
 		<Compile Include="SfSideBar.fs" />
 		<Compile Include="SfAppBar.fs" />
 		<Compile Include="SfButton.fs" />
@@ -30,8 +29,10 @@
 		<Compile Include="SfDataManager.fs" />
 		<Compile Include="SfGrid.fs" />
 		<Compile Include="SfInputs.fs" />
+		<Compile Include="SfListView.fs" />
 		<Compile Include="SfModal.fs" />
 		<Compile Include="SfMenuBar.fs" />
+		<Compile Include="Syncfusion.fs" />
 	
 	</ItemGroup>
 

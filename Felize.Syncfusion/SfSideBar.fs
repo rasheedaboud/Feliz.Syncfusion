@@ -4,7 +4,6 @@
 [<AutoOpen>]
 module fSideBars =
 
-    open Fable
     open Fable.Core.JsInterop
     open Fable.Core
     open Feliz
@@ -114,7 +113,7 @@ module fSideBars =
         /// <see href="https://ej2.syncfusion.com/documentation/sidebar/custom-context/"><c>Custom Context</c></see> documentation.
         /// </summary>
         /// <default>null</default>
-        abstract target: U2<HTMLElement, string> with get, set
+        abstract target: string with get, set
         /// <summary>
         /// Specifies the whether to apply overlay options to main content when the Sidebar is in an open state.
         /// &gt; For more details about showBackdrop refer to
@@ -256,7 +255,7 @@ module fSideBars =
         /// <see href="https://ej2.syncfusion.com/documentation/sidebar/custom-context/"><c>Custom Context</c></see> documentation.
         /// </summary>
         /// <default>null</default>
-        static member inline target (target: U2<HTMLElement, string>) = Interop.mkAttr (nameof target) target
+        static member inline target (target: string) = Interop.mkAttr (nameof target) target
         /// <summary>
         /// Specifies the whether to apply overlay options to main content when the Sidebar is in an open state.
         /// &gt; For more details about showBackdrop refer to
@@ -275,7 +274,7 @@ module fSideBars =
         /// <see cref="../../sidebar/variations/"><c>SidebarType</c></see> documentation.
         /// </summary>
         /// <default>'Auto'</default>
-        static member inline ``type`` (``type``: SidebarType) = Interop.mkAttr "type" ``type``
+        static member inline sidebarType (sidebarType: SidebarType) = Interop.mkAttr "type" sidebarType
         /// <summary>
         /// Specifies the width of the Sidebar. By default, the width of the Sidebar sets based on the size of its content.
         /// Width can also be set in pixel values.
@@ -284,6 +283,5 @@ module fSideBars =
         static member inline width (width: string) = Interop.mkAttr (nameof width) width
         /// <summary>Specifies the z-index of the Sidebar. It is applicable only when sidebar act as overlay type.</summary>
         /// <default>1000</default>
-        static member inline zIndex (zIndex: U2<string, float>) = Interop.mkAttr (nameof zIndex) zIndex
-        static member inline create(props: IReactProperty list) =
-            Interop.reactApi.createElement (sidebar, createObj !!props)
+        static member inline zIndex (zIndex: string) = Interop.mkAttr (nameof zIndex) zIndex
+        static member inline create(props: IReactProperty list) = Interop.reactApi.createElement (sidebar, createObj !!props)

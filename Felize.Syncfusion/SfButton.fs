@@ -33,10 +33,10 @@ module SfButton =
         /// Buttons can also include font icon and sprite image.
         /// </summary>
         /// <default>""</default>
-        static member inline iconCss(iconCss: string option )= Interop.mkAttr "iconCss" iconCss
+        static member inline iconCss(iconCss: string)= Interop.mkAttr "iconCss" iconCss
         /// <summary>Specifies a value that indicates whether the Button is <c>disabled</c> or not.</summary>
         /// <default>false.</default>
-        static member inline disabled(iconCss: bool option )= Interop.mkAttr "iconCss" iconCss
+        static member inline disabled(disabled: bool option )= Interop.mkAttr "disabled" disabled
         /// <summary>Allows the appearance of the Button to be enhanced and visually appealing when set to <c>true</c>.</summary>
         /// <default>false</default>
         static member inline isPrimary(isPrimary: bool option )= Interop.mkAttr "isPrimary" isPrimary
@@ -47,7 +47,7 @@ module SfButton =
         /// {% codeBlock src='button/cssClass/index.md' %}{% endcodeBlock %}
         /// </summary>
         /// <default>""</default>
-        static member inline cssClass(cssClass: string option )= Interop.mkAttr "cssClass" cssClass
+        static member inline cssClass(cssClass: string)= Interop.mkAttr "cssClass" cssClass
         /// <summary>
         /// Defines the text <c>content</c> of the Button element.
         /// {% codeBlock src='button/content/index.md' %}{% endcodeBlock %}
