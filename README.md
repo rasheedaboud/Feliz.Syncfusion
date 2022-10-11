@@ -2,6 +2,9 @@
 
 A wrapper around a hanfull of Syncfusion React controls.
 
+- ListView
+- SideBar
+- AppBar
 - Grid
 - Modal
 - DatePicker
