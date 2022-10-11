@@ -6,7 +6,7 @@
 		<PackageId>Feliz.Syncfusion</PackageId>
 		<Title>Feliz.Syncfusion</Title>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<Version>0.1.23</Version>
+		<Version>0.1.26</Version>
 		<Authors>Rasheed Aboud</Authors>
 		<Company>ARMM Services</Company>
 		<Description>Feliz style bindings for a handfull of Syncfusion React controls. </Description>
@@ -16,7 +16,7 @@
 		<PackageProjectUrl>https://github.com/rasheedaboud/Felize.Syncfusion</PackageProjectUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageReleaseNotes>
-			Added Appbar and Sidebar components.
+			Added Appbar,Sidebar,ListView components. Bug fixes.
 		</PackageReleaseNotes>
 		
 	</PropertyGroup>
@@ -64,6 +64,9 @@
 			<NpmPackage Name="@syncfusion/ej2-react-charts" Version="gte 20.3.48" ResolutionStrategy="Max" />
 			<NpmPackage Name="@syncfusion/ej2-react-treegrid" Version="gte 20.3.48" ResolutionStrategy="Max" />
 			<NpmPackage Name="@syncfusion/ej2-react-progressbar" Version="gte 20.3.47" ResolutionStrategy="Max" />
+			<NpmPackage Name="@syncfusion/ej2-react-lists" Version="gte 20.3.47" ResolutionStrategy="Max" />
+			<NpmPackage Name="@syncfusion/ej2-base" Version="gte 20.3.49" ResolutionStrategy="Max" />
+			
 		</NpmDependencies>
 	</PropertyGroup>
 </Project>
