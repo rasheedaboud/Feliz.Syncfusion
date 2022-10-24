@@ -37,14 +37,14 @@ Before using any of these components, make sure you install the nessessary npm p
 
 ```fs
   npm install @syncfusion/ej2-react-grids
-  npm install @syncfusion/ej2
+  npm install @syncfusion/ej2-base
 ```
 
 As an alternative use femto, below assumes youre using default SAFE template. Run following from client project folder:
 ```fs
  dotnet tool install femto 
  
- femto install Felize.Syncfusion
+ femto install Feliz.Syncfusion
  femto --resolve
 
 ```
