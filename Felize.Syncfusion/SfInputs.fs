@@ -517,7 +517,6 @@ module SfInputs =
             static member inline create(props: Feliz.IReactProperty list) =
                 Feliz.Interop.reactApi.createElement (numericTextBoxComponent, createObj !!props)
 
-    open SfNumericTextBox
 
     module ProgressButton =
 
@@ -786,7 +785,7 @@ module SfInputs =
     module SfCheckBox =
 
         let  checkBox: obj =
-            import "TextBoxComponent" "@syncfusion/ej2-react-buttons"
+            import "CheckBoxComponent " "@syncfusion/ej2-react-buttons"
 
 
         [<StringEnum>]
@@ -848,7 +847,7 @@ module SfInputs =
     module SfChip =
 
         let chip: obj =
-            import "TextBoxComponent" "@syncfusion/ej2-react-buttons"
+            import "ChipListComponent " "@syncfusion/ej2-react-buttons"
 
         [<Erase>]
         type ChipModelValue =
