@@ -1,5 +1,6 @@
-namespace Feliz.Syncfusion
+namespace Syncfusion
 
+[<AutoOpen>]
 module SfInputs =
 
     open Fable.Core
@@ -122,24 +123,24 @@ module SfInputs =
         [<Erase>]
         type SfFileUploader =
             static member inline fileUploader(children: #seq<ReactElement>) =
-                Interop.reactElementWithChildren "UploaderComponent" children
+                Feliz.Interop.reactElementWithChildren "UploaderComponent" children
 
-            static member inline cssClass(cssClass: string) = Interop.mkAttr "cssClass" cssClass
+            static member inline cssClass(cssClass: string) = Feliz.Interop.mkAttr "cssClass" cssClass
 
             static member inline allowedExtensions(allowedExtensions: string) =
-                Interop.mkAttr "allowedExtensions" allowedExtensions
+                Feliz.Interop.mkAttr "allowedExtensions" allowedExtensions
 
-            static member inline autoUpload(autoUpload: bool) = Interop.mkAttr "autoUpload" autoUpload
+            static member inline autoUpload(autoUpload: bool) = Feliz.Interop.mkAttr "autoUpload" autoUpload
 
             static member inline maxFileSize(maxFileSize: int) =
-                Interop.mkAttr "maxFileSize" maxFileSize
+                Feliz.Interop.mkAttr "maxFileSize" maxFileSize
 
-            static member inline multiple(multiple: bool) = Interop.mkAttr "multiple" multiple
-            static member inline selected(selected: (SelectedEventArgs -> unit)) = Interop.mkAttr "selected" selected
-            static member inline buttons(buttons: Buttons) = Interop.mkAttr "buttons" buttons
+            static member inline multiple(multiple: bool) = Feliz.Interop.mkAttr "multiple" multiple
+            static member inline selected(selected: (SelectedEventArgs -> unit)) = Feliz.Interop.mkAttr "selected" selected
+            static member inline buttons(buttons: Buttons) = Feliz.Interop.mkAttr "buttons" buttons
 
-            static member inline create(props: IReactProperty list) =
-                Interop.reactApi.createElement (uploader, createObj !!props)
+            static member inline create(props: Feliz.IReactProperty list) =
+                Feliz.Interop.reactApi.createElement (uploader, createObj !!props)
 
     module SfDatePicker =
 
@@ -160,31 +161,31 @@ module SfInputs =
         [<Erase>]
         type SfDatePicker =
             static member inline picker(children: #seq<ReactElement>) =
-                Interop.reactElementWithChildren "DatePickerComponent " children
+                Feliz.Interop.reactElementWithChildren "DatePickerComponent " children
 
             static member inline placeholder(placeholder: string) =
-                Interop.mkAttr "placeholder" placeholder
+                Feliz.Interop.mkAttr "placeholder" placeholder
 
-            static member inline cssClass(cssClass: string) = Interop.mkAttr "cssClass" cssClass
-            static member inline format(format: string) = Interop.mkAttr "format" format
-            static member inline readonly(readonly: bool) = Interop.mkAttr "readonly" readonly
+            static member inline cssClass(cssClass: string) = Feliz.Interop.mkAttr "cssClass" cssClass
+            static member inline format(format: string) = Feliz.Interop.mkAttr "format" format
+            static member inline readonly(readonly: bool) = Feliz.Interop.mkAttr "readonly" readonly
 
             static member inline showClearButton(showClearButton: bool) =
-                Interop.mkAttr "showClearButton" showClearButton
+                Feliz.Interop.mkAttr "showClearButton" showClearButton
 
-            static member inline strictMode(strictMode: bool) = Interop.mkAttr "strictMode" strictMode
-            static member inline min(min: DateTime) = Interop.mkAttr "min" min
-            static member inline max(max: DateTime) = Interop.mkAttr "max" max
+            static member inline strictMode(strictMode: bool) = Feliz.Interop.mkAttr "strictMode" strictMode
+            static member inline min(min: DateTime) = Feliz.Interop.mkAttr "min" min
+            static member inline max(max: DateTime) = Feliz.Interop.mkAttr "max" max
 
             static member inline floatLabelType(floatLabelType: FloatLabelType) =
-                Interop.mkAttr "floatLabelType" floatLabelType
+                Feliz.Interop.mkAttr "floatLabelType" floatLabelType
 
-            static member inline create(props: IReactProperty list) =
-                Interop.reactApi.createElement (datePickerComponent, createObj !!props)
+            static member inline create(props: Feliz.IReactProperty list) =
+                Feliz.Interop.reactApi.createElement (datePickerComponent, createObj !!props)
 
-            static member inline value(value: DateTime) = Interop.mkAttr "value" value
-            static member inline change<'a>(callback: ChangedEventArgs<'a> -> unit) = Interop.mkAttr "change" callback
-            static member inline blur<'a>(callback: BlurEventArgs<'a> -> unit) = Interop.mkAttr "blur" callback
+            static member inline value(value: DateTime) = Feliz.Interop.mkAttr "value" value
+            static member inline change<'a>(callback: ChangedEventArgs<'a> -> unit) = Feliz.Interop.mkAttr "change" callback
+            static member inline blur<'a>(callback: BlurEventArgs<'a> -> unit) = Feliz.Interop.mkAttr "blur" callback
 
     module SfAutoComplete =
 
@@ -203,31 +204,31 @@ module SfInputs =
 
         type SfAutoComplete =
             static member inline autoComplete(children: #seq<ReactElement>) =
-                Interop.reactElementWithChildren "AutoCompleteComponent" children
+                Feliz.Interop.reactElementWithChildren "AutoCompleteComponent" children
 
-            static member inline dataSource(data: 'a []) = Interop.mkAttr "dataSource" data
-            static member inline enabled(enabled: bool) = Interop.mkAttr "enabled" enabled
+            static member inline dataSource(data: 'a []) = Feliz.Interop.mkAttr "dataSource" data
+            static member inline enabled(enabled: bool) = Feliz.Interop.mkAttr "enabled" enabled
 
             static member inline classes(classes: string list) =
-                Interop.mkAttr "cssClass" (classes |> List.fold (fun x y -> $"{x} {y}") "")
+                Feliz.Interop.mkAttr "cssClass" (classes |> List.fold (fun x y -> $"{x} {y}") "")
 
-            static member inline fields(fields: FieldSettingsModel) = Interop.mkAttr "fields" fields
-            static member inline ignoreCase(ignoreCase: bool) = Interop.mkAttr "ignoreCase" ignoreCase
+            static member inline fields(fields: FieldSettingsModel) = Feliz.Interop.mkAttr "fields" fields
+            static member inline ignoreCase(ignoreCase: bool) = Feliz.Interop.mkAttr "ignoreCase" ignoreCase
 
             static member inline floatLabelType(floatLabelType: FloatLabelType) =
-                Interop.mkAttr "floatLabelType" floatLabelType
+                Feliz.Interop.mkAttr "floatLabelType" floatLabelType
 
             static member inline placeholder(placeholder: string) =
-                Interop.mkAttr "placeholder" placeholder
+                Feliz.Interop.mkAttr "placeholder" placeholder
 
             static member inline allowCustom(allowCustom: bool) =
-                Interop.mkAttr "allowCustom" allowCustom
+                Feliz.Interop.mkAttr "allowCustom" allowCustom
 
             static member inline change<'a>(callback: ChangedEventArgs<'a> option -> unit) =
-                Interop.mkAttr "change" callback
+                Feliz.Interop.mkAttr "change" callback
 
-            static member inline create(props: IReactProperty list) =
-                Interop.reactApi.createElement (autoComplete, createObj !!props)
+            static member inline create(props: Feliz.IReactProperty list) =
+                Feliz.Interop.reactApi.createElement (autoComplete, createObj !!props)
 
     module SfNumericTextBox =
 
@@ -442,13 +443,13 @@ module SfInputs =
         type ChangeEventArgs<'a> = { value: 'a }
 
         type SfNumericTextBox =
-            //static member inline numericTextBox (children: #seq<ReactElement>) = Interop.reactElementWithChildren "NumericTextBoxComponent" children
+            //static member inline numericTextBox (children: #seq<ReactElement>) = Feliz.Interop.reactElementWithChildren "NumericTextBoxComponent" children
             ///Specifies the number precision applied to the textbox value when the NumericTextBox is focused. For more information on decimals, refer to decimals.
-            static member inline decimals(decimals: int) = Interop.mkAttr "decimals" decimals
+            static member inline decimals(decimals: int) = Feliz.Interop.mkAttr "decimals" decimals
             ///Sets a value that enables or disables the NumericTextBox control.
-            static member inline enabled(enabled: bool) = Interop.mkAttr "enabled" enabled
+            static member inline enabled(enabled: bool) = Feliz.Interop.mkAttr "enabled" enabled
             ///Specifies the currency code to use in currency formatting. Possible values are the ISO 4217 currency codes, such as ‘USD’ for the US dollar,‘EUR’ for the euro.
-            static member inline currency(currency: CurrencyCode) = Interop.mkAttr "currency" currency
+            static member inline currency(currency: CurrencyCode) = Feliz.Interop.mkAttr "currency" currency
             ///<summary>The placeholder acts as a label and floats above the NumericTextBox based on the below values. Possible values are:
             ///
             ///Never - Never floats the label in the NumericTextBox when the placeholder is available.
@@ -457,64 +458,64 @@ module SfInputs =
             ///Defaults to Never</summary>
             ///<typeparam  name="FloatLabelType">description</typeparam >
             static member inline floatLabelType(floatLabelType: FloatLabelType) =
-                Interop.mkAttr "floatLabelType" floatLabelType
+                Feliz.Interop.mkAttr "floatLabelType" floatLabelType
 
             static member inline placeholder(placeholder: string) =
-                Interop.mkAttr "placeholder" placeholder
+                Feliz.Interop.mkAttr "placeholder" placeholder
             ///Specifies the number format that indicates the display format for the value of the NumericTextBox. For more information on formats, refer to formats.
             ///
             ///Defaults to ‘n2’
-            static member inline format(format: string) = Interop.mkAttr "format" format
+            static member inline format(format: string) = Feliz.Interop.mkAttr "format" format
             ///<summary>Specifies a maximum value that is allowed a user can enter. For more information on max, refer to max.
             ///
             ///Defaults to null</summary>
-            static member inline max(max: double) = Interop.mkAttr "max" max
+            static member inline max(max: double) = Feliz.Interop.mkAttr "max" max
             ///Specifies a minimum value that is allowed a user can enter. For more information on min, refer to min.
             ///
             ///Defaults to null
-            static member inline min(min: double) = Interop.mkAttr "min" min
+            static member inline min(min: double) = Feliz.Interop.mkAttr "min" min
             ///<summary>
             ///Gets or Sets the CSS classes to root element of the NumericTextBox which helps to customize the complete UI styles for the NumericTextBox component.
             ///
             ///Defaults to null
             ///</summary>
             static member inline classes(classes: string list) =
-                Interop.mkAttr "cssClass" (classes |> List.fold (fun x y -> $"{x} {y}") "")
+                Feliz.Interop.mkAttr "cssClass" (classes |> List.fold (fun x y -> $"{x} {y}") "")
             ///<summary>
             ///Sets a value that enables or disables the readonly state on the NumericTextBox. If it is true, NumericTextBox will not allow your input.
             ///
             ///Defaults to false
             ///</summary>
-            static member inline readonly(readonly: bool) = Interop.mkAttr "readonly" readonly
+            static member inline readonly(readonly: bool) = Feliz.Interop.mkAttr "readonly" readonly
             ///<summary>
             ///Specifies the incremental or decremental step size for the NumericTextBox. For more information on step, refer to step.
             ///Defaults to 1
             ///</summary>
-            static member inline step(step: double) = Interop.mkAttr "readonly" step
+            static member inline step(step: double) = Feliz.Interop.mkAttr "readonly" step
             ///<summary>
             ///Specifies a value that indicates whether the NumericTextBox control allows the value for the specified range.
             ///If it is true, the input value will be restricted between the min and max range. The typed value gets modified to fit the range on focused out state.
             ///Else, it allows any value even out of range value, At that time of wrong value entered, the error class will be added to the component to highlight the error.
             ///Defaults to true
             ///</summary>
-            static member inline strictMode(strictMode: bool) = Interop.mkAttr "strictMode" strictMode
+            static member inline strictMode(strictMode: bool) = Feliz.Interop.mkAttr "strictMode" strictMode
             ///<summary>
             ///Specifies whether the up and down spin buttons should be displayed in NumericTextBox.
             ///Defaults to true
             ///</summary>
             static member inline showSpinButton(showSpinButton: bool) =
-                Interop.mkAttr "showSpinButton" showSpinButton
+                Feliz.Interop.mkAttr "showSpinButton" showSpinButton
             ///<summary>
             ///Sets the value of the NumericTextBox.
             ///
             ///Defaults to null
             ///</summary>
-            static member inline value(value: Values) = Interop.mkAttr "value" value
-            static member inline change<'a>(callback: ChangeEventArgs<'a> -> unit) = Interop.mkAttr "change" callback
-            static member inline blur<'a>(callback: NumericBlurEventArgs -> unit) = Interop.mkAttr "blur" callback
+            static member inline value(value: Values) = Feliz.Interop.mkAttr "value" value
+            static member inline change<'a>(callback: ChangeEventArgs<'a> -> unit) = Feliz.Interop.mkAttr "change" callback
+            static member inline blur<'a>(callback: NumericBlurEventArgs -> unit) = Feliz.Interop.mkAttr "blur" callback
 
-            static member inline create(props: IReactProperty list) =
-                Interop.reactApi.createElement (numericTextBoxComponent, createObj !!props)
+            static member inline create(props: Feliz.IReactProperty list) =
+                Feliz.Interop.reactApi.createElement (numericTextBoxComponent, createObj !!props)
 
     open SfNumericTextBox
 
@@ -683,17 +684,17 @@ module SfInputs =
             ///
             ///defaults to  ""
             ///
-            static member inline content(content: string) = Interop.mkAttr "content" content
+            static member inline content(content: string) = Feliz.Interop.mkAttr "content" content
 
             ///Specifies the animation settings.
             static member inline animationSettings(animationSettings: AnimationSettingsModel) =
-                Interop.mkAttr "animationSettings" animationSettings
+                Feliz.Interop.mkAttr "animationSettings" animationSettings
             ///Specifies the animation settings.
             static member inline spinSettings(spinSettings: SpinSettingsModel) =
-                Interop.mkAttr "spinSettings" spinSettings
+                Feliz.Interop.mkAttr "spinSettings" spinSettings
 
-            static member inline create(props: IReactProperty list) =
-                Interop.reactApi.createElement (progressButtonComponent, createObj !!props)
+            static member inline create(props: Feliz.IReactProperty list) =
+                Feliz.Interop.reactApi.createElement (progressButtonComponent, createObj !!props)
 
     module SfTextBox =
 
@@ -714,13 +715,13 @@ module SfInputs =
         type SfTextBox =
             /// <summary>Specifies the behavior of the TextBox such as text, password, email, etc.</summary>
             /// <default>'text'</default>
-            static member inline ``type``(``type``: string) = Interop.mkAttr "type" ``type``
+            static member inline ``type``(``type``: string) = Feliz.Interop.mkAttr "type" ``type``
             /// <summary>Specifies the boolean value whether the TextBox allows user to change the text.</summary>
             /// <default>false</default>
-            static member inline readonly(readonly: bool) = Interop.mkAttr "readonly" readonly
+            static member inline readonly(readonly: bool) = Feliz.Interop.mkAttr "readonly" readonly
             /// <summary>Sets the content of the TextBox.</summary>
             /// <default>null</default>
-            static member inline value(value: string) = Interop.mkAttr "value" value
+            static member inline value(value: string) = Feliz.Interop.mkAttr "value" value
             /// <summary>
             /// Specifies the floating label behavior of the TextBox that the placeholder text floats above the TextBox based on the below values.
             /// Possible values are:
@@ -730,20 +731,20 @@ module SfInputs =
             /// </summary>
             /// <default>Never</default>
             static member inline floatLabelType(floatLabelType: FloatLabelType) =
-                Interop.mkAttr "floatLabelType" floatLabelType
+                Feliz.Interop.mkAttr "floatLabelType" floatLabelType
             ///<summary>
             ///Gets or Sets the CSS classes to root element of the NumericTextBox which helps to customize the complete UI styles for the NumericTextBox component.
             ///
             ///Defaults to null
             ///</summary>
-            static member inline cssClass(cssClass: string) = Interop.mkAttr "cssClass" cssClass //(classes |> List.fold(fun x y -> $"{x} {y}") "")
+            static member inline cssClass(cssClass: string) = Feliz.Interop.mkAttr "cssClass" cssClass //(classes |> List.fold(fun x y -> $"{x} {y}") "")
             /// <summary>
             /// Specifies the text that is shown as a hint/placeholder until the user focus or enter a value in Textbox.
             /// The property is depending on the floatLabelType property.
             /// </summary>
             /// <default>null</default>
             static member inline placeholder(placeholder: string) =
-                Interop.mkAttr "placeholder" placeholder
+                Feliz.Interop.mkAttr "placeholder" placeholder
             /// <summary>
             /// Specifies whether the browser is allow to automatically enter or select a value for the textbox.
             /// By default, autocomplete is enabled for textbox.
@@ -753,34 +754,34 @@ module SfInputs =
             /// </summary>
             /// <default>'on'</default>
             static member inline autocomplete(autocomplete: AutoComplete) =
-                Interop.mkAttr "autocomplete" autocomplete
+                Feliz.Interop.mkAttr "autocomplete" autocomplete
             /// <summary>
             /// Specifies a boolean value that enable or disable the multiline on the TextBox.
             /// The TextBox changes from single line to multiline when enable this multiline mode.
             /// </summary>
             /// <default>false</default>
-            static member inline multiline(multiline: bool) = Interop.mkAttr "multiline" multiline
+            static member inline multiline(multiline: bool) = Feliz.Interop.mkAttr "multiline" multiline
             /// <summary>Specifies a Boolean value that indicates whether the TextBox allow user to interact with it.</summary>
             /// <default>true</default>
-            static member inline enabled(enabled: bool) = Interop.mkAttr "enabled" enabled
+            static member inline enabled(enabled: bool) = Feliz.Interop.mkAttr "enabled" enabled
             /// <summary>Specifies a Boolean value that indicates whether the clear button is displayed in Textbox.</summary>
             /// <default>false</default>
             static member inline showClearButton(showClearButton: bool) =
-                Interop.mkAttr "showClearButton" showClearButton
+                Feliz.Interop.mkAttr "showClearButton" showClearButton
             /// <summary>Enable or disable persisting TextBox state between page reloads. If enabled, the <c>value</c> state will be persisted.</summary>
             /// <default>false</default>
             static member inline enablePersistence(enablePersistence: bool) =
-                Interop.mkAttr "enablePersistence" enablePersistence
+                Feliz.Interop.mkAttr "enablePersistence" enablePersistence
             /// <summary>Specifies the width of the Textbox component.</summary>
             /// <default>null</default>
-            static member inline width(width: U2<float, string>) = Interop.mkAttr "width" width
+            static member inline width(width: U2<float, string>) = Feliz.Interop.mkAttr "width" width
             /// <summary>Triggers when the content of TextBox has changed and gets focus-out.</summary>
-            static member inline change(callback: ChangedEventArgs -> unit) = Interop.mkAttr "change" callback
+            static member inline change(callback: ChangedEventArgs -> unit) = Feliz.Interop.mkAttr "change" callback
             /// <summary>Triggers when the TextBox has focus-out.</summary>
-            static member inline blur(callback: FocusOutEventArgs -> unit) = Interop.mkAttr "blur" callback
+            static member inline blur(callback: FocusOutEventArgs -> unit) = Feliz.Interop.mkAttr "blur" callback
 
-            static member inline create(props: IReactProperty list) =
-                Interop.reactApi.createElement (textBox, createObj !!props)
+            static member inline create(props: Feliz.IReactProperty list) =
+                Feliz.Interop.reactApi.createElement (textBox, createObj !!props)
 
     module SfCheckBox =
 
@@ -804,17 +805,17 @@ module SfInputs =
         [<Erase>]
         type SfCheckBox =
             ///Specifies a value that indicates whether the CheckBox is checked or not. When set to true, the CheckBox will be in checked state.
-            static member inline ``checked``(``checked``: bool) = Interop.mkAttr "checked" ``checked``
+            static member inline ``checked``(``checked``: bool) = Feliz.Interop.mkAttr "checked" ``checked``
             ///Defines class/multiple classes separated by a space in the CheckBox element. You can add custom styles to the CheckBox by using this property.
             ///Defaults to ”
-            static member inline cssClass(cssClass: string) = Interop.mkAttr "cssClass" cssClass
+            static member inline cssClass(cssClass: string) = Feliz.Interop.mkAttr "cssClass" cssClass
             ///Specifies a value that indicates whether the CheckBox is disabled or not. When set to true, the CheckBox will be in disabled state.
             ///Defaults to false
-            static member inline disabled(disabled: bool) = Interop.mkAttr "cssClass" disabled
+            static member inline disabled(disabled: bool) = Feliz.Interop.mkAttr "cssClass" disabled
             ///Enable or disable persisting component’s state between page reloads.
             ///Defaults to false
             static member inline enablePersistence(enablePersistence: bool) =
-                Interop.mkAttr "enablePersistence" enablePersistence
+                Feliz.Interop.mkAttr "enablePersistence" enablePersistence
             ///
             ///You can add the additional html attributes such as disabled, value etc., to the element.
             ///If you configured both property and equivalent html attribute then the component considers the property value.
@@ -822,27 +823,27 @@ module SfInputs =
             ///ex: {|key="attribure"; value="veryImporttant" |}
             ///
             static member inline htmlAttributes(htmlAttributes: obj) =
-                Interop.mkAttr "htmlAttributes" htmlAttributes
+                Feliz.Interop.mkAttr "htmlAttributes" htmlAttributes
             ///Defines the caption for the CheckBox, that describes the purpose of the CheckBox.
-            static member inline label(label: string) = Interop.mkAttr "label" label
+            static member inline label(label: string) = Feliz.Interop.mkAttr "label" label
             ///Positions label before/after the CheckBox. The possible values are:
             ///
             ///Before - The label is positioned to left of the CheckBox.
             ///After - The label is positioned to right of the CheckBox.
             static member inline labelPosition(labelPosition: LabelPosition) =
-                Interop.mkAttr "labelPosition" labelPosition
+                Feliz.Interop.mkAttr "labelPosition" labelPosition
             ///Defines name attribute for the CheckBox. It is used to reference form data (CheckBox value) after a form is submitted.
             ///
             ///Defaults to ”
-            static member inline name(name: string) = Interop.mkAttr "name" name
+            static member inline name(name: string) = Feliz.Interop.mkAttr "name" name
             ///Defines value attribute for the CheckBox. It is a form data passed to the server when submitting the form.
             ///
             ///Defaults to ”
-            static member inline value(value: string) = Interop.mkAttr "value" value
+            static member inline value(value: string) = Feliz.Interop.mkAttr "value" value
             ///Triggers when the CheckBox state has been changed by user interaction.
-            static member inline change(callback: LabelChangeEventArgs -> unit) = Interop.mkAttr "click" callback
+            static member inline change(callback: LabelChangeEventArgs -> unit) = Feliz.Interop.mkAttr "click" callback
 
-            static member inline create(props: IReactProperty list) = Interop.reactApi.createElement (checkBox, createObj !!props)
+            static member inline create(props: Feliz.IReactProperty list) = Feliz.Interop.reactApi.createElement (checkBox, createObj !!props)
 
     module SfChip =
 
@@ -949,64 +950,64 @@ module SfInputs =
             static member inline chips
                 (chipModel: U3<ResizeArray<string>, ResizeArray<float>, ResizeArray<ChipModel>> option)
                 =
-                Interop.mkAttr "chips" chipModel
+                Feliz.Interop.mkAttr "chips" chipModel
             /// <summary>
             /// Specifies the text content for the chip.
             /// {% codeBlock src='chips/text/index.md' %}{% endcodeBlock %}
             /// </summary>
             /// <default>''</default>
-            static member inline text(text: string) = Interop.mkAttr "text" text
+            static member inline text(text: string) = Feliz.Interop.mkAttr "text" text
             /// <summary>
             /// Specifies the customized text value for the avatar in the chip.
             /// {% codeBlock src='chips/avatarText/index.md' %}{% endcodeBlock %}
             /// </summary>
             /// <default>''</default>
-            static member inline avatarText(avatarText: string) = Interop.mkAttr "avatarText" avatarText
+            static member inline avatarText(avatarText: string) = Feliz.Interop.mkAttr "avatarText" avatarText
             /// <summary>
             /// Specifies the icon CSS class for the avatar in the chip.
             /// {% codeBlock src='chips/avatarIconCss/index.md' %}{% endcodeBlock %}
             /// </summary>
             /// <default>''</default>
             static member inline avatarIconCss(avatarIconCss: string) =
-                Interop.mkAttr "avatarIconCss" avatarIconCss
+                Feliz.Interop.mkAttr "avatarIconCss" avatarIconCss
             /// <summary>
             /// Specifies the leading icon CSS class for the chip.
             /// {% codeBlock src='chips/leadingIconCss/index.md' %}{% endcodeBlock %}
             /// </summary>
             /// <default>''</default>
             static member inline leadingIconCss(leadingIconCss: string) =
-                Interop.mkAttr "leadingIconCss" leadingIconCss
+                Feliz.Interop.mkAttr "leadingIconCss" leadingIconCss
             /// <summary>
             /// Specifies the trailing icon CSS class for the chip.
             /// {% codeBlock src='chips/trailingIconCss/index.md' %}{% endcodeBlock %}
             /// </summary>
             /// <default>''</default>
             static member inline trailingIconCss(trailingIconCss: string) =
-                Interop.mkAttr "trailingIconCss" trailingIconCss
+                Feliz.Interop.mkAttr "trailingIconCss" trailingIconCss
             /// <summary>Specifies the trailing icon url for the chip.</summary>
             /// <default>''</default>
             static member inline leadingIconUrl(leadingIconUrl: string) =
-                Interop.mkAttr "leadingIconUrl" leadingIconUrl
+                Feliz.Interop.mkAttr "leadingIconUrl" leadingIconUrl
             /// <summary>Specifies the trailing icon url for the chip.</summary>
             /// <default>''</default>
             static member inline trailingIconUrl(trailingIconUrl: string) =
-                Interop.mkAttr "trailingIconUrl" trailingIconUrl
+                Feliz.Interop.mkAttr "trailingIconUrl" trailingIconUrl
             /// <summary>
             /// Specifies the custom classes to be added to the chip element used to customize the ChipList component.
             /// {% codeBlock src='chips/cssClass/index.md' %}{% endcodeBlock %}
             /// </summary>
             /// <default>''</default>
-            static member inline cssClass(cssClass: string) = Interop.mkAttr "cssClass" cssClass
+            static member inline cssClass(cssClass: string) = Feliz.Interop.mkAttr "cssClass" cssClass
             /// <summary>Specifies a value that indicates whether the chip component is enabled or not.</summary>
             /// <default>true</default>
-            static member inline enabled(enabled: string) = Interop.mkAttr "enabled" enabled
+            static member inline enabled(enabled: string) = Feliz.Interop.mkAttr "enabled" enabled
             /// <summary>
             /// Sets or gets the selected chip items in the chip list.
             /// {% codeBlock src='chips/selectedChips/index.md' %}{% endcodeBlock %}
             /// </summary>
             /// <default>[]</default>
             static member inline selectedChips(selectedChips: U3<ResizeArray<string>, ResizeArray<float>, float>) =
-                Interop.mkAttr "selectedChips" selectedChips
+                Feliz.Interop.mkAttr "selectedChips" selectedChips
             /// <summary>
             /// Defines the selection type of the chip. The available types are:
             ///    1. Single
@@ -1014,7 +1015,7 @@ module SfInputs =
             ///    3. None
             /// </summary>
             /// <default>'None'</default>
-            static member inline selection(selection: ChipSelectionType) = Interop.mkAttr "selection" selection
+            static member inline selection(selection: ChipSelectionType) = Feliz.Interop.mkAttr "selection" selection
 
             /// <summary>
             /// Enables or disables the delete functionality of a chip.
@@ -1022,15 +1023,15 @@ module SfInputs =
             /// </summary>
             /// <default>false</default>
             static member inline enableDelete(enableDelete: bool) =
-                Interop.mkAttr "enableDelete" enableDelete
+                Feliz.Interop.mkAttr "enableDelete" enableDelete
 
 
             /// <summary>
             /// Triggers when a chip is clicked.
             /// {% codeBlock src='chips/click/index.md' %}{% endcodeBlock %}
             /// </summary>
-            static member inline click(callBack: ChipClickEventArgs -> unit) = Interop.mkAttr "click" callBack
+            static member inline click(callBack: ChipClickEventArgs -> unit) = Feliz.Interop.mkAttr "click" callBack
 
 
-            static member inline create(props: IReactProperty list) =
-                Interop.reactApi.createElement (chip, createObj !!props)
+            static member inline create(props: Feliz.IReactProperty list) =
+                Feliz.Interop.reactApi.createElement (chip, createObj !!props)

@@ -1,4 +1,4 @@
-namespace Feliz.Syncfusion
+namespace Syncfusion
 
 
 module SfMenuBar = 
@@ -142,26 +142,26 @@ module SfMenuBar =
     /// 
     type SfMenuBar =
         ///Specifies the animation settings for the sub menu open.
-        static member inline animationSettings(animationSettings:string) = Interop.mkAttr "animationSettings" animationSettings
+        static member inline animationSettings(animationSettings:string) = Feliz.Interop.mkAttr "animationSettings" animationSettings
         ///Defines whether to allow the cross-scripting site or not.
-        static member inline enableHtmlSanitizer(enableHtmlSanitizer:bool) = Interop.mkAttr "enableHtmlSanitizer" enableHtmlSanitizer
+        static member inline enableHtmlSanitizer(enableHtmlSanitizer:bool) = Feliz.Interop.mkAttr "enableHtmlSanitizer" enableHtmlSanitizer
         ///Defines class/multiple classes separated by a space in the Menu wrapper.
-        static member inline cssClass(cssClass:string) = Interop.mkAttr "cssClass" cssClass
-        static member inline enablePersistance(enablePersistance:bool) = Interop.mkAttr "enablePersistance" enablePersistance
+        static member inline cssClass(cssClass:string) = Feliz.Interop.mkAttr "cssClass" cssClass
+        static member inline enablePersistance(enablePersistance:bool) = Feliz.Interop.mkAttr "enablePersistance" enablePersistance
         ///Enable or disable persisting component’s state between page reloads.
-        static member inline enableScrolling(enableScrolling:bool) = Interop.mkAttr "enableScrolling" enableScrolling
+        static member inline enableScrolling(enableScrolling:bool) = Feliz.Interop.mkAttr "enableScrolling" enableScrolling
         ///Specifies mapping fields from the dataSource.
         /// Defaults to { itemId: “id”, text: “text”, parentId: “parentId”, iconCss: “iconCss”, url: “url”, separator: “separator”,children: “items” }
-        static member inline fields(fields:FieldSettingsModel) = Interop.mkAttr "fields" fields
+        static member inline fields(fields:FieldSettingsModel) = Feliz.Interop.mkAttr "fields" fields
         ///Specifies whether to enable / disable the hamburger mode in Menu.
-        static member inline hamburgerMode(hamburgerMode:bool) = Interop.mkAttr "hamburgerMode" hamburgerMode
+        static member inline hamburgerMode(hamburgerMode:bool) = Feliz.Interop.mkAttr "hamburgerMode" hamburgerMode
         ///Specifies menu items with its properties which will be rendered as Menu.
-        static member inline items(items:MenuItem[]) = Interop.mkAttr "items" items
+        static member inline items(items:MenuItem[]) = Feliz.Interop.mkAttr "items" items
         ///Specified the orientation of Menu whether it can be horizontal or vertical.
-        static member inline orientation(orientation:Orientation) = Interop.mkAttr "orientation" orientation
+        static member inline orientation(orientation:Orientation) = Feliz.Interop.mkAttr "orientation" orientation
         ///Specifies the title text for hamburger mode in Menu.
         ///Defaults to ‘Menu’
-        static member inline title(title:string) = Interop.mkAttr "title" title
+        static member inline title(title:string) = Feliz.Interop.mkAttr "title" title
     
-        static member inline create (props:IReactProperty list) = Interop.reactApi.createElement (menuBar , createObj !!props)
+        static member inline create (props:Feliz.IReactProperty list) = Feliz.Interop.reactApi.createElement (menuBar , createObj !!props)
 

@@ -1,4 +1,4 @@
-namespace Feliz.Syncfusion
+namespace Syncfusion
 
 module SfModal =
     open Feliz
@@ -414,28 +414,28 @@ module SfModal =
 
     [<Erase>]
     type SfModal =
-        static member inline SfModal xs = Interop.createElement "DialogComponent" xs
-        static member inline SfModal (children: #seq<ReactElement>) = Interop.reactElementWithChildren "DialogComponent" children
-        static member inline showCloseIcon(showCloseIcon: bool)                           = Interop.mkAttr "showCloseIcon"  showCloseIcon
-        static member inline isModal(isModal: bool)                                       = Interop.mkAttr "isModal"  isModal
-        static member inline header(header: string)                                       = Interop.mkAttr "header"  header
-        static member inline position(position: PositionDataModel)                        = Interop.mkAttr "position"  position
-        static member inline visible(visible: bool)                                       = Interop.mkAttr "visible"  visible
-        static member inline enableResize(enableResize: bool)                             = Interop.mkAttr "enableResize"  enableResize
-        static member inline height(height: ICssUnit)                                     = Interop.mkAttr "height"  height
-        static member inline minHeight( minHeight: ICssUnit)                              = Interop.mkAttr "minHeight"  minHeight
-        static member inline width(width: ICssUnit)                                       = Interop.mkAttr "width"  width
-        static member inline cssClass(cssClass: string)                                   = Interop.mkAttr "cssClass"  cssClass
-        static member inline target(target: HTMLElement )                                 = Interop.mkAttr "target"  target
-        static member inline footerTemplate(footerTemplate: HTMLElement option)           = Interop.mkAttr "footerTemplate"  footerTemplate
-        static member inline allowDragging(allowDragging: bool)                           = Interop.mkAttr "allowDragging"  allowDragging
-        static member inline buttons(buttons: ButtonPropsModel[])                         = Interop.mkAttr "buttons"  buttons
-        static member inline closeOnEscape(closeOnEscape: bool)                           = Interop.mkAttr "closeOnEscape"  closeOnEscape
-        static member inline animationSettings(animationSettings: AnimationSettingsModel) = Interop.mkAttr "animationSettings"  animationSettings
-        static member inline close callback = prop.custom("close",fun x -> x.close |> callback)
+        static member inline SfModal xs = Feliz.Interop.createElement "DialogComponent" xs
+        static member inline SfModal (children: #seq<ReactElement>) = Feliz.Interop.reactElementWithChildren "DialogComponent" children
+        static member inline showCloseIcon(showCloseIcon: bool)                           = Feliz.Interop.mkAttr "showCloseIcon"  showCloseIcon
+        static member inline isModal(isModal: bool)                                       = Feliz.Interop.mkAttr "isModal"  isModal
+        static member inline header(header: string)                                       = Feliz.Interop.mkAttr "header"  header
+        static member inline position(position: PositionDataModel)                        = Feliz.Interop.mkAttr "position"  position
+        static member inline visible(visible: bool)                                       = Feliz.Interop.mkAttr "visible"  visible
+        static member inline enableResize(enableResize: bool)                             = Feliz.Interop.mkAttr "enableResize"  enableResize
+        static member inline height(height: ICssUnit)                                     = Feliz.Interop.mkAttr "height"  height
+        static member inline minHeight( minHeight: ICssUnit)                              = Feliz.Interop.mkAttr "minHeight"  minHeight
+        static member inline width(width: ICssUnit)                                       = Feliz.Interop.mkAttr "width"  width
+        static member inline cssClass(cssClass: string)                                   = Feliz.Interop.mkAttr "cssClass"  cssClass
+        static member inline target(target: HTMLElement )                                 = Feliz.Interop.mkAttr "target"  target
+        static member inline footerTemplate(footerTemplate: HTMLElement option)           = Feliz.Interop.mkAttr "footerTemplate"  footerTemplate
+        static member inline allowDragging(allowDragging: bool)                           = Feliz.Interop.mkAttr "allowDragging"  allowDragging
+        static member inline buttons(buttons: ButtonPropsModel[])                         = Feliz.Interop.mkAttr "buttons"  buttons
+        static member inline closeOnEscape(closeOnEscape: bool)                           = Feliz.Interop.mkAttr "closeOnEscape"  closeOnEscape
+        static member inline animationSettings(animationSettings: AnimationSettingsModel) = Feliz.Interop.mkAttr "animationSettings"  animationSettings
+        static member inline close callback = Feliz.prop.custom("close",fun x -> x.close |> callback)
     
 
-        static member inline create (props:IReactProperty list) = Interop.reactApi.createElement (DialogComponent , createObj !!props)
+        static member inline create (props:Feliz.IReactProperty list) = Feliz.Interop.reactApi.createElement (DialogComponent , createObj !!props)
 
 
 

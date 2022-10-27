@@ -1,6 +1,4 @@
-﻿namespace Feliz.Syncfusion
-
-
+﻿namespace Syncfusion
 
 module SfSplitButton = 
 
@@ -70,55 +68,55 @@ module SfSplitButton =
 
         /// <summary>Defines the content of the SplitButton primary action button can either be a text or HTML elements.</summary>
         /// <default>""</default>
-        static member inline content(content: string) = Interop.mkAttr "content" content
+        static member inline content(content: string) = Feliz.Interop.mkAttr "content" content
         /// <summary>
         /// Defines class/multiple classes separated by a space in the SplitButton element. The SplitButton
         /// size and styles can be customized by using this.
         /// </summary>
         /// <default>""</default>
-        static member inline cssClass(cssClass: string) = Interop.mkAttr "cssClass" cssClass
+        static member inline cssClass(cssClass: string) = Feliz.Interop.mkAttr "cssClass" cssClass
         /// <summary>Specifies a value that indicates whether the SplitButton is disabled or not.</summary>
         /// <default>false.</default>
-        static member inline disabled(disabled: bool) = Interop.mkAttr "disabled" disabled
+        static member inline disabled(disabled: bool) = Feliz.Interop.mkAttr "disabled" disabled
         /// <summary>
         /// Defines class/multiple classes separated by a space for the SplitButton that is used to include an
         /// icon. SplitButton can also include font icon and sprite image.
         /// </summary>
         /// <default>""</default>
-        static member inline iconCss(iconCss: string) = Interop.mkAttr "iconCss" iconCss
+        static member inline iconCss(iconCss: string) = Feliz.Interop.mkAttr "iconCss" iconCss
         /// <summary>
         /// Positions the icon before/top of the text content in the SplitButton. The possible values are
         /// * Left: The icon will be positioned to the left of the text content.
         /// * Top: The icon will be positioned to the top of the text content.
         /// </summary>
         /// <default>"Left"</default>
-        static member inline iconPosition(iconPosition: SplitButtonIconPosition) = Interop.mkAttr "iconPosition" iconPosition
+        static member inline iconPosition(iconPosition: SplitButtonIconPosition) = Feliz.Interop.mkAttr "iconPosition" iconPosition
         /// <summary>Specifies the popup element creation on open.</summary>
         /// <default>false</default>
-        static member inline createPopupOnClick(createPopupOnClick: bool) = Interop.mkAttr "createPopupOnClick" createPopupOnClick
+        static member inline createPopupOnClick(createPopupOnClick: bool) = Feliz.Interop.mkAttr "createPopupOnClick" createPopupOnClick
         /// <summary>Specifies action items with its properties which will be rendered as SplitButton secondary button popup.</summary>
         /// <default>[]</default>
-        static member inline items(items: ResizeArray<ItemModel> )= Interop.mkAttr "items" items
+        static member inline items(items: ResizeArray<ItemModel> )= Feliz.Interop.mkAttr "items" items
         /// <summary>Allows to specify the SplitButton popup item element.</summary>
         /// <default>""</default>
-        static member inline target(target: string )= Interop.mkAttr "target" target
+        static member inline target(target: string )= Feliz.Interop.mkAttr "target" target
         /// <summary>Triggers while rendering each Popup item of SplitButton.</summary>
-        static member inline beforeItemRender(callback: (MenuEventArgs -> unit))= Interop.mkAttr "beforeItemRender" callback
+        static member inline beforeItemRender(callback: (MenuEventArgs -> unit))= Feliz.Interop.mkAttr "beforeItemRender" callback
         /// <summary>Triggers before opening the SplitButton popup.</summary>
-        static member inline beforeOpen(callback: (BeforeOpenCloseMenuEventArgs->unit))= Interop.mkAttr "beforeOpen" callback
+        static member inline beforeOpen(callback: (BeforeOpenCloseMenuEventArgs->unit))= Feliz.Interop.mkAttr "beforeOpen" callback
         /// <summary>Triggers before closing the SplitButton popup.</summary>
-        static member inline beforeClose(callback: (BeforeOpenCloseMenuEventArgs->unit))= Interop.mkAttr "beforeClose" callback
+        static member inline beforeClose(callback: (BeforeOpenCloseMenuEventArgs->unit))= Feliz.Interop.mkAttr "beforeClose" callback
         /// <summary>Triggers when the primary button of SplitButton has been clicked.</summary>
-        static member inline click(callback:(MouseEvent -> unit))=Interop.mkAttr "click" callback
+        static member inline click(callback:(MouseEvent -> unit))=Feliz.Interop.mkAttr "click" callback
         /// <summary>Triggers while closing the SplitButton popup.</summary>
-        static member inline close(callback: (OpenCloseMenuEventArgs-> unit))= Interop.mkAttr "close" callback
+        static member inline close(callback: (OpenCloseMenuEventArgs-> unit))= Feliz.Interop.mkAttr "close" callback
         /// <summary>Triggers while opening the SplitButton popup.</summary>
-        static member inline ``open``(callback: (OpenCloseMenuEventArgs-> unit))= Interop.mkAttr "open" callback
+        static member inline ``open``(callback: (OpenCloseMenuEventArgs-> unit))= Feliz.Interop.mkAttr "open" callback
         /// <summary>Triggers while selecting action item of SplitButton popup.</summary>
-        static member inline select(callback: (MenuEventArgs-> unit))= Interop.mkAttr "select" callback
+        static member inline select(callback: (MenuEventArgs-> unit))= Feliz.Interop.mkAttr "select" callback
 
         
-        static member inline create (props:IReactProperty list) = Interop.reactApi.createElement (sfSplitButton , createObj !!props)
+        static member inline create (props:Feliz.IReactProperty list) = Feliz.Interop.reactApi.createElement (sfSplitButton , createObj !!props)
 
 
 

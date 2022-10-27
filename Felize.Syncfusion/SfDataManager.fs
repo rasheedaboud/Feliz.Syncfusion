@@ -1,4 +1,4 @@
-﻿namespace Feliz.Syncfusion
+﻿namespace Syncfusion
 
 module rec SfDataManagerTypes =
 
