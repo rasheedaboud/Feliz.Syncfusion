@@ -93,7 +93,7 @@ module SfButton =
         /// its native method
         /// </summary>
         /// <returns />
-        static member inline click(click: unit -> unit) = Feliz.Interop.mkAttr (nameof click) click
+        static member inline click(click: unit -> unit) = Feliz.Interop.mkAttr ("onClick") click
         /// <summary>
         /// Sets the focus to Button
         /// its native method

@@ -61,8 +61,8 @@ module SfAppBar =
     [<Erase>]
     type SfAppBar  =
 
-        static member inline appBarComponent(children: #seq<ReactElement>) =
-            Feliz.Interop.reactElementWithChildren "AppBarComponent" children
+        static member inline children(children) =
+            Feliz.Interop.mkAttr "children" children
         /// <summary>
         /// Specifies the mode of the AppBar that defines the AppBar height. The possible values for this property are as follows:
         /// * Regular
@@ -77,7 +77,7 @@ module SfAppBar =
         /// * Bottom
         /// </summary>
         /// <default>'Top'</default>
-        static member inline position(position: AppBarPosition option) = Feliz.Interop.mkAttr (nameof position) position
+        static member inline position(position: AppBarPosition) = Feliz.Interop.mkAttr (nameof position) position
         /// <summary>Accepts single/multiple CSS classes (separated by a space) to be used for AppBar customization.</summary>
         /// <default>null</default>
         static member inline cssClass(cssClass: string option) = Feliz.Interop.mkAttr (nameof cssClass) cssClass

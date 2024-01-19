@@ -1,12 +1,24 @@
 ﻿namespace Syncfusion
+open Fable.Core
+open Fable.Core.JS
+open System
 
 module rec SfDataManagerTypes =
 
+    [<AllowNullLiteral>]
+    type Function =
+        abstract name: string
+        abstract length: int
+        abstract apply: thisArg: obj * args: obj[] -> obj
+        abstract bind: thisArg: obj * [<ParamArray>] args: obj[] -> Function
+        abstract call: thisArg: obj * [<ParamArray>] args: obj[] -> obj
 
-    open System
-    open Fable.Core
-    open Fable.Core.JS
-    
+        [<Emit "$0($1...)">]
+        abstract Invoke: [<ParamArray>] args: obj[] -> obj
+
+        [<Emit "new $0($1...)">]
+        abstract Create: [<ParamArray>] args: obj[] -> obj
+
     /// An event which takes place in the DOM.
     type [<AllowNullLiteral>] Event =
         /// Returns true or false depending on how event was initialized. True if event goes through its target's ancestors in reverse tree order, and false otherwise.
@@ -30,7 +42,7 @@ module rec SfDataManagerTypes =
         abstract preventDefault: unit -> unit
         /// Invoking this method prevents event from reaching any registered event listeners after the current one finishes running and, when dispatched in a tree, also prevents event from reaching any other objects.
         abstract stopImmediatePropagation: unit -> unit
-        /// When dispatched in a tree, invoking this method prevents event from reaching any objects other than the current object.
+        /// When dispatched in a tree, invoking this method prevents event from reaching any objects other than the current obj.
         abstract stopPropagation: unit -> unit
         abstract AT_TARGET: float
         abstract BUBBLING_PHASE: float
@@ -57,28 +69,28 @@ module rec SfDataManagerTypes =
         abstract ``type``: string with get, set
         /// <summary>Specifies the data to be sent.</summary>
         /// <default>null</default>
-        abstract data: U2<string, Object> with get, set
+        abstract data: U2<string, obj> with get, set
         /// <summary>A boolean value indicating whether the request should be sent asynchronous or not.</summary>
         /// <default>true</default>
         abstract mode: bool with get, set
-        /// <summary>Specifies the callback for creating the XMLHttpRequest object.</summary>
+        /// <summary>Specifies the callback for creating the XMLHttpRequest obj.</summary>
         /// <default>null</default>
         abstract httpRequest: XMLHttpRequest with get, set
         /// <summary>A boolean value indicating whether to ignore the promise reject.</summary>
         /// <default>true</default>
         abstract emitError: bool with get, set
-        abstract onLoad: (XMLHttpRequest -> Event -> Object) with get, set
-        abstract onProgress: (XMLHttpRequest -> Event -> Object) with get, set
-        abstract onError: (XMLHttpRequest -> Event -> Object) with get, set
-        abstract onAbort: (XMLHttpRequest -> Event -> Object) with get, set
-        abstract onUploadProgress: (XMLHttpRequest -> Event -> Object) with get, set
+        abstract onLoad: (XMLHttpRequest -> Event -> obj) with get, set
+        abstract onProgress: (XMLHttpRequest -> Event -> obj) with get, set
+        abstract onError: (XMLHttpRequest -> Event -> obj) with get, set
+        abstract onAbort: (XMLHttpRequest -> Event -> obj) with get, set
+        abstract onUploadProgress: (XMLHttpRequest -> Event -> obj) with get, set
         /// <summary>Send the request to server.</summary>
         /// <param name="data">To send the user data</param>
         /// <returns>?</returns>
-        abstract send: ?data: U2<string, Object> -> Promise<Ajax>
+        abstract send: ?data: U2<string, obj> -> Promise<Ajax>
         /// <summary>
         /// Specifies the callback function to be triggered before sending request to sever.
-        /// This can be used to modify the XMLHttpRequest object before it is sent.
+        /// This can be used to modify the XMLHttpRequest obj before it is sent.
         /// </summary>
         abstract beforeSend: Function with get, set
         /// <summary>
@@ -163,10 +175,10 @@ module rec SfDataManagerTypes =
         abstract ``or``: field: U2<string, Predicate> * ?operator: string * ?value: U4<string, float, DateTime, bool> * ?ignoreCase: bool * ?ignoreAccent: bool -> Predicate
         /// <summary>Validate the record based on the predicates.</summary>
         /// <param name="record">Defines the datasource record.</param>
-        abstract validate: record: Object -> bool
+        abstract validate: record: obj -> bool
         /// Converts predicates to plain JavaScript.
-        /// This method is uses Json stringify when serializing Predicate object.
-        abstract toJson: unit -> Object
+        /// This method is uses Json stringify when serializing Predicate obj.
+        abstract toJson: unit -> obj
     
 
     [<AllowNullLiteral>]
@@ -188,9 +200,9 @@ module rec SfDataManagerTypes =
         abstract nos : float option with get, set
         abstract field : string option with get, set
         abstract fieldName : string option with get, set
-        abstract ``type`` : Object option with get, set
+        abstract ``type`` : obj option with get, set
         abstract name : U2<string, ResizeArray<string>> option with get, set
-        abstract filter : Object option with get, set
+        abstract filter : obj option with get, set
         abstract key : string option with get, set
         abstract value : U6<string, float, DateTime, bool, Predicate, ResizeArray<Predicate>> option with get, set
         abstract isComplex : bool option with get, set
@@ -247,10 +259,10 @@ module rec SfDataManagerTypes =
         abstract ``or`` : field: U2<string, Predicate>* ?operator: string * ?value: U4<string, float, DateTime, bool> * ?ignoreCase: bool * ?ignoreAccent: bool ->Predicate
         /// <summary>Validate the record based on the predicates.</summary>
         /// <param name="record">Defines the datasource record.</param>
-        abstract validate : record: Object -> bool
+        abstract validate : record: obj -> bool
         /// Converts predicates to plain JavaScript.
-        /// This method is uses Json stringify when serializing Predicate object.
-        abstract toJson : unit -> Object
+        /// This method is uses Json stringify when serializing Predicate obj.
+        abstract toJson : unit -> obj
 
     type [<AllowNullLiteral>] ParamOption =
         abstract key: string with get, set
@@ -265,9 +277,9 @@ module rec SfDataManagerTypes =
         abstract fKey : string with get, set
         abstract fromTable : string with get, set
         abstract lookups : ResizeArray<string> with get, set
-        abstract expands : ResizeArray<Object> with get, set
-        abstract sortedColumns : ResizeArray<Object> with get, set
-        abstract groupedColumns : ResizeArray<Object> with get, set
+        abstract expands : ResizeArray<obj> with get, set
+        abstract sortedColumns : ResizeArray<obj> with get, set
+        abstract groupedColumns : ResizeArray<obj> with get, set
         abstract subQuerySelector : Function with get, set
         abstract subQuery : Query with get, set
         abstract isChild : bool with get, set
@@ -293,15 +305,15 @@ module rec SfDataManagerTypes =
         /// let dataManager: DataManager = new DataManager([{ ID: '10' }, { ID: '2' }, { ID: '1' }, { ID: '20' }]);
         /// let query: Query = new Query();
         /// query.sortBy('ID', (x: string, y: string): number =&gt; { return parseInt(x, 10) - parseInt(y, 10) });
-        /// let promise: Promise&lt; Object &gt; = query.execute(dataManager);
-        /// promise.then((e: { result: Object }) =&gt; { });
+        /// let promise: Promise&lt; obj &gt; = query.execute(dataManager);
+        /// promise.then((e: { result: obj }) =&gt; { });
         /// &lt;/pre&gt;
         /// </param>
-        abstract execute : ?dataManager: IDataManager * ?``done``: Function * ?fail: Function * ?always: Function -> Promise<Object>
+        abstract execute : ?dataManager: IDataManager * ?``done``: Function * ?fail: Function * ?always: Function -> Promise<obj>
         /// <summary>Executes query with the local datasource.</summary>
         /// <param name="dataManager">Defines the DataManager.</param>
-        abstract executeLocal : ?dataManager: IDataManager -> ResizeArray<Object>
-        /// Creates deep copy of the Query object.
+        abstract executeLocal : ?dataManager: IDataManager -> ResizeArray<obj>
+        /// Creates deep copy of the Query obj.
         abstract clone : unit -> Query
         /// <summary>Specifies the name of table to retrieve data in query execution.</summary>
         /// <param name="tableName">Defines the table name.</param>
@@ -313,7 +325,7 @@ module rec SfDataManagerTypes =
         abstract distinct : fields: U2<string, ResizeArray<string>> -> Query
         /// <summary>Expands the related table.</summary>
         /// <param name="tables" />
-        abstract expand : tables: U2<string, ResizeArray<Object>> -> Query
+        abstract expand : tables: U2<string, ResizeArray<obj>> -> Query
         /// <summary>Filter data with given filter criteria.</summary>
         /// <param name="fieldName">Defines the column field or Predicate.</param>
         /// <param name="operator">Defines the operator how to filter data.</param>
@@ -395,8 +407,8 @@ module rec SfDataManagerTypes =
         abstract updateUrl : string option with get, set
         abstract crudUrl : string option with get, set
         abstract batchUrl : string option with get, set
-        abstract json : ResizeArray<Object> option with get, set
-        abstract headers : ResizeArray<Object> option with get, set
+        abstract json : ResizeArray<obj> option with get, set
+        abstract headers : ResizeArray<obj> option with get, set
         abstract accept : bool option with get, set
         abstract data : JSON option with get, set
         abstract timeTillExpiration : float option with get, set
@@ -440,11 +452,11 @@ module rec SfDataManagerTypes =
         ///
         /// Can be set to change the response type. Values are: the empty string (default), "arraybuffer", "blob", "document", "json", and "text".
         ///
-        /// When set: setting to "document" is ignored if current global object is not a Window object.
+        /// When set: setting to "document" is ignored if current global obj is not a Window obj.
         ///
         /// When set: throws an "InvalidStateError" DOMException if state is loading or done.
         ///
-        /// When set: throws an "InvalidAccessError" DOMException if the synchronous flag is set and current global object is a Window object.
+        /// When set: throws an "InvalidAccessError" DOMException if the synchronous flag is set and current global obj is a Window obj.
         abstract responseType : XMLHttpRequestResponseType with get, set
         abstract responseURL : string
 
@@ -452,7 +464,7 @@ module rec SfDataManagerTypes =
         abstract statusText : string
         /// Can be set to a time in milliseconds. When set to a non-zero value will cause fetching to terminate after the given time has passed. When the time has passed, the request has not yet completed, and this's synchronous flag is unset, a timeout event will then be dispatched, or a "TimeoutError" DOMException will be thrown otherwise (for the send() method).
         ///
-        /// When set: throws an "InvalidAccessError" DOMException if the synchronous flag is set and current global object is a Window object.
+        /// When set: throws an "InvalidAccessError" DOMException if the synchronous flag is set and current global obj is a Window obj.
         abstract timeout : float with get, set
 
         /// True when credentials are to be included in a cross-origin request. False when they are to be excluded in a cross-origin request and when cookies are to be ignored in its response. Initially false.
@@ -504,11 +516,11 @@ module rec SfDataManagerTypes =
         /// <param name="ds">?</param>
         /// <param name="query">?</param>
         /// <param name="xhr">?</param>
-        /// <returns>Object</returns>
-        abstract processResponse : data: Object * ?ds: DataOptions * ?query: Query * ?xhr: XMLHttpRequest -> Object
+        /// <returns>obj</returns>
+        abstract processResponse : data: obj * ?ds: DataOptions * ?query: Query * ?xhr: XMLHttpRequest -> obj
         /// <summary>Specifies the type of adaptor.</summary>
         /// <default>Adaptor</default>
-        abstract ``type`` : Object with get, set
+        abstract ``type`` : obj with get, set
 
     type [<AllowNullLiteral>] Aggregates =
         abstract sum: Function option with get, set
@@ -524,38 +536,38 @@ module rec SfDataManagerTypes =
 
     type [<AllowNullLiteral>] DataResult =
         abstract nodeType: float option with get, set
-        abstract addedRecords: ResizeArray<Object> option with get, set
-        abstract d: U2<DataResult, ResizeArray<Object>> option with get, set
+        abstract addedRecords: ResizeArray<obj> option with get, set
+        abstract d: U2<DataResult, ResizeArray<obj>> option with get, set
         abstract Count: float option with get, set
         abstract count: float option with get, set
-        abstract result: Object option with get, set
-        abstract results: U2<ResizeArray<Object>, DataResult> option with get, set
+        abstract result: obj option with get, set
+        abstract results: U2<ResizeArray<obj>, DataResult> option with get, set
         abstract aggregate: DataResult option with get, set
         abstract aggregates: Aggregates option with get, set
-        abstract value: Object option with get, set
-        abstract Items: U2<ResizeArray<Object>, DataResult> option with get, set
+        abstract value: obj option with get, set
+        abstract Items: U2<ResizeArray<obj>, DataResult> option with get, set
         abstract keys: ResizeArray<string> option with get, set
-        abstract groupDs: ResizeArray<Object> option with get, set
+        abstract groupDs: ResizeArray<obj> option with get, set
 
     type [<AllowNullLiteral>] Group =
         abstract GroupGuid: string option with get, set
         abstract level: float option with get, set
         abstract childLevels: float option with get, set
-        abstract records: ResizeArray<Object> option with get, set
+        abstract records: ResizeArray<obj> option with get, set
         abstract key: string option with get, set
         abstract count: float option with get, set
-        abstract items: ResizeArray<Object> option with get, set
-        abstract aggregates: Object option with get, set
+        abstract items: ResizeArray<obj> option with get, set
+        abstract aggregates: obj option with get, set
         abstract field: string option with get, set
-        abstract result: Object option with get, set
+        abstract result: obj option with get, set
 
     type [<AllowNullLiteral>] CrudOptions =
-        abstract changedRecords: ResizeArray<Object> option with get, set
-        abstract addedRecords: ResizeArray<Object> option with get, set
-        abstract deletedRecords: ResizeArray<Object> option with get, set
-        abstract changed: ResizeArray<Object> option with get, set
-        abstract added: ResizeArray<Object> option with get, set
-        abstract deleted: ResizeArray<Object> option with get, set
+        abstract changedRecords: ResizeArray<obj> option with get, set
+        abstract addedRecords: ResizeArray<obj> option with get, set
+        abstract deletedRecords: ResizeArray<obj> option with get, set
+        abstract changed: ResizeArray<obj> option with get, set
+        abstract added: ResizeArray<obj> option with get, set
+        abstract deleted: ResizeArray<obj> option with get, set
         abstract action: string option with get, set
         abstract table: string option with get, set
         abstract key: string option with get, set
@@ -580,12 +592,12 @@ module rec SfDataManagerTypes =
         /// <param name="query" />
         /// <param name="hierarchyFilters">?</param>
         /// <returns>p</returns>
-        abstract processQuery : dm: IDataManager * query: Query * ?hierarchyFilters: ResizeArray<Object> -> Object
-        /// <summary>Convert the object from processQuery to string which can be added query string.</summary>
+        abstract processQuery : dm: IDataManager * query: Query * ?hierarchyFilters: ResizeArray<obj> -> obj
+        /// <summary>Convert the obj from processQuery to string which can be added query string.</summary>
         /// <param name="req" />
         /// <param name="query" />
         /// <param name="dm" />
-        abstract convertToQueryString : request: Object * query: Query * dm: IDataManager -> string
+        abstract convertToQueryString : request: obj * query: Query * dm: IDataManager -> string
         /// <summary>Return the data from the data manager processing.</summary>
         /// <param name="data" />
         /// <param name="ds">?</param>
@@ -593,7 +605,7 @@ module rec SfDataManagerTypes =
         /// <param name="xhr">?</param>
         /// <param name="request">?</param>
         /// <param name="changes">?</param>
-        abstract processResponse :    data: DataResult* ?ds: DataOptions* ?query: Query* ?xhr: XMLHttpRequest* ?request: Object* ?changes: CrudOptions ->DataResult
+        abstract processResponse :    data: DataResult* ?ds: DataOptions* ?query: Query* ?xhr: XMLHttpRequest* ?request: obj* ?changes: CrudOptions ->DataResult
 
         abstract formRemoteGroupedData : data: ResizeArray<Group> * level: float * childLevel: float -> ResizeArray<Group>
         /// <summary>Add the group query to the adaptor`s option.</summary>
@@ -611,7 +623,7 @@ module rec SfDataManagerTypes =
         /// <param name="dm" />
         /// <param name="changes" />
         /// <param name="e" />
-        abstract batchRequest : dm: IDataManager * changes: CrudOptions * e: Object * query: Query * ?original: Object -> Object
+        abstract batchRequest : dm: IDataManager * changes: CrudOptions * e: obj * query: Query * ?original: obj -> obj
         /// <summary>
         /// Method will trigger before send the request to server side.
         /// Used to set the custom header or modify the request options.
@@ -624,25 +636,25 @@ module rec SfDataManagerTypes =
         /// <param name="dm" />
         /// <param name="data" />
         /// <param name="tableName" />
-        abstract insert : dm: IDataManager * data: Object * tableName: string * query: Query -> Object
+        abstract insert : dm: IDataManager * data: obj * tableName: string * query: Query -> obj
         /// <summary>Prepare and return request body which is used to remove record from the table.</summary>
         /// <param name="dm" />
         /// <param name="keyField" />
         /// <param name="value" />
         /// <param name="tableName" />
-        abstract remove :  dm: IDataManager * keyField: string * value: U2<float, string> * tableName: string * query: Query -> Object
+        abstract remove :  dm: IDataManager * keyField: string * value: U2<float, string> * tableName: string * query: Query -> obj
         /// <summary>Prepare and return request body which is used to update record.</summary>
         /// <param name="dm" />
         /// <param name="keyField" />
         /// <param name="value" />
         /// <param name="tableName" />
-        abstract update : dm: IDataManager * keyField: string * value: Object * tableName: string * query: Query -> Object
+        abstract update : dm: IDataManager * keyField: string * value: obj * tableName: string * query: Query -> obj
         /// <summary>To generate the predicate based on the filtered query.</summary>
         /// <param name="data" />
         /// <param name="query" />
-        abstract getFiltersFrom :     data: U3<ResizeArray<Object>, ResizeArray<string>, ResizeArray<float>> * query: Query -> Predicate
+        abstract getFiltersFrom :     data: U3<ResizeArray<obj>, ResizeArray<string>, ResizeArray<float>> * query: Query -> Predicate
 
-        abstract getAggregateResult :        pvt: obj * data: DataResult * args: DataResult * ?groupDs: ResizeArray<Object> * ?query: Query -> DataResult
+        abstract getAggregateResult :        pvt: obj * data: DataResult * args: DataResult * ?groupDs: ResizeArray<obj> * ?query: Query -> DataResult
 
         abstract getQueryRequest : query: Query -> Requests
 
@@ -672,20 +684,20 @@ module rec SfDataManagerTypes =
         /// <param name="dm" />
         /// <param name="data" />
         /// <param name="tableName">?</param>
-        abstract insert: dm: IDataManager * data: Object * ?tableName: string -> Object
+        abstract insert: dm: IDataManager * data: obj * ?tableName: string -> obj
         /// <summary>Prepare and return request body which is used to remove record from the table.</summary>
         /// <param name="dm" />
         /// <param name="keyField" />
         /// <param name="value" />
         /// <param name="tableName">?</param>
-        abstract remove: dm: IDataManager * keyField: string * value: float * ?tableName: string -> Object
+        abstract remove: dm: IDataManager * keyField: string * value: float * ?tableName: string -> obj
         /// <summary>Prepare and return request body which is used to update record.</summary>
         /// <param name="dm" />
         /// <param name="keyField" />
         /// <param name="value" />
         /// <param name="tableName">?</param>
-        abstract update: dm: IDataManager * keyField: string * value: Object * ?tableName: string -> Object
-        abstract batchRequest: dm: IDataManager * changes: CrudOptions * e: RemoteArgs -> Object
+        abstract update: dm: IDataManager * keyField: string * value: obj * ?tableName: string -> obj
+        abstract batchRequest: dm: IDataManager * changes: CrudOptions * e: RemoteArgs -> obj
         /// <summary>
         /// Method will trigger before send the request to server side.
         /// Used to set the custom header or modify the request options.
@@ -703,7 +715,7 @@ module rec SfDataManagerTypes =
         /// <param name="request">?</param>
         /// <param name="changes">?</param>
         /// <returns>aggregateResult</returns>
-        abstract processResponse: data: DataResult * ?ds: DataOptions * ?query: Query * ?xhr: XMLHttpRequest * ?request: Ajax * ?changes: CrudOptions -> Object
+        abstract processResponse: data: DataResult * ?ds: DataOptions * ?query: Query * ?xhr: XMLHttpRequest * ?request: Ajax * ?changes: CrudOptions -> obj
 
 
     /// <summary>OData Adaptor that is extended from URL Adaptor, is used for consuming data through OData Service.</summary>
@@ -750,7 +762,7 @@ module rec SfDataManagerTypes =
                                     ignoreCase: bool |} ->unit
         /// <summary>Generate query string based on the search criteria from query.</summary>
         /// <param name="e" />
-        abstract onSearch : e: Object -> string
+        abstract onSearch : e: obj -> string
         /// <summary>Generate query string based on multiple sort criteria from query.</summary>
         /// <param name="e" />
         abstract onEachSort : e: QueryOptions -> string
@@ -767,7 +779,7 @@ module rec SfDataManagerTypes =
         /// <summary>Add the aggregate query to the adaptor option.</summary>
         /// <param name="e" />
         /// <returns>string</returns>
-        abstract onAggregates : e: ResizeArray<Object> -> string
+        abstract onAggregates : e: ResizeArray<obj> -> string
         /// <summary>Returns the query string which requests total count from the data source.</summary>
         /// <param name="e" />
         /// <returns>string</returns>
@@ -788,31 +800,31 @@ module rec SfDataManagerTypes =
         /// <param name="request">?</param>
         /// <param name="changes">?</param>
         /// <returns>aggregateResult</returns>
-        abstract processResponse :data: DataResult* ?ds: DataOptions* ?query: Query* ?xhr: XMLHttpRequest* ?request: Ajax* ?changes: CrudOptions ->Object
-        /// <summary>Converts the request object to query string.</summary>
+        abstract processResponse :data: DataResult* ?ds: DataOptions* ?query: Query* ?xhr: XMLHttpRequest* ?request: Ajax* ?changes: CrudOptions ->obj
+        /// <summary>Converts the request obj to query string.</summary>
         /// <param name="req" />
         /// <param name="query" />
         /// <param name="dm" />
         /// <returns>tableName</returns>
-        abstract convertToQueryString : request: Object * query: Query * dm: IDataManager -> string
+        abstract convertToQueryString : request: obj * query: Query * dm: IDataManager -> string
         /// <summary>Prepare and returns request body which is used to insert a new record in the table.</summary>
         /// <param name="dm" />
         /// <param name="data" />
         /// <param name="tableName">?</param>
-        abstract insert : dm: IDataManager * data: Object * ?tableName: string -> Object
+        abstract insert : dm: IDataManager * data: obj * ?tableName: string -> obj
         /// <summary>Prepare and return request body which is used to remove record from the table.</summary>
         /// <param name="dm" />
         /// <param name="keyField" />
         /// <param name="value" />
         /// <param name="tableName">?</param>
-        abstract remove : dm: IDataManager * keyField: string * value: float * ?tableName: string -> Object
+        abstract remove : dm: IDataManager * keyField: string * value: float * ?tableName: string -> obj
         /// <summary>Updates existing record and saves the changes to the table.</summary>
         /// <param name="dm" />
         /// <param name="keyField" />
         /// <param name="value" />
         /// <param name="tableName">?</param>
         /// <returns>this</returns>
-        abstract update :dm: IDataManager * keyField: string * value: Object * ?tableName: string * ?query: Query * ?original: Object ->Object
+        abstract update :dm: IDataManager * keyField: string * value: obj * ?tableName: string * ?query: Query * ?original: obj ->obj
         /// <summary>
         /// Prepare the request body based on the newly added, removed and updated records.
         /// The result is used by the batch request.
@@ -821,7 +833,7 @@ module rec SfDataManagerTypes =
         /// <param name="changes" />
         /// <param name="e" />
         /// <returns />
-        abstract batchRequest :dm: IDataManager * changes: CrudOptions * e: RemoteArgs * query: Query * ?original: CrudOptions -> Object
+        abstract batchRequest :dm: IDataManager * changes: CrudOptions * e: RemoteArgs * query: Query * ?original: CrudOptions -> obj
         /// <summary>
         /// Generate the string content from the removed records.
         /// The result will be send during batch update.
@@ -829,25 +841,25 @@ module rec SfDataManagerTypes =
         /// <param name="arr" />
         /// <param name="e" />
         /// <returns>this</returns>
-        abstract generateDeleteRequest : arr: ResizeArray<Object> * e: RemoteArgs * dm: IDataManager -> string
+        abstract generateDeleteRequest : arr: ResizeArray<obj> * e: RemoteArgs * dm: IDataManager -> string
         /// <summary>
         /// Generate the string content from the inserted records.
         /// The result will be send during batch update.
         /// </summary>
         /// <param name="arr" />
         /// <param name="e" />
-        abstract generateInsertRequest : arr: ResizeArray<Object> * e: RemoteArgs * dm: IDataManager -> string
+        abstract generateInsertRequest : arr: ResizeArray<obj> * e: RemoteArgs * dm: IDataManager -> string
         /// <summary>
         /// Generate the string content from the updated records.
         /// The result will be send during batch update.
         /// </summary>
         /// <param name="arr" />
         /// <param name="e" />
-        abstract generateUpdateRequest :arr: ResizeArray<Object> * e: RemoteArgs * dm: IDataManager * ?org: ResizeArray<Object> -> string
+        abstract generateUpdateRequest :arr: ResizeArray<obj> * e: RemoteArgs * dm: IDataManager * ?org: ResizeArray<obj> -> string
 
         abstract processBatchResponse :data: DataResult * ?query: Query * ?xhr: XMLHttpRequest * ?request: Ajax * ?changes: CrudOptions ->U2<CrudOptions, DataResult>
 
-        abstract compareAndRemove : data: Object * original: Object * ?key: string -> Object
+        abstract compareAndRemove : data: obj * original: obj * ?key: string -> obj
 
 
 
@@ -902,14 +914,14 @@ module rec SfDataManagerTypes =
 
         /// <summary>Generate query string based on the search criteria from query.</summary>
         /// <param name="e" />
-        abstract onSearch : e: Object -> string
+        abstract onSearch : e: obj -> string
         /// <summary>Returns the expand query string.</summary>
         /// <param name="e" />
         abstract onExpand:e:{|  selects: ResizeArray<string>
                                 expands: ResizeArray<string> |} ->string
         /// <summary>Returns the groupby query string.</summary>
         /// <param name="e" />
-        abstract onDistinct : distinctFields: ResizeArray<string> -> Object
+        abstract onDistinct : distinctFields: ResizeArray<string> -> obj
         /// <summary>Returns the select query string.</summary>
         /// <param name="e" />
         abstract onSelect : e: ResizeArray<string> -> string
@@ -930,7 +942,7 @@ module rec SfDataManagerTypes =
         /// <param name="request">?</param>
         /// <param name="changes">?</param>
         /// <returns>aggregateResult</returns>
-        abstract processResponse :data: DataResult* ?ds: DataOptions* ?query: Query* ?xhr: XMLHttpRequest* ?request: Ajax* ?changes: CrudOptions ->Object
+        abstract processResponse :data: DataResult* ?ds: DataOptions* ?query: Query* ?xhr: XMLHttpRequest* ?request: Ajax* ?changes: CrudOptions ->obj
 
     type [<AllowNullLiteral>] AdaptorOptions =
         abstract processQuery: Function option with get, set
@@ -949,10 +961,10 @@ module rec SfDataManagerTypes =
         abstract setDefaultQuery : query: Query -> IDataManager
         /// <summary>Executes the given query with local data source.</summary>
         /// <param name="query">Defines the query to retrieve data.</param>
-        abstract executeLocal : ?query: Query -> ResizeArray<Object>
+        abstract executeLocal : ?query: Query -> ResizeArray<obj>
         /// <summary>
         /// Executes the given query with either local or remote data source.
-        /// It will be executed as asynchronously and returns Promise object which will be resolved or rejected after action completed.
+        /// It will be executed as asynchronously and returns Promise obj which will be resolved or rejected after action completed.
         /// </summary>
         /// <param name="query">Defines the query to retrieve data.</param>
         /// <param name="done">Defines the callback function and triggers when the Promise is resolved.</param>
@@ -968,29 +980,27 @@ module rec SfDataManagerTypes =
         /// <param name="key">Defines the column field.</param>
         /// <param name="tableName">Defines the table name.</param>
         /// <param name="query">Sets default query for the DataManager.</param>
-        abstract saveChanges :changes: Object * ?key: string * ?tableName: U2<string, Query> * ?query: Query * ?original: Object ->U2<Promise<Object>, Object>
+        abstract saveChanges :changes: obj * ?key: string * ?tableName: U2<string, Query> * ?query: Query * ?original: obj ->U2<Promise<obj>, obj>
         /// <summary>Inserts new record in the given table.</summary>
         /// <param name="data">Defines the data to insert.</param>
         /// <param name="tableName">Defines the table name.</param>
         /// <param name="query">Sets default query for the DataManager.</param>
-        abstract insert :data: Object * ?tableName: U2<string, Query> * ?query: Query * ?position: float -> U2<Object, Promise<Object>>
+        abstract insert :data: obj * ?tableName: U2<string, Query> * ?query: Query * ?position: float -> U2<obj, Promise<obj>>
         /// <summary>Removes data from the table with the given key.</summary>
         /// <param name="keyField">Defines the column field.</param>
         /// <param name="value">Defines the value to find the data in the specified column.</param>
         /// <param name="tableName">Defines the table name</param>
         /// <param name="query">Sets default query for the DataManager.</param>
-        abstract remove :keyField: string * value: Object * ?tableName: U2<string, Query> * ?query: Query -> U2<Object, Promise<Object>>
+        abstract remove :keyField: string * value: obj * ?tableName: U2<string, Query> * ?query: Query -> U2<obj, Promise<obj>>
         /// <summary>Updates existing record in the given table.</summary>
         /// <param name="keyField">Defines the column field.</param>
         /// <param name="value">Defines the value to find the data in the specified column.</param>
         /// <param name="tableName">Defines the table name</param>
         /// <param name="query">Sets default query for the DataManager.</param>
-        abstract update :keyField: string * value: Object * ?tableName: U2<string, Query> * ?query: Query * ?original: Object ->U2<Object, Promise<Object>>
+        abstract update :keyField: string * value: obj * ?tableName: U2<string, Query> * ?query: Query * ?original: obj ->U2<obj, Promise<obj>>
 
 module SfDataManager = 
     open SfDataManagerTypes
-    open Fable.Core
-    open Fable.Core.JS
 
     [<Erase>]
     type DataManagerOptions = {
@@ -1006,10 +1016,10 @@ module SfDataManager =
             member _.setDefaultQuery(query: Query) :IDataManager = jsNative
             /// <summary>Executes the given query with local data source.</summary>
             /// <param name="query">Defines the query to retrieve data.</param>
-            member _.executeLocal(?query: Query): ResizeArray<Object> = jsNative
+            member _.executeLocal(?query: Query): ResizeArray<obj> = jsNative
             /// <summary>
             /// Executes the given query with either local or remote data source.
-            /// It will be executed as asynchronously and returns Promise object which will be resolved or rejected after action completed.
+            /// It will be executed as asynchronously and returns Promise obj which will be resolved or rejected after action completed.
             /// </summary>
             /// <param name="query">Defines the query to retrieve data.</param>
             /// <param name="done">Defines the callback function and triggers when the Promise is resolved.</param>
@@ -1025,24 +1035,24 @@ module SfDataManager =
             /// <param name="key">Defines the column field.</param>
             /// <param name="tableName">Defines the table name.</param>
             /// <param name="query">Sets default query for the DataManager.</param>
-            member _.saveChanges(changes: Object , ?key: string , ?tableName: U2<string, Query> , ?query: Query , ?original: Object) : U2<Promise<Object>, Object> = jsNative
+            member _.saveChanges(changes: obj , ?key: string , ?tableName: U2<string, Query> , ?query: Query , ?original: obj) : U2<Promise<obj>, obj> = jsNative
             /// <summary>Inserts new record in the given table.</summary>
             /// <param name="data">Defines the data to insert.</param>
             /// <param name="tableName">Defines the table name.</param>
             /// <param name="query">Sets default query for the DataManager.</param>
-            member _.insert(data: Object , ?tableName: U2<string, Query> , ?query: Query , ?position: float ): U2<Object, Promise<Object>> = jsNative
+            member _.insert(data: obj , ?tableName: U2<string, Query> , ?query: Query , ?position: float ): U2<obj, Promise<obj>> = jsNative
             /// <summary>Removes data from the table with the given key.</summary>
             /// <param name="keyField">Defines the column field.</param>
             /// <param name="value">Defines the value to find the data in the specified column.</param>
             /// <param name="tableName">Defines the table name</param>
             /// <param name="query">Sets default query for the DataManager.</param>
-            member _.remove(keyField: string , value: Object , ?tableName: U2<string, Query> , ?query: Query): U2<Object, Promise<Object>>= jsNative
+            member _.remove(keyField: string , value: obj , ?tableName: U2<string, Query> , ?query: Query): U2<obj, Promise<obj>>= jsNative
             /// <summary>Updates existing record in the given table.</summary>
             /// <param name="keyField">Defines the column field.</param>
             /// <param name="value">Defines the value to find the data in the specified column.</param>
             /// <param name="tableName">Defines the table name</param>
             /// <param name="query">Sets default query for the DataManager.</param>
-            member _.update(keyField: string , value: Object , ?tableName: U2<string, Query> , ?query: Query , ?original: Object):U2<Object, Promise<Object>>= jsNative
+            member _.update(keyField: string , value: obj , ?tableName: U2<string, Query> , ?query: Query , ?original: obj):U2<obj, Promise<obj>>= jsNative
 
 
             

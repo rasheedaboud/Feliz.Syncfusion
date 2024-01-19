@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net6.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.1</TargetFrameworks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageId>Feliz.Syncfusion</PackageId>
     <Title>Feliz.Syncfusion</Title>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.1.36</Version>
+	<Version>0.2.0</Version>
     <Authors>Rasheed Aboud</Authors>
     <Company>ARMM Services</Company>
     <Description>Feliz style bindings for a handfull of Syncfusion React controls. </Description>
@@ -16,12 +16,18 @@
     <PackageProjectUrl>https://github.com/rasheedaboud/Felize.Syncfusion</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReleaseNotes>
-			Fixed dotnet6 compat issue.
-		</PackageReleaseNotes>
+		Updated package to support dotnet 8.
+		Fixed:
+		1. Update Listview datasource model to take specific type that renders properly.
+		2. Fixed Button click handler to target right attribute.
+		3. Removed paket.
+		4. Cleaned up liscence provider.
+		5. Removed dependancies on Fable.Core
+	</PackageReleaseNotes>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Syncfusion.fs" />
     <Compile Include="SfListView.fs" />
-    <Compile Include="SyncfusionLicenseProvider.fs" />
     <Compile Include="SfAppBar.fs" />
     <Compile Include="SfButton.fs" />
     <Compile Include="SfSplitButton.fs" />
@@ -33,9 +39,9 @@
     <Compile Include="SfSideBar.fs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Update="FSharp.Core" Version="6.0.3" />
-    <PackageReference Include="Fable.Core" Version="3.7.0" />
-    <PackageReference Include="Feliz" Version="1.68.0" />
+    <PackageReference Update="FSharp.Core" Version="8.0.100" />
+    <PackageReference Include="Feliz" Version="2.7.0" />
+	<Content Include="*.fsproj; **\*.fs; **\*.fsi" PackagePath="fable\" />
   </ItemGroup>
   <PropertyGroup>
     <NpmDependencies>
@@ -61,5 +67,4 @@
       <NpmPackage Name="@syncfusion/ej2-base" Version="gte 20.3.49" ResolutionStrategy="Max" />
     </NpmDependencies>
   </PropertyGroup>
-  <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>

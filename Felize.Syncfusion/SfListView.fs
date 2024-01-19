@@ -1,10 +1,12 @@
 ﻿namespace Syncfusion
 
+open Feliz
+open Fable.Core
+open Fable.Core.JsInterop
+
+
 
 module SfListView =
-
-    open Fable.Core
-    open Fable.Core.JsInterop
 
     [<AllowNullLiteral>]
     type BaseEventArgs =
@@ -156,7 +158,7 @@ module SfListView =
 
 
     /// Interface for a class ListView
-    type [<AllowNullLiteral>] IListViewModel =
+    type [<AllowNullLiteral>] IListViewModel<'a> =
         /// <summary>
         /// The <c>cssClass</c> property is used to add a user-preferred class name in the root element of the ListView,
         ///   using which we can customize the component (both CSS and functionality customization)
@@ -305,6 +307,13 @@ module SfListView =
         abstract actionFailure: (unit -> Browser.Types.MouseEvent) option with get, set
 
 
+    type Datasource<'a> = {
+        text:string
+        value:'a
+    }
+
+
+    [<Erase>]
     type SfListView =
         /// <summary>
         /// The <c>cssClass</c> property is used to add a user-preferred class name in the root element of the ListView,
@@ -313,14 +322,14 @@ module SfListView =
         /// {% codeBlock src='listview/cssClass/index.md' %}{% endcodeBlock %}
         /// </summary>
         /// <default>''</default>
-        static member inline  cssClass (cssClass: string) = Feliz.Interop.mkAttr (nameof cssClass) cssClass
+        static member inline  cssClass (cssClass: string) = Interop.mkAttr (nameof cssClass) cssClass
         /// <summary>
         /// If <c>enableVirtualization</c> set to true, which will increase the ListView performance, while loading a large amount of data.
         ///
         /// {% codeBlock src='listview/enableVirtualization/index.md' %}{% endcodeBlock %}
         /// </summary>
         /// <default>false</default>
-        static member inline  enableVirtualization(enableVirtualization: bool) = Feliz.Interop.mkAttr (nameof enableVirtualization) enableVirtualization
+        static member inline  enableVirtualization(enableVirtualization: bool) = Interop.mkAttr (nameof enableVirtualization) enableVirtualization
         /// <summary>
         /// The <c>htmlAttributes</c> allows additional attributes such as id, class, etc., and
         ///   accepts n number of attributes in a key-value pair format.
@@ -328,7 +337,7 @@ module SfListView =
         /// {% codeBlock src='listview/htmlAttributes/index.md' %}{% endcodeBlock %}
         /// </summary>
         /// <default>{}</default>
-        static member inline  htmlAttributes(htmlAttributes: ListViewModelHtmlAttributes) = Feliz.Interop.mkAttr (nameof htmlAttributes) htmlAttributes
+        static member inline  htmlAttributes(htmlAttributes: ListViewModelHtmlAttributes) = Interop.mkAttr (nameof htmlAttributes) htmlAttributes
         /// <summary>
         /// If <c>enable</c> set to true, the list items are enabled.
         /// And, we can disable the component using this property by setting its value as false.
@@ -336,10 +345,10 @@ module SfListView =
         /// {% codeBlock src='listview/enable/index.md' %}{% endcodeBlock %}
         /// </summary>
         /// <default>true</default>
-        static member inline  enable(enable: bool) = Feliz.Interop.mkAttr (nameof enable) enable
+        static member inline  enable(enable: bool) = Interop.mkAttr (nameof enable) enable
         /// <summary>The <c>dataSource</c> provides the data to render the ListView component which is mapped with the fields of ListView.</summary>
         /// <default>[]</default>
-        static member inline  dataSource<'a>(dataSource: 'a[] )= Feliz.Interop.mkAttr (nameof dataSource) dataSource
+        static member inline  dataSource<'a>(dataSource: Datasource<'a>[] )= Interop.mkAttr (nameof dataSource) dataSource
         /// <summary>
         /// The <c>fields</c> is used to map keys from the dataSource which extracts the appropriate data from the dataSource
         ///   with specified mapped with the column fields to render the ListView.
@@ -347,7 +356,7 @@ module SfListView =
         /// {% codeBlock src='listview/fields/index.md' %}{% endcodeBlock %}
         /// </summary>
         /// <default>defaultMappedFields</default>
-        static member inline  fields(fields: FieldSettingsModel) = Feliz.Interop.mkAttr (nameof fields) fields
+        static member inline  fields(fields: FieldSettingsModel) = Interop.mkAttr (nameof fields) fields
         /// <summary>
         /// The <c>animation</c> property provides an option to apply the different
         ///   animations on the ListView component.
@@ -355,7 +364,7 @@ module SfListView =
         /// {% codeBlock src='listview/animation/index.md' %}{% endcodeBlock %}
         /// </summary>
         /// <default>{ effect: 'SlideLeft', duration: 400, easing: 'ease' }</default>
-        static member inline  animation(animation: AnimationSettings) = Feliz.Interop.mkAttr (nameof animation) animation
+        static member inline  animation(animation: AnimationSettings) = Interop.mkAttr (nameof animation) animation
         /// <summary>
         /// The <c>sortOrder</c> is used to sort the data source. The available type of sort orders are,
         /// * <c>None</c> - The data source is not sorting.
@@ -365,21 +374,21 @@ module SfListView =
         /// {% codeBlock src='listview/sortOrder/index.md' %}{% endcodeBlock %}
         /// </summary>
         /// <default>'None'</default>
-        static member inline  sortOrder(sortOrder: SortOrder) = Feliz.Interop.mkAttr (nameof sortOrder) sortOrder
+        static member inline  sortOrder(sortOrder: SortOrder) = Interop.mkAttr (nameof sortOrder) sortOrder
         /// <summary>
         /// If <c>showIcon</c> set to true, which will show or hide the icon of the list item.
         ///
         /// {% codeBlock src='listview/showIcon/index.md' %}{% endcodeBlock %}
         /// </summary>
         /// <default>false</default>
-        static member inline  showIcon(showIcon: bool) = Feliz.Interop.mkAttr (nameof showIcon) showIcon
+        static member inline  showIcon(showIcon: bool) = Interop.mkAttr (nameof showIcon) showIcon
         /// <summary>
         /// If <c>showCheckBox</c> set to true, which will show or hide the checkbox.
         ///
         /// {% codeBlock src='listview/showCheckBox/index.md' %}{% endcodeBlock %}
         /// </summary>
         /// <default>false</default>
-        static member inline  showCheckBox(showCheckBox: bool) = Feliz.Interop.mkAttr (nameof showCheckBox) showCheckBox
+        static member inline  showCheckBox(showCheckBox: bool) = Interop.mkAttr (nameof showCheckBox) showCheckBox
         /// <summary>
         /// The <c>checkBoxPosition</c> is used to set the position of check box in a list item.
         /// By default, the <c>checkBoxPosition</c> is Left, which will appear before the text content in a list item.
@@ -387,70 +396,70 @@ module SfListView =
         /// {% codeBlock src='listview/checkBoxPosition/index.md' %}{% endcodeBlock %}
         /// </summary>
         /// <default>'Left'</default>
-        static member inline  checkBoxPosition(checkBoxPosition: CheckBoxPosition) = Feliz.Interop.mkAttr (nameof checkBoxPosition) checkBoxPosition
+        static member inline  checkBoxPosition(checkBoxPosition: CheckBoxPosition) = Interop.mkAttr (nameof checkBoxPosition) checkBoxPosition
         /// <summary>
         /// The <c>headerTitle</c> is used to set the title of the ListView component.
         ///
         /// {% codeBlock src='listview/headerTitle/index.md' %}{% endcodeBlock %}
         /// </summary>
         /// <default>""</default>
-        static member inline  headerTitle(headerTitle: string) = Feliz.Interop.mkAttr (nameof headerTitle) headerTitle
+        static member inline  headerTitle(headerTitle: string) = Interop.mkAttr (nameof headerTitle) headerTitle
         /// <summary>
         /// If <c>showHeader</c> set to true, which will show or hide the header of the ListView component.
         ///
         /// {% codeBlock src='listview/showHeader/index.md' %}{% endcodeBlock %}
         /// </summary>
         /// <default>false</default>
-        static member inline  showHeader(showHeader: bool) = Feliz.Interop.mkAttr (nameof showHeader) showHeader
+        static member inline  showHeader(showHeader: bool) = Interop.mkAttr (nameof showHeader) showHeader
         /// <summary>
         /// If <c>enableHtmlSanitizer</c> set to true, allows the cross-scripting site.
         ///
         /// {% codeBlock src='listview/enableHtmlSanitizer/index.md' %}{% endcodeBlock %}
         /// </summary>
         /// <default>false</default>
-        static member inline  enableHtmlSanitizer(enableHtmlSanitizer: bool) = Feliz.Interop.mkAttr (nameof enableHtmlSanitizer) enableHtmlSanitizer
+        static member inline  enableHtmlSanitizer(enableHtmlSanitizer: bool) = Interop.mkAttr (nameof enableHtmlSanitizer) enableHtmlSanitizer
         /// <summary>
         /// Defines the height of the ListView component which accepts both string and number values.
         ///
         /// {% codeBlock src='listview/height/index.md' %}{% endcodeBlock %}
         /// </summary>
         /// <default>''</default>
-        static member inline  height(height:Height) = Feliz.Interop.mkAttr (nameof height) height
+        static member inline  height(height:Height) = Interop.mkAttr (nameof height) height
         /// <summary>
         /// Defines the width of the ListView component which accepts both string and number values.
         ///
         /// {% codeBlock src='listview/width/index.md' %}{% endcodeBlock %}
         /// </summary>
         /// <default>''</default>
-        static member inline  width(width: Width) = Feliz.Interop.mkAttr (nameof width) width
+        static member inline  width(width: Width) = Interop.mkAttr (nameof width) width
         /// <summary>
         /// The ListView component supports to customize the content of each list items with the help of <c>template</c> property.
         ///
         /// {% codeBlock src='listview/template/index.md' %}{% endcodeBlock %}
         /// </summary>
         /// <default>null</default>
-        static member inline  template(template: string) = Feliz.Interop.mkAttr (nameof template) template
+        static member inline  template(template: string) = Interop.mkAttr (nameof template) template
         /// <summary>
         /// The ListView has an option to custom design the ListView header title with the help of <c>headerTemplate</c> property.
         ///
         /// {% codeBlock src="listview/headerTemplate/index.md" %}{% endcodeBlock %}
         /// </summary>
         /// <default>null</default>
-        static member inline  headerTemplate(headerTemplate: string) = Feliz.Interop.mkAttr (nameof headerTemplate) headerTemplate
+        static member inline  headerTemplate(headerTemplate: string) = Interop.mkAttr (nameof headerTemplate) headerTemplate
         /// <summary>
         /// The ListView has an option to custom design the group header title with the help of <c>groupTemplate</c> property.
         ///
         /// {% codeBlock src="listview/groupTemplate/index.md" %}{% endcodeBlock %}
         /// </summary>
         /// <default>null</default>
-        static member inline  groupTemplate (groupTemplate: string) = Feliz.Interop.mkAttr (nameof groupTemplate) groupTemplate
+        static member inline  groupTemplate (groupTemplate: string) = Interop.mkAttr (nameof groupTemplate) groupTemplate
         /// <summary>Triggers when we select the list item in the component.</summary>
-        static member inline  select (select: (SelectEventArgs option->unit))= Feliz.Interop.mkAttr (nameof select) select
+        static member inline  select (select: (SelectEventArgs option->unit))= Interop.mkAttr (nameof select) select
         /// <summary>Triggers when every ListView action starts.</summary>
-        static member inline  actionBegin (actionBegin: obj ->unit)= Feliz.Interop.mkAttr (nameof actionBegin) actionBegin
+        static member inline  actionBegin (actionBegin: 'a ->unit)= Interop.mkAttr (nameof actionBegin) actionBegin
         /// <summary>Triggers when every ListView actions completed.</summary>
-        static member inline  actionComplete(actionComplete: (Browser.Types.MouseEvent->unit)) = Feliz.Interop.mkAttr (nameof actionComplete) actionComplete
+        static member inline  actionComplete(actionComplete: (Browser.Types.MouseEvent->unit)) = Interop.mkAttr (nameof actionComplete) actionComplete
         /// <summary>Triggers, when the data fetch request from the remote server, fails.</summary>
-        static member inline  actionFailure(actionFailure: Browser.Types.MouseEvent->unit) = Feliz.Interop.mkAttr "actionFailure" actionFailure
-        static member inline create (props:Feliz.IReactProperty list) = Feliz.Interop.reactApi.createElement (listViewComponent, createObj !!props)
+        static member inline  actionFailure(actionFailure: Browser.Types.MouseEvent->unit) = Interop.mkAttr "actionFailure" actionFailure
+        static member inline create (props:IReactProperty list) = Interop.reactApi.createElement (listViewComponent, createObj !!props)
 
