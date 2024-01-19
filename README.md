@@ -251,7 +251,7 @@ SfNumericTextBox.create [
     SfNumericTextBox.blur handleChanged
   ]
 ```
-Here is how a numeric file uploader would look:
+Here is how file uploader would look:
 
 ```fs
 module App
@@ -268,7 +268,7 @@ FileUploader.create [
    FileUploader.selected (fun x -> handleFileEvent x)
  ]
 ```
-Here is how a numeric date picker would look:
+Here is how a date picker would look:
 
 ```fs
 module App
