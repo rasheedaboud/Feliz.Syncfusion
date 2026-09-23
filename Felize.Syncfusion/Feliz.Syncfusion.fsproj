@@ -35,6 +35,7 @@
     <Compile Include="SfTooltip.fs" />
     <Compile Include="SfKanban.fs" />
     <Compile Include="SfTyped.fs" />
+    <Compile Include="SfDataTyped.fs" />
     <Compile Include="SfModal.fs" />
     <Compile Include="SfMenuBar.fs" />
     <Compile Include="SfSideBar.fs" />
