@@ -13,7 +13,7 @@ module SfListView =
         /// Specifies name of the event.
         abstract name : string option with get, set
     
-    let listViewComponent   :obj = import "ListViewComponent "    "@syncfusion/ej2-react-lists"
+    let listViewComponent   :obj = import "ListViewComponent"    "@syncfusion/ej2-react-lists"
 
     type [<AllowNullLiteral>] ListViewModelHtmlAttributes =
         [<EmitIndexer>] abstract Item: key: string -> string with get, set

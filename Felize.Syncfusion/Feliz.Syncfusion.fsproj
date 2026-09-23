@@ -2,6 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>preview</LangVersion>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageId>Feliz.Syncfusion</PackageId>
     <Title>Feliz.Syncfusion</Title>
@@ -9,13 +10,14 @@
     <Version>0.3.0</Version>
     <Authors>Rasheed Aboud</Authors>
     <Company>ARMM Services</Company>
-    <Description>Feliz style bindings for a handful of Syncfusion React controls.</Description>
-    <Summary>Feliz style bindings for a handful of Syncfusion React controls.</Summary>
+    <Description>Type-safe Feliz bindings for Syncfusion EJ2 React controls.</Description>
+    <Summary>Type-safe Feliz bindings for Syncfusion EJ2 React controls.</Summary>
     <PackageTags>feliz;fsharp;syncfusion;fable;fable-binding;fable-javascript;safe</PackageTags>
+    <FablePackageType>binding</FablePackageType>
     <RepositoryUrl>https://github.com/rasheedaboud/Feliz.Syncfusion</RepositoryUrl>
     <PackageProjectUrl>https://github.com/rasheedaboud/Feliz.Syncfusion</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageReleaseNotes>Updated the supported toolchain to .NET 10 / F# 10 and Fable 5.17.2. Updated Feliz to 3.3.3 and the Syncfusion EJ2 React dependency baseline to 34.2.x.</PackageReleaseNotes>
+    <PackageReleaseNotes>Modernized for .NET 10, F# 10, Fable 5.17.2, Feliz 3.3.3 and Syncfusion EJ2 34.2.x. Added binding verification and CI quality gates.</PackageReleaseNotes>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Syncfusion.fs" />
@@ -32,8 +34,13 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Update="FSharp.Core" Version="10.1.401" />
+    <PackageReference Include="Fable.Core" Version="5.2.0" />
+    <PackageReference Include="Fable.Browser.Dom" Version="2.20.0" />
     <PackageReference Include="Feliz" Version="3.3.3" />
-    <Content Include="*.fsproj; **\*.fs; **\*.fsi" PackagePath="fable\" />
+    <PackageReference Include="Fable.Package.SDK" Version="1.4.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
   <PropertyGroup>
     <NpmDependencies>

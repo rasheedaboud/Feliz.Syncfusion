@@ -7,7 +7,7 @@ module SfButton =
     open Fable.Core.JsInterop
 
 
-    let sfButton:obj = import "ButtonComponent  " "@syncfusion/ej2-react-buttons"
+    let sfButton:obj = import "ButtonComponent" "@syncfusion/ej2-react-buttons"
 
 
     /// Defines the icon position of button.

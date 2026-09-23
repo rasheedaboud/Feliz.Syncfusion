@@ -51,7 +51,7 @@ module SfInputs =
 
 
         let uploader: obj =
-            import "UploaderComponent " "@syncfusion/ej2-react-inputs"
+            import "UploaderComponent" "@syncfusion/ej2-react-inputs"
 
         type ValidationMessages = { 
             minSize: string option
@@ -145,7 +145,7 @@ module SfInputs =
     module SfDatePicker =
 
         let datePickerComponent: obj =
-            import "DatePickerComponent " "@syncfusion/ej2-react-calendars"
+            import "DatePickerComponent" "@syncfusion/ej2-react-calendars"
 
         type changedArgs<'a> = { value: 'a }
 
@@ -785,7 +785,7 @@ module SfInputs =
     module SfCheckBox =
 
         let  checkBox: obj =
-            import "CheckBoxComponent " "@syncfusion/ej2-react-buttons"
+            import "CheckBoxComponent" "@syncfusion/ej2-react-buttons"
 
 
         [<StringEnum>]
@@ -847,7 +847,7 @@ module SfInputs =
     module SfChip =
 
         let chip: obj =
-            import "ChipListComponent " "@syncfusion/ej2-react-buttons"
+            import "ChipListComponent" "@syncfusion/ej2-react-buttons"
 
         [<Erase>]
         type ChipModelValue =

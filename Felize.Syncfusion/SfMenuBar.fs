@@ -8,7 +8,7 @@ module SfMenuBar =
     open Fable.Core.JsInterop
 
 
-    let menuBar:obj = import "MenuComponent " "@syncfusion/ej2-react-navigations"
+    let menuBar:obj = import "MenuComponent" "@syncfusion/ej2-react-navigations"
 
     /// Interface for a class FieldSettings
     type FieldSettingsModel ={

@@ -8,7 +8,7 @@ module SfSideBar =
 
    
 
-   let sidebar: obj = import "SidebarComponent  " "@syncfusion/ej2-react-navigations"
+   let sidebar: obj = import "SidebarComponent" "@syncfusion/ej2-react-navigations"
    /// Specifies the Sidebar types.
    type [<StringEnum>] [<RequireQualifiedAccess>] SidebarType =
        | [<CompiledName("Slide")>] Slide

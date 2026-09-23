@@ -9,7 +9,7 @@ module SfAppBar =
     open Fable.Core.JsInterop
 
     let appbar: obj =
-        import "AppBarComponent " "@syncfusion/ej2-react-navigations"
+        import "AppBarComponent" "@syncfusion/ej2-react-navigations"
     /// <summary>
     /// Specifies the height mode of the AppBar component which defines the height of the AppBar.
     ///

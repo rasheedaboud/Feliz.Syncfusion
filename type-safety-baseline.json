@@ -1,0 +1,12 @@
+{
+  "total": 27,
+  "files": {
+    "SfAppBar.fs": 1,
+    "SfButton.fs": 1,
+    "SfListView.fs": 4,
+    "SfMenuBar.fs": 1,
+    "SfSideBar.fs": 3,
+    "SfModal.fs": 7,
+    "SfInputs.fs": 10
+  }
+}

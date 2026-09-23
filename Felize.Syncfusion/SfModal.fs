@@ -459,7 +459,7 @@ module SfModal =
 
     //    modal.current <- Some dia
 
-    [<Import("DialogUtility ","@syncfusion/ej2-react-popups")>]
+    [<Import("DialogUtility","@syncfusion/ej2-react-popups")>]
     [<Erase>]
     type DialogUtility =
       static member alert(args:AlertDialogArgs):Dialog = jsNative
