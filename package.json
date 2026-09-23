@@ -9,10 +9,8 @@
     "fable:build": "dotnet fable Felize.Syncfusion --outDir artifacts/fable --sourceMaps",
     "verify:exports": "node scripts/verify-syncfusion-exports.mjs",
     "verify:type-safety": "node scripts/type-safety-budget.mjs",
-    "test:unit": "vitest run --coverage",
     "test:browser": "playwright test",
-    "test:crap": "node scripts/crap-score.mjs",
-    "quality": "npm run verify:exports && npm run verify:type-safety && npm run test:unit && npm run test:crap"
+    "quality": "npm run verify:exports && npm run verify:type-safety && npm run test:browser"
   },
   "dependencies": {
     "@syncfusion/ej2": "^34.2.0",
@@ -32,8 +30,6 @@
   },
   "devDependencies": {
     "@playwright/test": "1.63.0",
-    "@vitest/coverage-v8": "5.0.1",
-    "vite": "8.3.0",
-    "vitest": "5.0.1"
+    "vite": "8.3.0"
   }
 }

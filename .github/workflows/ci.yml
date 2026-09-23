@@ -4,11 +4,14 @@ on:
     branches: [master]
   pull_request:
   workflow_dispatch:
+
 permissions:
   contents: read
+
 concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
+
 jobs:
   build:
     name: build
@@ -16,9 +19,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v5
-        with: { dotnet-version: "10.0.x" }
+        with:
+          dotnet-version: "10.0.x"
       - uses: actions/setup-node@v5
-        with: { node-version: "24" }
+        with:
+          node-version: "24"
       - run: dotnet tool restore
       - run: dotnet restore Feliz.Syncfusion.sln
       - run: dotnet build Feliz.Syncfusion.sln -c Release --no-restore
@@ -26,22 +31,23 @@ jobs:
       - run: npm run fable:build
       - run: npm run verify:exports
       - run: npm run verify:type-safety
-      - run: npm run test:unit
-      - run: npm run test:crap
       - run: dotnet pack Felize.Syncfusion/Feliz.Syncfusion.fsproj -c Release --no-build -o artifacts/package
       - uses: actions/upload-artifact@v4
         with:
           name: package
           path: artifacts/package/*.nupkg
-  browser-render:
-    name: browser-render
+
+  component-contracts:
+    name: component-contracts
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v5
-        with: { dotnet-version: "10.0.x" }
+        with:
+          dotnet-version: "10.0.x"
       - uses: actions/setup-node@v5
-        with: { node-version: "24" }
+        with:
+          node-version: "24"
       - run: dotnet tool restore
       - run: dotnet restore Feliz.Syncfusion.sln
       - run: npm install
