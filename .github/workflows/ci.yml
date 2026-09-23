@@ -105,7 +105,7 @@ jobs:
 
       - name: Generate audit NuGet package
         run: |
-          dotnet pack Felize.Syncfusion/Feliz.Syncfusion.fsproj             -c Release             --no-build             -p:PackageVersion=0.3.0-ci.${{ github.run_number }}             -o artifacts/audit-package
+          dotnet pack Felize.Syncfusion/Feliz.Syncfusion.fsproj             -c Release             --no-build             -p:PackageVersion=0.4.0-ci.${{ github.run_number }}             -o artifacts/audit-package
 
       - uses: actions/upload-artifact@v4
         with:
