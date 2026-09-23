@@ -8,18 +8,24 @@ open Browser.Types
 type ISfComboBoxProperty = interface end
 
 module SfComboBox =
-    let private syncfusionComponent: obj = import "ComboBoxComponent" "@syncfusion/ej2-react-dropdowns"
+    let private syncfusionComponent: ReactElement = import "ComboBoxComponent" "@syncfusion/ej2-react-dropdowns"
+
+    [<AllowNullLiteral>]
+    type ItemData =
+        abstract text: string option
+        abstract value: string option
 
     [<AllowNullLiteral>]
     type ChangeEventArgs =
-        abstract value: obj option
+        abstract value: string option
+        abstract itemData: ItemData option
         abstract element: HTMLInputElement option
         abstract isInteracted: bool option
 
     [<AllowNullLiteral>]
     type SelectEventArgs =
         abstract item: HTMLElement
-        abstract itemData: obj
+        abstract itemData: ItemData
 
     [<Erase>]
     type prop =
@@ -35,4 +41,4 @@ module SfComboBox =
         static member inline select(callback: SelectEventArgs -> unit) : ISfComboBoxProperty = unbox ("select", callback)
 
     let create (props: ISfComboBoxProperty list) : ReactElement =
-        ReactLegacy.createElement(unbox<ReactElement> syncfusionComponent, createObj !!props)
+        ReactLegacy.createElement(syncfusionComponent, createObj !!props)
