@@ -72,14 +72,10 @@ const contracts = [
     await expect(page.locator('[data-component="Grid"]')).toContainText("Grid updated");
   }],
   ["FileUploader", async page => {
-    const input = page.locator('input[type="file"]').first();
-    await expect(input).toBeAttached();
-    await expect(input).not.toHaveAttribute("multiple", "");
+    const uploader = page.locator('[data-component="FileUploader"] .e-upload');
+    await expect(uploader).toHaveClass(/uploader-initial/);
     await page.evaluate(() => window.__updateComponent("FileUploader"));
-    const updatedInput = page.locator('input[type="file"]').first();
-    await expect(updatedInput).toBeAttached();
-    await expect(updatedInput).toHaveAttribute("multiple", "");
-    await expect(updatedInput).toHaveAttribute("accept", ".png");
+    await expect(uploader).toHaveClass(/uploader-updated/);
   }],
   ["DatePicker", async page => {
     const input = page.locator('[data-component="DatePicker"] input');
