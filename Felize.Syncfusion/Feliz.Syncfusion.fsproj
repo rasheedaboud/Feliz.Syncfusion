@@ -7,7 +7,7 @@
     <PackageId>Feliz.Syncfusion</PackageId>
     <Title>Feliz.Syncfusion</Title>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.3.0</Version>
+    <Version>0.4.0</Version>
     <Authors>Rasheed Aboud</Authors>
     <Company>ARMM Services</Company>
     <Description>Type-safe Feliz bindings for Syncfusion EJ2 React controls.</Description>
@@ -17,7 +17,7 @@
     <RepositoryUrl>https://github.com/rasheedaboud/Feliz.Syncfusion</RepositoryUrl>
     <PackageProjectUrl>https://github.com/rasheedaboud/Feliz.Syncfusion</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageReleaseNotes>Modernized for .NET 10, F# 10, Fable 5.17.2, Feliz 3.3.3 and Syncfusion EJ2 34.2.x. Added binding verification and CI quality gates.</PackageReleaseNotes>
+    <PackageReleaseNotes>Added ARMM-complete, strongly typed Feliz bindings for ComboBox, MultiSelect, DateTimePicker, Tooltip, Kanban, DatePicker, FileUploader, SplitButton, Grid, Query, Predicate, JsonAdaptor and DataManager. Added Fable consumer compilation and Chromium mount/update contracts against supported and registry-latest Syncfusion packages.</PackageReleaseNotes>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Interop.fs" />
