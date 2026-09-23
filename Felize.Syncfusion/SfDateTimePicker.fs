@@ -28,5 +28,5 @@ module SfDateTimePicker =
         static member inline cssClass(value: string) : ISfDateTimePickerProperty = unbox ("cssClass", value)
         static member inline change(callback: ChangeEventArgs -> unit) : ISfDateTimePickerProperty = unbox ("change", callback)
 
-    let inline create (props: ISfDateTimePickerProperty list) : ReactElement =
+    let create (props: ISfDateTimePickerProperty list) : ReactElement =
         ReactLegacy.createElement(unbox<ReactElement> syncfusionComponent, createObj !!props)
