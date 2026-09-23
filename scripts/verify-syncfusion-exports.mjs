@@ -5,13 +5,15 @@ const expected = {
   "@syncfusion/ej2-react-navigations": ["AppBarComponent","MenuComponent","SidebarComponent"],
   "@syncfusion/ej2-react-buttons": ["ButtonComponent","ChipListComponent","CheckBoxComponent"],
   "@syncfusion/ej2-react-lists": ["ListViewComponent"],
-  "@syncfusion/ej2-react-popups": ["DialogComponent","DialogUtility"],
+  "@syncfusion/ej2-react-popups": ["DialogComponent","DialogUtility","TooltipComponent"],
   "@syncfusion/ej2-react-grids": ["GridComponent","ColumnsDirective","ColumnDirective","Inject","AggregatesDirective","AggregateDirective","AggregateColumnDirective","AggregateColumnsDirective","Page","Sort","Filter","Group","Edit","Toolbar","Aggregate","ColumnChooser","ColumnMenu","CommandColumn","ContextMenu","DetailRow","ForeignKey","Freeze","Resize","Reorder","RowDD","Search","Selection","Scroll","Print","VirtualScroll","ExcelExport","PdfExport"],
   "@syncfusion/ej2-react-inputs": ["UploaderComponent","NumericTextBoxComponent","TextBoxComponent"],
-  "@syncfusion/ej2-react-calendars": ["DatePickerComponent"],
-  "@syncfusion/ej2-react-dropdowns": ["AutoCompleteComponent"],
+  "@syncfusion/ej2-react-calendars": ["DatePickerComponent","DateTimePickerComponent"],
+  "@syncfusion/ej2-react-dropdowns": ["AutoCompleteComponent","ComboBoxComponent","MultiSelectComponent"],
   "@syncfusion/ej2-react-splitbuttons": ["SplitButtonComponent","ProgressButtonComponent"],
-  "@syncfusion/ej2-data": ["DataManager","ODataV4Adaptor"]
+  "@syncfusion/ej2-react-kanban": ["KanbanComponent","ColumnsDirective","ColumnDirective"],
+  "@syncfusion/ej2-grids": ["Pager"],
+  "@syncfusion/ej2-data": ["DataManager","ODataV4Adaptor","JsonAdaptor","Query","Predicate"]
 };
 
 const failures = [];
