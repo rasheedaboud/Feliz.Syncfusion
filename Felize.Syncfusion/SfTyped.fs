@@ -42,7 +42,7 @@ module FileUploader =
     type FileInfo =
         abstract name: string
         abstract size: float
-        abstract fileType: string
+        abstract ``type``: string
         abstract rawFile: File option
 
     [<AllowNullLiteral>]
@@ -99,7 +99,7 @@ module Grid =
         width: float option
         visible: bool option
         isPrimaryKey: bool option
-        columnType: string option
+        ``type``: string option
         format: string option
     }
 
@@ -118,9 +118,10 @@ module Grid =
     type GroupSettings = { columns: string array }
     type SortColumn = { field: string; direction: SortDirection }
     type SortSettings = { columns: SortColumn array }
-    type FilterColumn = { field: string; operatorName: string; value: obj }
-    type FilterSettings = { filterType: FilterType option; columns: FilterColumn array option }
-    type SelectionSettings = { selectionType: SelectionType option; mode: SelectionMode option }
+    type FilterValue = U4<string, float, bool, DateTime>
+    type FilterColumn = { field: string; operatorName: string; value: FilterValue }
+    type FilterSettings = { ``type``: FilterType option; columns: FilterColumn array option }
+    type SelectionSettings = { ``type``: SelectionType option; mode: SelectionMode option }
 
     [<AllowNullLiteral>]
     type RowSelectEventArgs<'T> =
