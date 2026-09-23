@@ -75,6 +75,7 @@ let private renderTooltip (content: string) =
         Tooltip.prop.position Tooltip.Position.TopCenter
         Tooltip.prop.opensOn Tooltip.OpensOn.Hover
         Tooltip.prop.showTipPointer true
+        Tooltip.prop.target "button"
         Tooltip.prop.children [ Html.button [ prop.text "Hover target" ] ]
     ]
 
@@ -157,6 +158,30 @@ let updateAll () =
     render "typed-upload" (renderUpload "upload-updated")
     render "typed-split" (renderSplit "Export updated")
     render "typed-grid" (renderGrid updatedRows)
+
+let updateComponent name =
+    match name with
+    | "ComboBox" -> render "typed-combo" (renderCombo "Beta")
+    | "MultiSelect" -> render "typed-multi" (renderMulti [| "Two" |])
+    | "DateTimePicker" -> render "typed-datetime" (renderDateTime (DateTime(2026, 9, 24, 11, 30, 0)))
+    | "Tooltip" -> render "typed-tooltip" (renderTooltip "Tooltip updated")
+    | "Kanban" -> render "typed-kanban" (renderKanban updatedRows)
+    | "DatePicker" -> render "typed-date" (renderDate (DateTime(2026, 9, 24)))
+    | "FileUploader" -> render "typed-upload" (renderUpload "upload-updated")
+    | "SplitButton" -> render "typed-split" (renderSplit "Export updated")
+    | "Grid" -> render "typed-grid" (renderGrid updatedRows)
+    | _ -> failwith $"Unknown component {name}"
+
+let dataQueryDiagnostics () =
+    let manager =
+        Data.DataManager<Row>({ json = initialRows; adaptor = Data.JsonAdaptor() })
+    let query =
+        Data.Query()
+        |> Data.whereString "status" Data.FilterOperator.Equal "OPEN" true
+        |> fun q -> q.requiresCount()
+    {| allCount = manager.executeLocal().Count
+       filteredCount = manager.executeLocal(query).Count
+       countRequired = query.isCountRequired |}
 
 let dataQueryCount () =
     let query =
