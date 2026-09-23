@@ -172,22 +172,24 @@ let updateComponent name =
     | "Grid" -> render "typed-grid" (renderGrid updatedRows)
     | _ -> failwith $"Unknown component {name}"
 
+let private localResultCount (result: Fable.Core.U2<ResizeArray<Row>, Data.CountedDataResult<Row>>) =
+    match result with
+    | Fable.Core.U2.Case1 rows -> rows.Count
+    | Fable.Core.U2.Case2 counted -> counted.result |> Option.map (fun rows -> rows.Count) |> Option.defaultValue 0
+
 let dataQueryDiagnostics () =
-    let manager =
-        Data.DataManager<Row>({ json = initialRows; adaptor = Data.JsonAdaptor() })
-    let query =
+    let manager = Data.createLocal initialRows
+    let filterQuery =
         Data.Query()
         |> Data.whereString "status" Data.FilterOperator.Equal "OPEN" true
-        |> fun q -> q.requiresCount()
-    {| allCount = manager.executeLocal().Count
-       filteredCount = manager.executeLocal(query).Count
-       countRequired = query.isCountRequired |}
+    let countedQuery = filterQuery.clone().requiresCount()
+    {| allCount = manager.executeLocal() |> localResultCount
+       filteredCount = manager.executeLocal(filterQuery) |> localResultCount
+       countRequired = countedQuery.isCountRequired |}
 
 let dataQueryCount () =
+    let manager = Data.createLocal initialRows
     let query =
         Data.Query()
         |> Data.whereString "status" Data.FilterOperator.Equal "OPEN" true
-        |> fun q -> q.requiresCount()
-    let manager =
-        Data.DataManager<Row>({ json = initialRows; adaptor = Data.JsonAdaptor() })
-    manager.executeLocal(query).Count
+    manager.executeLocal(query) |> localResultCount
