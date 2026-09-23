@@ -29,6 +29,11 @@
     <Compile Include="SfDataManager.fs" />
     <Compile Include="SfGrid.fs" />
     <Compile Include="SfInputs.fs" />
+    <Compile Include="SfComboBox.fs" />
+    <Compile Include="SfMultiSelect.fs" />
+    <Compile Include="SfDateTimePicker.fs" />
+    <Compile Include="SfTooltip.fs" />
+    <Compile Include="SfKanban.fs" />
     <Compile Include="SfModal.fs" />
     <Compile Include="SfMenuBar.fs" />
     <Compile Include="SfSideBar.fs" />
@@ -62,6 +67,7 @@
       <NpmPackage Name="@syncfusion/ej2-react-treegrid" Version="gte 34.2.0" ResolutionStrategy="Max" />
       <NpmPackage Name="@syncfusion/ej2-react-progressbar" Version="gte 34.2.0" ResolutionStrategy="Max" />
       <NpmPackage Name="@syncfusion/ej2-react-lists" Version="gte 34.2.0" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-react-kanban" Version="gte 34.2.0" ResolutionStrategy="Max" />
     </NpmDependencies>
   </PropertyGroup>
 </Project>
