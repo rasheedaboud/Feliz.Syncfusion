@@ -33,7 +33,7 @@ module DatePicker =
         static member inline change(callback: ChangeEventArgs -> unit) : IDatePickerProperty = unbox ("change", callback)
 
     let inline create (props: IDatePickerProperty list) : ReactElement =
-        ReactLegacy.createElement(unbox pickerComponent, createObj !!props)
+        ReactLegacy.createElement(unbox<ReactElement> pickerComponent, createObj !!props)
 
 module FileUploader =
     let private uploaderComponent: obj = import "UploaderComponent" "@syncfusion/ej2-react-inputs"
@@ -60,7 +60,7 @@ module FileUploader =
         static member inline selected(callback: SelectedEventArgs -> unit) : IFileUploaderProperty = unbox ("selected", callback)
 
     let inline create (props: IFileUploaderProperty list) : ReactElement =
-        ReactLegacy.createElement(unbox uploaderComponent, createObj !!props)
+        ReactLegacy.createElement(unbox<ReactElement> uploaderComponent, createObj !!props)
 
 module SplitButton =
     let private splitButtonComponent: obj = import "SplitButtonComponent" "@syncfusion/ej2-react-splitbuttons"
@@ -87,7 +87,7 @@ module SplitButton =
         static member inline select(callback: MenuEventArgs -> unit) : ISplitButtonProperty = unbox ("select", callback)
 
     let inline create (props: ISplitButtonProperty list) : ReactElement =
-        ReactLegacy.createElement(unbox splitButtonComponent, createObj !!props)
+        ReactLegacy.createElement(unbox<ReactElement> splitButtonComponent, createObj !!props)
 
 module Grid =
     let private gridComponentTyped: obj = import "GridComponent" "@syncfusion/ej2-react-grids"
@@ -194,7 +194,7 @@ module Grid =
         let ContextMenu: obj = import "ContextMenu" "@syncfusion/ej2-react-grids"
 
     let inline injectServices (services: obj list) : ReactElement =
-        ReactLegacy.createElement(unbox injectComponent, createObj [ "services" ==> services ])
+        ReactLegacy.createElement(unbox<ReactElement> injectComponent, createObj [ "services" ==> services ])
 
     let inline create (props: IGridProperty list) : ReactElement =
-        ReactLegacy.createElement(unbox gridComponentTyped, createObj !!props)
+        ReactLegacy.createElement(unbox<ReactElement> gridComponentTyped, createObj !!props)
