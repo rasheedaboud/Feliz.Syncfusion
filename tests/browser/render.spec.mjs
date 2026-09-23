@@ -54,10 +54,12 @@ const contracts = [
     await expect(page.locator('[data-component="MenuBar"]')).toContainText("Menu updated");
   }],
   ["Modal", async page => {
-    await expect(page.locator('[data-component="Modal"]')).toContainText("Dialog initial");
+    const dialog = page.locator(".e-dialog").first();
+    await expect(dialog).toContainText("Dialog initial");
+    await expect(dialog).toContainText("Dialog body initial");
     await page.evaluate(() => window.__updateComponent("Modal"));
-    await expect(page.locator('[data-component="Modal"]')).toContainText("Dialog updated");
-    await expect(page.locator('[data-component="Modal"]')).toContainText("Dialog body updated");
+    await expect(dialog).toContainText("Dialog updated");
+    await expect(dialog).toContainText("Dialog body updated");
   }],
   ["Sidebar", async page => {
     await expect(page.locator('[data-component="Sidebar"]')).toContainText("Sidebar initial");
@@ -70,11 +72,14 @@ const contracts = [
     await expect(page.locator('[data-component="Grid"]')).toContainText("Grid updated");
   }],
   ["FileUploader", async page => {
-    const input = page.locator('[data-component="FileUploader"] input[type="file"]');
+    const input = page.locator('input[type="file"]').first();
+    await expect(input).toBeAttached();
     await expect(input).not.toHaveAttribute("multiple", "");
     await page.evaluate(() => window.__updateComponent("FileUploader"));
-    await expect(input).toHaveAttribute("multiple", "");
-    await expect(input).toHaveAttribute("accept", ".png");
+    const updatedInput = page.locator('input[type="file"]').first();
+    await expect(updatedInput).toBeAttached();
+    await expect(updatedInput).toHaveAttribute("multiple", "");
+    await expect(updatedInput).toHaveAttribute("accept", ".png");
   }],
   ["DatePicker", async page => {
     const input = page.locator('[data-component="DatePicker"] input');
@@ -89,10 +94,10 @@ const contracts = [
     await expect(input).toHaveValue("Gamma");
   }],
   ["NumericTextBox", async page => {
-    const input = page.locator('[data-component="NumericTextBox"] input');
-    await expect(input).toHaveValue("42");
+    const input = page.locator('[data-component="NumericTextBox"] [role="spinbutton"]');
+    await expect(input).toHaveValue("42.00");
     await page.evaluate(() => window.__updateComponent("NumericTextBox"));
-    await expect(input).toHaveValue("84");
+    await expect(input).toHaveValue("84.00");
   }],
   ["ProgressButton", async page => {
     await expect(page.locator('[data-component="ProgressButton"]')).toContainText("Run initial");

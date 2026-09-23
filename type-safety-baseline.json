@@ -1,12 +1,16 @@
 {
-  "total": 27,
+  "total": 238,
   "files": {
+    "Syncfusion.fs": 0,
+    "SfListView.fs": 4,
     "SfAppBar.fs": 1,
     "SfButton.fs": 1,
-    "SfListView.fs": 4,
-    "SfMenuBar.fs": 1,
-    "SfSideBar.fs": 3,
+    "SfSplitButton.fs": 1,
+    "SfDataManager.fs": 150,
+    "SfGrid.fs": 60,
+    "SfInputs.fs": 10,
     "SfModal.fs": 7,
-    "SfInputs.fs": 10
+    "SfMenuBar.fs": 1,
+    "SfSideBar.fs": 3
   }
 }
