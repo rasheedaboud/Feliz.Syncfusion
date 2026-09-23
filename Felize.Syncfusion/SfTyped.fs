@@ -103,10 +103,24 @@ module Grid =
         format: string option
     }
 
+    [<StringEnum; RequireQualifiedAccess>]
+    type SortDirection = Ascending | Descending
+
+    [<StringEnum; RequireQualifiedAccess>]
+    type FilterType = FilterBar | Menu | Excel | CheckBox
+
+    [<StringEnum; RequireQualifiedAccess>]
+    type SelectionType = Single | Multiple
+
+    [<StringEnum; RequireQualifiedAccess>]
+    type SelectionMode = Row | Cell | Both
+
     type GroupSettings = { columns: string array }
-    type SortSettings = { columns: obj array }
-    type FilterSettings = { filterType: string option; columns: obj array option }
-    type SelectionSettings = { selectionType: string option; mode: string option }
+    type SortColumn = { field: string; direction: SortDirection }
+    type SortSettings = { columns: SortColumn array }
+    type FilterColumn = { field: string; operatorName: string; value: obj }
+    type FilterSettings = { filterType: FilterType option; columns: FilterColumn array option }
+    type SelectionSettings = { selectionType: SelectionType option; mode: SelectionMode option }
 
     [<AllowNullLiteral>]
     type RowSelectEventArgs<'T> =
@@ -137,7 +151,7 @@ module Grid =
     type prop =
         static member inline dataSource(value: 'T array) : IGridProperty = unbox ("dataSource", value)
         static member inline columns(value: Column<'T> array) : IGridProperty = unbox ("columns", value)
-        static member inline query(value: obj) : IGridProperty = unbox ("query", value)
+        static member inline query(value: Data.Query) : IGridProperty = unbox ("query", value)
         static member inline allowPaging(value: bool) : IGridProperty = unbox ("allowPaging", value)
         static member inline allowSorting(value: bool) : IGridProperty = unbox ("allowSorting", value)
         static member inline allowFiltering(value: bool) : IGridProperty = unbox ("allowFiltering", value)
@@ -160,11 +174,12 @@ module Grid =
         static member inline rowDataBound(callback: RowDataBoundEventArgs<'T> -> unit) : IGridProperty = unbox ("rowDataBound", callback)
         static member inline detailDataBound(callback: DetailDataBoundEventArgs<'T> -> unit) : IGridProperty = unbox ("detailDataBound", callback)
         static member inline contextMenuClick(callback: ContextMenuClickEventArgs<'T> -> unit) : IGridProperty = unbox ("contextMenuClick", callback)
+        static member inline children(value: ReactElement list) : IGridProperty = unbox ("children", value)
 
     [<RequireQualifiedAccess>]
     module service =
         let Page: obj = import "Page" "@syncfusion/ej2-react-grids"
-        let Pager: obj = import "Pager" "@syncfusion/ej2-react-grids"
+        let Pager: obj = import "Pager" "@syncfusion/ej2-grids"
         let Filter: obj = import "Filter" "@syncfusion/ej2-react-grids"
         let Sort: obj = import "Sort" "@syncfusion/ej2-react-grids"
         let Group: obj = import "Group" "@syncfusion/ej2-react-grids"
