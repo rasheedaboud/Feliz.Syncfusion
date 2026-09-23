@@ -6,6 +6,13 @@ const packages = [
   "@syncfusion/ej2",
   "@syncfusion/ej2-base",
   "@syncfusion/ej2-data",
+  "@syncfusion/ej2-grids",
+  "@syncfusion/ej2-inputs",
+  "@syncfusion/ej2-popups",
+  "@syncfusion/ej2-dropdowns",
+  "@syncfusion/ej2-calendars",
+  "@syncfusion/ej2-splitbuttons",
+  "@syncfusion/ej2-kanban",
   "@syncfusion/ej2-react-buttons",
   "@syncfusion/ej2-react-calendars",
   "@syncfusion/ej2-react-dropdowns",
@@ -14,7 +21,8 @@ const packages = [
   "@syncfusion/ej2-react-lists",
   "@syncfusion/ej2-react-navigations",
   "@syncfusion/ej2-react-popups",
-  "@syncfusion/ej2-react-splitbuttons"
+  "@syncfusion/ej2-react-splitbuttons",
+  "@syncfusion/ej2-react-kanban"
 ];
 
 function command(cmd, args) {
