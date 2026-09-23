@@ -1,29 +1,21 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.1</TargetFrameworks>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageId>Feliz.Syncfusion</PackageId>
     <Title>Feliz.Syncfusion</Title>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-	<Version>0.2.0</Version>
+    <Version>0.3.0</Version>
     <Authors>Rasheed Aboud</Authors>
     <Company>ARMM Services</Company>
-    <Description>Feliz style bindings for a handfull of Syncfusion React controls. </Description>
-    <Summary>Feliz style bindings for a handfull of Syncfusion React controls.</Summary>
-    <PackageTags>feliz; fsharp; syncfusion; fable;fable-binding;fable-javascript; safe</PackageTags>
-    <RepositoryUrl>https://github.com/rasheedaboud/Felize.Syncfusion</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/rasheedaboud/Felize.Syncfusion</PackageProjectUrl>
+    <Description>Feliz style bindings for a handful of Syncfusion React controls.</Description>
+    <Summary>Feliz style bindings for a handful of Syncfusion React controls.</Summary>
+    <PackageTags>feliz;fsharp;syncfusion;fable;fable-binding;fable-javascript;safe</PackageTags>
+    <RepositoryUrl>https://github.com/rasheedaboud/Feliz.Syncfusion</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/rasheedaboud/Feliz.Syncfusion</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageReleaseNotes>
-		Updated package to support dotnet 8.
-		Fixed:
-		1. Update Listview datasource model to take specific type that renders properly.
-		2. Fixed Button click handler to target right attribute.
-		3. Removed paket.
-		4. Cleaned up liscence provider.
-		5. Removed dependancies on Fable.Core
-	</PackageReleaseNotes>
+    <PackageReleaseNotes>Updated the supported toolchain to .NET 10 / F# 10 and Fable 5.17.2. Updated Feliz to 3.3.3 and the Syncfusion EJ2 React dependency baseline to 34.2.x.</PackageReleaseNotes>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Syncfusion.fs" />
@@ -39,32 +31,29 @@
     <Compile Include="SfSideBar.fs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Update="FSharp.Core" Version="8.0.100" />
-    <PackageReference Include="Feliz" Version="2.7.0" />
-	<Content Include="*.fsproj; **\*.fs; **\*.fsi" PackagePath="fable\" />
+    <PackageReference Update="FSharp.Core" Version="10.1.401" />
+    <PackageReference Include="Feliz" Version="3.3.3" />
+    <Content Include="*.fsproj; **\*.fs; **\*.fsi" PackagePath="fable\" />
   </ItemGroup>
   <PropertyGroup>
     <NpmDependencies>
-      <NpmPackage Name="@syncfusion/ej2-base" Version="gte 20.3.48" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-react-navigations" Version="gte 20.3.48" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-data" Version="gte 20.3.47" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-base" Version="gte 20.3.48" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-react-grids" Version="gte 20.3.48" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-react-buttons" Version="gte 20.3.48" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-react-dropdowns" Version="gte 20.3.48" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-react-calendars" Version="gte 20.3.48" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-react-inputs" Version="gte 20.3.47" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-react-charts" Version="gte 20.3.48" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-react-popups" Version="gte 20.3.48" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-react-schedule" Version="gte 20.3.47" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-react-gantt" Version="gte 20.3.48" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-react-notifications" Version="gte 20.3.47" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-react-filemanager" Version="gte 20.3.47" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-react-charts" Version="gte 20.3.48" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-react-treegrid" Version="gte 20.3.48" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-react-progressbar" Version="gte 20.3.47" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-react-lists" Version="gte 20.3.47" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-base" Version="gte 20.3.49" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-base" Version="gte 34.2.0" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-react-navigations" Version="gte 34.2.0" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-data" Version="gte 34.2.0" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-react-grids" Version="gte 34.2.0" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-react-buttons" Version="gte 34.2.0" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-react-dropdowns" Version="gte 34.2.0" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-react-calendars" Version="gte 34.2.0" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-react-inputs" Version="gte 34.2.0" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-react-charts" Version="gte 34.2.0" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-react-popups" Version="gte 34.2.0" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-react-schedule" Version="gte 34.2.0" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-react-gantt" Version="gte 34.2.0" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-react-notifications" Version="gte 34.2.0" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-react-filemanager" Version="gte 34.2.0" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-react-treegrid" Version="gte 34.2.0" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-react-progressbar" Version="gte 34.2.0" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-react-lists" Version="gte 34.2.0" ResolutionStrategy="Max" />
     </NpmDependencies>
   </PropertyGroup>
 </Project>
