@@ -25,8 +25,10 @@ module Data =
     type private RawPredicate(field: string, operatorName: string, value: obj, ?ignoreCase: bool) =
         class end
 
-    let private makePredicate field operatorName value ignoreCase : IPredicate =
-        RawPredicate(field, operatorName, value, ignoreCase) |> unbox
+    let private makePredicate field operatorName value (ignoreCase: bool option) : IPredicate =
+        match ignoreCase with
+        | Some flag -> RawPredicate(field, operatorName, value, flag) |> unbox
+        | None -> RawPredicate(field, operatorName, value) |> unbox
 
     [<Emit("$0.and($1)")>]
     let andAlso (left: IPredicate) (right: IPredicate) : IPredicate = jsNative
