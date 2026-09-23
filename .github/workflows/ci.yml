@@ -59,3 +59,62 @@ jobs:
         with:
           name: playwright-report
           path: playwright-report
+
+  latest-audit-package:
+    name: latest-audit-package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: "10.0.x"
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "24"
+
+      - name: Restore and update Fable to latest stable
+        run: |
+          dotnet tool restore
+          dotnet tool update fable --local
+
+      - name: Install latest Syncfusion packages
+        run: |
+          npm install
+          npm install --no-save             @syncfusion/ej2@latest             @syncfusion/ej2-base@latest             @syncfusion/ej2-data@latest             @syncfusion/ej2-react-buttons@latest             @syncfusion/ej2-react-calendars@latest             @syncfusion/ej2-react-dropdowns@latest             @syncfusion/ej2-react-grids@latest             @syncfusion/ej2-react-inputs@latest             @syncfusion/ej2-react-lists@latest             @syncfusion/ej2-react-navigations@latest             @syncfusion/ej2-react-popups@latest             @syncfusion/ej2-react-splitbuttons@latest
+
+      - name: Capture audited versions
+        run: node scripts/write-audit-manifest.mjs artifacts/audit-manifest.json
+
+      - name: Restore and compile bindings
+        run: |
+          dotnet restore Feliz.Syncfusion.sln
+          dotnet build Feliz.Syncfusion.sln -c Release --no-restore
+          npm run fable:build
+          npm run verify:exports
+          npm run verify:type-safety
+
+      - name: Mount and update every component
+        run: |
+          npx playwright install --with-deps chromium
+          npm run test:browser
+
+      - name: Generate audit NuGet package
+        run: |
+          dotnet pack Felize.Syncfusion/Feliz.Syncfusion.fsproj             -c Release             --no-build             -p:PackageVersion=0.3.0-ci.${{ github.run_number }}             -o artifacts/audit-package
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Feliz.Syncfusion-latest-audit-${{ github.run_number }}
+          path: |
+            artifacts/audit-package/*.nupkg
+            artifacts/audit-manifest.json
+          retention-days: 30
+
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: latest-audit-failure-${{ github.run_number }}
+          path: |
+            artifacts/audit-manifest.json
+            playwright-report
+          if-no-files-found: ignore
