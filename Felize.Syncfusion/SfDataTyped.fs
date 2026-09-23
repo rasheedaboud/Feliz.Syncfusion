@@ -69,6 +69,14 @@ module Data =
         adaptor: JsonAdaptor
     }
 
+    [<AllowNullLiteral>]
+    type CountedDataResult<'T> =
+        abstract count: float option
+        abstract result: ResizeArray<'T> option
+
     [<Import("DataManager","@syncfusion/ej2-data")>]
     type DataManager<'T>(options: DataManagerOptions<'T>) =
-        member _.executeLocal(?query: Query): ResizeArray<'T> = jsNative
+        member _.executeLocal(?query: Query): U2<ResizeArray<'T>, CountedDataResult<'T>> = jsNative
+
+    let createLocal (data: 'T array) =
+        DataManager<'T>({ json = data; adaptor = JsonAdaptor() })
