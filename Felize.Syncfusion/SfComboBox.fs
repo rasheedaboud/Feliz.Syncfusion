@@ -34,5 +34,5 @@ module SfComboBox =
         static member inline change(callback: ChangeEventArgs -> unit) : ISfComboBoxProperty = unbox ("change", callback)
         static member inline select(callback: SelectEventArgs -> unit) : ISfComboBoxProperty = unbox ("select", callback)
 
-    let inline create (props: ISfComboBoxProperty list) : ReactElement =
+    let create (props: ISfComboBoxProperty list) : ReactElement =
         ReactLegacy.createElement(unbox<ReactElement> syncfusionComponent, createObj !!props)
