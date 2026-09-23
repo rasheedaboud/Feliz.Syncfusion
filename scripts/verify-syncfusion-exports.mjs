@@ -16,7 +16,8 @@ const expected = {
 
 const failures = [];
 for (const [pkg, names] of Object.entries(expected)) {
-  const mod = await import(pkg);
+  const imported = await import(pkg);
+  const mod = imported.default ?? imported;
   for (const name of names) if (!(name in mod)) failures.push(`${pkg} missing export ${name}`);
 }
 

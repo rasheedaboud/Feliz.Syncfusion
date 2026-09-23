@@ -21,5 +21,5 @@ module Interop =
 
     [<RequireQualifiedAccess>]
     module reactApi =
-        let inline createElement (component: obj, props: obj) : ReactElement =
-            ReactLegacy.createElement(unbox<ReactElement> component, props)
+        let inline createElement (importedComponent: obj, props: obj) : ReactElement =
+            ReactLegacy.createElement(unbox<ReactElement> importedComponent, props)

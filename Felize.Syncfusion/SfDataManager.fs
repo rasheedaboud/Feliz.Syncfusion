@@ -1063,7 +1063,7 @@ module SfDataManager =
     type OdataV4Adaptor()=
         class end
 
-    [<Import("WebApiAdaptor ","@syncfusion/ej2-data")>]
+    [<Import("WebApiAdaptor","@syncfusion/ej2-data")>]
     let WebApiAdaptor: WebApiAdaptor  = jsNative
 
 
