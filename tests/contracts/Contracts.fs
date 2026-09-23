@@ -69,7 +69,7 @@ let private renderDateTime value =
         DateTimePicker.prop.step 30
     ]
 
-let private renderTooltip content =
+let private renderTooltip (content: string) =
     Tooltip.create [
         Tooltip.prop.content content
         Tooltip.prop.position Tooltip.Position.TopCenter
@@ -136,7 +136,6 @@ let private renderGrid rows =
         ]
     ]
 
-[<Export("mountAll")>]
 let mountAll () =
     render "typed-combo" (renderCombo "Alpha")
     render "typed-multi" (renderMulti [| "One" |])
@@ -148,7 +147,6 @@ let mountAll () =
     render "typed-split" (renderSplit "Export initial")
     render "typed-grid" (renderGrid initialRows)
 
-[<Export("updateAll")>]
 let updateAll () =
     render "typed-combo" (renderCombo "Beta")
     render "typed-multi" (renderMulti [| "Two" |])
@@ -160,7 +158,6 @@ let updateAll () =
     render "typed-split" (renderSplit "Export updated")
     render "typed-grid" (renderGrid updatedRows)
 
-[<Export("dataQueryCount")>]
 let dataQueryCount () =
     let query =
         Data.Query()
