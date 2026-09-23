@@ -19,32 +19,40 @@ module Data =
         | [<CompiledName("lessthan")>] LessThan
         | [<CompiledName("lessthanorequal")>] LessThanOrEqual
 
+    type IPredicate = interface end
+
     [<Import("Predicate","@syncfusion/ej2-data")>]
-    type Predicate(field: string, operatorName: string, value: obj, ?ignoreCase: bool) =
-        [<Emit("$0.and($1)")>]
-        member _.andAlso(other: Predicate): Predicate = jsNative
-        [<Emit("$0.or($1)")>]
-        member _.orElse(other: Predicate): Predicate = jsNative
+    type private RawPredicate(field: string, operatorName: string, value: obj, ?ignoreCase: bool) =
+        class end
+
+    let private makePredicate field operatorName value ignoreCase : IPredicate =
+        RawPredicate(field, operatorName, value, ignoreCase) |> unbox
+
+    [<Emit("$0.and($1)")>]
+    let andAlso (left: IPredicate) (right: IPredicate) : IPredicate = jsNative
+
+    [<Emit("$0.or($1)")>]
+    let orElse (left: IPredicate) (right: IPredicate) : IPredicate = jsNative
 
     let private operatorName (operatorValue: FilterOperator) : string = unbox operatorValue
 
     let predicateString field operatorValue value ignoreCase =
-        Predicate(field, operatorName operatorValue, box value, ignoreCase)
+        makePredicate field (operatorName operatorValue) (box value) (Some ignoreCase)
 
     let predicateNumber field operatorValue (value: float) =
-        Predicate(field, operatorName operatorValue, box value)
+        makePredicate field (operatorName operatorValue) (box value) None
 
     let predicateBool field operatorValue (value: bool) =
-        Predicate(field, operatorName operatorValue, box value)
+        makePredicate field (operatorName operatorValue) (box value) None
 
     let predicateDate field operatorValue (value: DateTime) =
-        Predicate(field, operatorName operatorValue, box value)
+        makePredicate field (operatorName operatorValue) (box value) None
 
     [<Import("Query","@syncfusion/ej2-data")>]
     type Query() =
         member _.clone(): Query = jsNative
         member _.requiresCount(): Query = jsNative
-        member _.where(predicate: Predicate): Query = jsNative
+        member _.where(predicate: IPredicate): Query = jsNative
         member _.search(searchKey: string, fieldNames: string array, ?operatorName: string, ?ignoreCase: bool): Query = jsNative
         member _.sortBy(fieldName: string, ?direction: string): Query = jsNative
         member _.isCountRequired: bool = jsNative
