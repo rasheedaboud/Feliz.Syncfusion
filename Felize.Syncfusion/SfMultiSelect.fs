@@ -29,5 +29,5 @@ module SfMultiSelect =
         static member inline cssClass(value: string) : ISfMultiSelectProperty = unbox ("cssClass", value)
         static member inline change(callback: ChangeEventArgs -> unit) : ISfMultiSelectProperty = unbox ("change", callback)
 
-    let inline create (props: ISfMultiSelectProperty list) : ReactElement =
+    let create (props: ISfMultiSelectProperty list) : ReactElement =
         ReactLegacy.createElement(unbox<ReactElement> syncfusionComponent, createObj !!props)
