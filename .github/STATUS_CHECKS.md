@@ -4,7 +4,6 @@ Protect `master` and require these CI job checks before merge:
 
 - `build`
 - `browser-render`
-- `mutation`
 
 Recommended branch settings: require pull request review, dismiss stale approvals, require branches to be up to date, block force pushes and deletions.
 
