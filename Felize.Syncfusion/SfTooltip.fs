@@ -8,7 +8,7 @@ open Browser.Types
 type ISfTooltipProperty = interface end
 
 module SfTooltip =
-    let private component: obj = import "TooltipComponent" "@syncfusion/ej2-react-popups"
+    let private syncfusionComponent: obj = import "TooltipComponent" "@syncfusion/ej2-react-popups"
 
     [<StringEnum; RequireQualifiedAccess>]
     type Position = TopCenter | BottomCenter | LeftCenter | RightCenter | TopLeft | TopRight | BottomLeft | BottomRight
@@ -34,4 +34,4 @@ module SfTooltip =
         static member inline children(value: ReactElement list) : ISfTooltipProperty = unbox ("children", value)
 
     let inline create (props: ISfTooltipProperty list) : ReactElement =
-        ReactLegacy.createElement(unbox component, createObj !!props)
+        ReactLegacy.createElement(unbox<ReactElement> syncfusionComponent, createObj !!props)
