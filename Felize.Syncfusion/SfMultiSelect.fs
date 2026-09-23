@@ -7,7 +7,7 @@ open Feliz
 type ISfMultiSelectProperty = interface end
 
 module SfMultiSelect =
-    let private component: obj = import "MultiSelectComponent" "@syncfusion/ej2-react-dropdowns"
+    let private syncfusionComponent: obj = import "MultiSelectComponent" "@syncfusion/ej2-react-dropdowns"
 
     [<StringEnum; RequireQualifiedAccess>]
     type Mode = Box | Default | Delimiter | CheckBox
@@ -30,4 +30,4 @@ module SfMultiSelect =
         static member inline change(callback: ChangeEventArgs -> unit) : ISfMultiSelectProperty = unbox ("change", callback)
 
     let inline create (props: ISfMultiSelectProperty list) : ReactElement =
-        ReactLegacy.createElement(unbox component, createObj !!props)
+        ReactLegacy.createElement(unbox<ReactElement> syncfusionComponent, createObj !!props)
