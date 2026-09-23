@@ -1,0 +1,184 @@
+namespace Syncfusion.Typed
+
+open System
+open Browser.Types
+open Fable.Core
+open Fable.Core.JsInterop
+open Feliz
+
+type IDatePickerProperty = interface end
+type IFileUploaderProperty = interface end
+type ISplitButtonProperty = interface end
+type IGridProperty = interface end
+
+module DatePicker =
+    let private pickerComponent: obj = import "DatePickerComponent" "@syncfusion/ej2-react-calendars"
+
+    [<AllowNullLiteral>]
+    type ChangeEventArgs =
+        abstract value: DateTime option
+        abstract element: HTMLInputElement option
+        abstract isInteracted: bool option
+
+    [<Erase>]
+    type prop =
+        static member inline value(value: DateTime) : IDatePickerProperty = unbox ("value", value)
+        static member inline format(value: string) : IDatePickerProperty = unbox ("format", value)
+        static member inline placeholder(value: string) : IDatePickerProperty = unbox ("placeholder", value)
+        static member inline readonly(value: bool) : IDatePickerProperty = unbox ("readonly", value)
+        static member inline enabled(value: bool) : IDatePickerProperty = unbox ("enabled", value)
+        static member inline min(value: DateTime) : IDatePickerProperty = unbox ("min", value)
+        static member inline max(value: DateTime) : IDatePickerProperty = unbox ("max", value)
+        static member inline cssClass(value: string) : IDatePickerProperty = unbox ("cssClass", value)
+        static member inline change(callback: ChangeEventArgs -> unit) : IDatePickerProperty = unbox ("change", callback)
+
+    let inline create (props: IDatePickerProperty list) : ReactElement =
+        ReactLegacy.createElement(unbox pickerComponent, createObj !!props)
+
+module FileUploader =
+    let private uploaderComponent: obj = import "UploaderComponent" "@syncfusion/ej2-react-inputs"
+
+    [<AllowNullLiteral>]
+    type FileInfo =
+        abstract name: string
+        abstract size: float
+        abstract fileType: string
+        abstract rawFile: File option
+
+    [<AllowNullLiteral>]
+    type SelectedEventArgs =
+        abstract filesData: ResizeArray<FileInfo>
+        abstract cancel: bool with get, set
+
+    [<Erase>]
+    type prop =
+        static member inline allowedExtensions(value: string) : IFileUploaderProperty = unbox ("allowedExtensions", value)
+        static member inline maxFileSize(value: float) : IFileUploaderProperty = unbox ("maxFileSize", value)
+        static member inline multiple(value: bool) : IFileUploaderProperty = unbox ("multiple", value)
+        static member inline autoUpload(value: bool) : IFileUploaderProperty = unbox ("autoUpload", value)
+        static member inline cssClass(value: string) : IFileUploaderProperty = unbox ("cssClass", value)
+        static member inline selected(callback: SelectedEventArgs -> unit) : IFileUploaderProperty = unbox ("selected", callback)
+
+    let inline create (props: IFileUploaderProperty list) : ReactElement =
+        ReactLegacy.createElement(unbox uploaderComponent, createObj !!props)
+
+module SplitButton =
+    let private splitButtonComponent: obj = import "SplitButtonComponent" "@syncfusion/ej2-react-splitbuttons"
+
+    type Item = {
+        id: string
+        text: string
+        iconCss: string option
+        disabled: bool option
+    }
+
+    [<AllowNullLiteral>]
+    type MenuEventArgs =
+        abstract item: Item
+
+    [<Erase>]
+    type prop =
+        static member inline content(value: string) : ISplitButtonProperty = unbox ("content", value)
+        static member inline iconCss(value: string) : ISplitButtonProperty = unbox ("iconCss", value)
+        static member inline cssClass(value: string) : ISplitButtonProperty = unbox ("cssClass", value)
+        static member inline disabled(value: bool) : ISplitButtonProperty = unbox ("disabled", value)
+        static member inline items(value: Item array) : ISplitButtonProperty = unbox ("items", value)
+        static member inline click(callback: MouseEvent -> unit) : ISplitButtonProperty = unbox ("click", callback)
+        static member inline select(callback: MenuEventArgs -> unit) : ISplitButtonProperty = unbox ("select", callback)
+
+    let inline create (props: ISplitButtonProperty list) : ReactElement =
+        ReactLegacy.createElement(unbox splitButtonComponent, createObj !!props)
+
+module Grid =
+    let private gridComponentTyped: obj = import "GridComponent" "@syncfusion/ej2-react-grids"
+    let private injectComponent: obj = import "Inject" "@syncfusion/ej2-react-grids"
+
+    type Column<'T> = {
+        field: string
+        headerText: string
+        width: float option
+        visible: bool option
+        isPrimaryKey: bool option
+        columnType: string option
+        format: string option
+    }
+
+    type GroupSettings = { columns: string array }
+    type SortSettings = { columns: obj array }
+    type FilterSettings = { filterType: string option; columns: obj array option }
+    type SelectionSettings = { selectionType: string option; mode: string option }
+
+    [<AllowNullLiteral>]
+    type RowSelectEventArgs<'T> =
+        abstract data: 'T
+        abstract rowIndex: float option
+
+    [<AllowNullLiteral>]
+    type RecordDoubleClickEventArgs<'T> =
+        abstract rowData: 'T
+        abstract rowIndex: float option
+
+    [<AllowNullLiteral>]
+    type RowDataBoundEventArgs<'T> =
+        abstract data: 'T
+        abstract row: HTMLElement
+
+    [<AllowNullLiteral>]
+    type DetailDataBoundEventArgs<'T> =
+        abstract data: 'T
+        abstract detailElement: HTMLElement
+
+    [<AllowNullLiteral>]
+    type ContextMenuClickEventArgs<'T> =
+        abstract item: obj
+        abstract rowInfo: obj option
+
+    [<Erase>]
+    type prop =
+        static member inline dataSource(value: 'T array) : IGridProperty = unbox ("dataSource", value)
+        static member inline columns(value: Column<'T> array) : IGridProperty = unbox ("columns", value)
+        static member inline query(value: obj) : IGridProperty = unbox ("query", value)
+        static member inline allowPaging(value: bool) : IGridProperty = unbox ("allowPaging", value)
+        static member inline allowSorting(value: bool) : IGridProperty = unbox ("allowSorting", value)
+        static member inline allowFiltering(value: bool) : IGridProperty = unbox ("allowFiltering", value)
+        static member inline allowGrouping(value: bool) : IGridProperty = unbox ("allowGrouping", value)
+        static member inline allowExcelExport(value: bool) : IGridProperty = unbox ("allowExcelExport", value)
+        static member inline allowResizing(value: bool) : IGridProperty = unbox ("allowResizing", value)
+        static member inline allowReordering(value: bool) : IGridProperty = unbox ("allowReordering", value)
+        static member inline allowSelection(value: bool) : IGridProperty = unbox ("allowSelection", value)
+        static member inline enableImmutableMode(value: bool) : IGridProperty = unbox ("enableImmutableMode", value)
+        static member inline showColumnChooser(value: bool) : IGridProperty = unbox ("showColumnChooser", value)
+        static member inline showColumnMenu(value: bool) : IGridProperty = unbox ("showColumnMenu", value)
+        static member inline groupSettings(value: GroupSettings) : IGridProperty = unbox ("groupSettings", value)
+        static member inline sortSettings(value: SortSettings) : IGridProperty = unbox ("sortSettings", value)
+        static member inline filterSettings(value: FilterSettings) : IGridProperty = unbox ("filterSettings", value)
+        static member inline selectionSettings(value: SelectionSettings) : IGridProperty = unbox ("selectionSettings", value)
+        static member inline height(value: string) : IGridProperty = unbox ("height", value)
+        static member inline width(value: string) : IGridProperty = unbox ("width", value)
+        static member inline rowSelected(callback: RowSelectEventArgs<'T> -> unit) : IGridProperty = unbox ("rowSelected", callback)
+        static member inline recordDoubleClick(callback: RecordDoubleClickEventArgs<'T> -> unit) : IGridProperty = unbox ("recordDoubleClick", callback)
+        static member inline rowDataBound(callback: RowDataBoundEventArgs<'T> -> unit) : IGridProperty = unbox ("rowDataBound", callback)
+        static member inline detailDataBound(callback: DetailDataBoundEventArgs<'T> -> unit) : IGridProperty = unbox ("detailDataBound", callback)
+        static member inline contextMenuClick(callback: ContextMenuClickEventArgs<'T> -> unit) : IGridProperty = unbox ("contextMenuClick", callback)
+
+    [<RequireQualifiedAccess>]
+    module service =
+        let Page: obj = import "Page" "@syncfusion/ej2-react-grids"
+        let Pager: obj = import "Pager" "@syncfusion/ej2-react-grids"
+        let Filter: obj = import "Filter" "@syncfusion/ej2-react-grids"
+        let Sort: obj = import "Sort" "@syncfusion/ej2-react-grids"
+        let Group: obj = import "Group" "@syncfusion/ej2-react-grids"
+        let Selection: obj = import "Selection" "@syncfusion/ej2-react-grids"
+        let ExcelExport: obj = import "ExcelExport" "@syncfusion/ej2-react-grids"
+        let Resize: obj = import "Resize" "@syncfusion/ej2-react-grids"
+        let Reorder: obj = import "Reorder" "@syncfusion/ej2-react-grids"
+        let DetailRow: obj = import "DetailRow" "@syncfusion/ej2-react-grids"
+        let ColumnChooser: obj = import "ColumnChooser" "@syncfusion/ej2-react-grids"
+        let ColumnMenu: obj = import "ColumnMenu" "@syncfusion/ej2-react-grids"
+        let ContextMenu: obj = import "ContextMenu" "@syncfusion/ej2-react-grids"
+
+    let inline injectServices (services: obj list) : ReactElement =
+        ReactLegacy.createElement(unbox injectComponent, createObj [ "services" ==> services ])
+
+    let inline create (props: IGridProperty list) : ReactElement =
+        ReactLegacy.createElement(unbox gridComponentTyped, createObj !!props)
