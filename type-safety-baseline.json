@@ -1,5 +1,5 @@
 {
-  "total": 270,
+  "total": 239,
   "files": {
     "Syncfusion.fs": 0,
     "SfListView.fs": 4,
@@ -12,12 +12,12 @@
     "SfModal.fs": 7,
     "SfMenuBar.fs": 1,
     "SfSideBar.fs": 3,
-    "SfComboBox.fs": 3,
-    "SfMultiSelect.fs": 2,
-    "SfDateTimePicker.fs": 1,
-    "SfTooltip.fs": 1,
-    "SfKanban.fs": 3,
-    "SfTyped.fs": 21,
+    "SfComboBox.fs": 0,
+    "SfMultiSelect.fs": 0,
+    "SfDateTimePicker.fs": 0,
+    "SfTooltip.fs": 0,
+    "SfKanban.fs": 0,
+    "SfTyped.fs": 0,
     "SfDataTyped.fs": 1
   }
 }
