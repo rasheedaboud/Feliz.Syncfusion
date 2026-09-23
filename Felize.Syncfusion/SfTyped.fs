@@ -12,7 +12,7 @@ type ISplitButtonProperty = interface end
 type IGridProperty = interface end
 
 module DatePicker =
-    let private pickerComponent: obj = import "DatePickerComponent" "@syncfusion/ej2-react-calendars"
+    let private pickerComponent: ReactElement = import "DatePickerComponent" "@syncfusion/ej2-react-calendars"
 
     [<AllowNullLiteral>]
     type ChangeEventArgs =
@@ -33,10 +33,10 @@ module DatePicker =
         static member inline change(callback: ChangeEventArgs -> unit) : IDatePickerProperty = unbox ("change", callback)
 
     let create (props: IDatePickerProperty list) : ReactElement =
-        ReactLegacy.createElement(unbox<ReactElement> pickerComponent, createObj !!props)
+        ReactLegacy.createElement(pickerComponent, createObj !!props)
 
 module FileUploader =
-    let private uploaderComponent: obj = import "UploaderComponent" "@syncfusion/ej2-react-inputs"
+    let private uploaderComponent: ReactElement = import "UploaderComponent" "@syncfusion/ej2-react-inputs"
 
     [<AllowNullLiteral>]
     type FileInfo =
@@ -60,10 +60,10 @@ module FileUploader =
         static member inline selected(callback: SelectedEventArgs -> unit) : IFileUploaderProperty = unbox ("selected", callback)
 
     let create (props: IFileUploaderProperty list) : ReactElement =
-        ReactLegacy.createElement(unbox<ReactElement> uploaderComponent, createObj !!props)
+        ReactLegacy.createElement(uploaderComponent, createObj !!props)
 
 module SplitButton =
-    let private splitButtonComponent: obj = import "SplitButtonComponent" "@syncfusion/ej2-react-splitbuttons"
+    let private splitButtonComponent: ReactElement = import "SplitButtonComponent" "@syncfusion/ej2-react-splitbuttons"
 
     type Item = {
         id: string
@@ -87,11 +87,11 @@ module SplitButton =
         static member inline select(callback: MenuEventArgs -> unit) : ISplitButtonProperty = unbox ("select", callback)
 
     let create (props: ISplitButtonProperty list) : ReactElement =
-        ReactLegacy.createElement(unbox<ReactElement> splitButtonComponent, createObj !!props)
+        ReactLegacy.createElement(splitButtonComponent, createObj !!props)
 
 module Grid =
-    let private gridComponentTyped: obj = import "GridComponent" "@syncfusion/ej2-react-grids"
-    let private injectComponent: obj = import "Inject" "@syncfusion/ej2-react-grids"
+    let private gridComponentTyped: ReactElement = import "GridComponent" "@syncfusion/ej2-react-grids"
+    let private injectComponent: ReactElement = import "Inject" "@syncfusion/ej2-react-grids"
 
     type Column<'T> = {
         field: string
@@ -144,9 +144,20 @@ module Grid =
         abstract detailElement: HTMLElement
 
     [<AllowNullLiteral>]
+    type ContextMenuItem =
+        abstract id: string option
+        abstract text: string option
+
+    [<AllowNullLiteral>]
+    type RowInfo<'T> =
+        abstract rowData: 'T option
+
+    [<AllowNullLiteral>]
     type ContextMenuClickEventArgs<'T> =
-        abstract item: obj
-        abstract rowInfo: obj option
+        abstract item: ContextMenuItem
+        abstract rowInfo: RowInfo<'T> option
+
+    type IGridService = interface end
 
     [<Erase>]
     type prop =
@@ -179,22 +190,22 @@ module Grid =
 
     [<RequireQualifiedAccess>]
     module service =
-        let Page: obj = import "Page" "@syncfusion/ej2-react-grids"
-        let Pager: obj = import "Pager" "@syncfusion/ej2-grids"
-        let Filter: obj = import "Filter" "@syncfusion/ej2-react-grids"
-        let Sort: obj = import "Sort" "@syncfusion/ej2-react-grids"
-        let Group: obj = import "Group" "@syncfusion/ej2-react-grids"
-        let Selection: obj = import "Selection" "@syncfusion/ej2-react-grids"
-        let ExcelExport: obj = import "ExcelExport" "@syncfusion/ej2-react-grids"
-        let Resize: obj = import "Resize" "@syncfusion/ej2-react-grids"
-        let Reorder: obj = import "Reorder" "@syncfusion/ej2-react-grids"
-        let DetailRow: obj = import "DetailRow" "@syncfusion/ej2-react-grids"
-        let ColumnChooser: obj = import "ColumnChooser" "@syncfusion/ej2-react-grids"
-        let ColumnMenu: obj = import "ColumnMenu" "@syncfusion/ej2-react-grids"
-        let ContextMenu: obj = import "ContextMenu" "@syncfusion/ej2-react-grids"
+        let Page: IGridService = import "Page" "@syncfusion/ej2-react-grids"
+        let Pager: IGridService = import "Pager" "@syncfusion/ej2-grids"
+        let Filter: IGridService = import "Filter" "@syncfusion/ej2-react-grids"
+        let Sort: IGridService = import "Sort" "@syncfusion/ej2-react-grids"
+        let Group: IGridService = import "Group" "@syncfusion/ej2-react-grids"
+        let Selection: IGridService = import "Selection" "@syncfusion/ej2-react-grids"
+        let ExcelExport: IGridService = import "ExcelExport" "@syncfusion/ej2-react-grids"
+        let Resize: IGridService = import "Resize" "@syncfusion/ej2-react-grids"
+        let Reorder: IGridService = import "Reorder" "@syncfusion/ej2-react-grids"
+        let DetailRow: IGridService = import "DetailRow" "@syncfusion/ej2-react-grids"
+        let ColumnChooser: IGridService = import "ColumnChooser" "@syncfusion/ej2-react-grids"
+        let ColumnMenu: IGridService = import "ColumnMenu" "@syncfusion/ej2-react-grids"
+        let ContextMenu: IGridService = import "ContextMenu" "@syncfusion/ej2-react-grids"
 
-    let injectServices (services: obj list) : ReactElement =
-        ReactLegacy.createElement(unbox<ReactElement> injectComponent, createObj [ "services" ==> services ])
+    let injectServices (services: IGridService list) : ReactElement =
+        ReactLegacy.createElement(injectComponent, createObj [ "services" ==> services ])
 
     let create (props: IGridProperty list) : ReactElement =
-        ReactLegacy.createElement(unbox<ReactElement> gridComponentTyped, createObj !!props)
+        ReactLegacy.createElement(gridComponentTyped, createObj !!props)
