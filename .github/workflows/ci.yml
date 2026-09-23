@@ -29,6 +29,7 @@ jobs:
       - run: dotnet build Feliz.Syncfusion.sln -c Release --no-restore
       - run: npm install
       - run: npm run fable:build
+      - run: npm run contracts:build
       - run: npm run verify:exports
       - run: npm run verify:type-safety
       - run: dotnet pack Felize.Syncfusion/Feliz.Syncfusion.fsproj -c Release --no-build -o artifacts/package
@@ -52,6 +53,7 @@ jobs:
       - run: dotnet restore Feliz.Syncfusion.sln
       - run: npm install
       - run: npm run fable:build
+      - run: npm run contracts:build
       - run: npx playwright install --with-deps chromium
       - run: npm run test:browser
       - uses: actions/upload-artifact@v4
@@ -82,7 +84,7 @@ jobs:
       - name: Install latest Syncfusion packages
         run: |
           npm install
-          npm install --no-save             @syncfusion/ej2@latest             @syncfusion/ej2-base@latest             @syncfusion/ej2-data@latest             @syncfusion/ej2-react-buttons@latest             @syncfusion/ej2-react-calendars@latest             @syncfusion/ej2-react-dropdowns@latest             @syncfusion/ej2-react-grids@latest             @syncfusion/ej2-react-inputs@latest             @syncfusion/ej2-react-lists@latest             @syncfusion/ej2-react-navigations@latest             @syncfusion/ej2-react-popups@latest             @syncfusion/ej2-react-splitbuttons@latest
+          npm install --no-save             @syncfusion/ej2@latest             @syncfusion/ej2-base@latest             @syncfusion/ej2-data@latest             @syncfusion/ej2-react-buttons@latest             @syncfusion/ej2-react-calendars@latest             @syncfusion/ej2-react-dropdowns@latest             @syncfusion/ej2-react-grids@latest             @syncfusion/ej2-react-inputs@latest             @syncfusion/ej2-react-lists@latest             @syncfusion/ej2-react-navigations@latest             @syncfusion/ej2-react-popups@latest             @syncfusion/ej2-react-splitbuttons@latest             @syncfusion/ej2-react-kanban@latest             @syncfusion/ej2-grids@latest             @syncfusion/ej2-inputs@latest             @syncfusion/ej2-popups@latest             @syncfusion/ej2-dropdowns@latest             @syncfusion/ej2-calendars@latest             @syncfusion/ej2-splitbuttons@latest             @syncfusion/ej2-kanban@latest
 
       - name: Capture audited versions
         run: node scripts/write-audit-manifest.mjs artifacts/audit-manifest.json
@@ -92,6 +94,7 @@ jobs:
           dotnet restore Feliz.Syncfusion.sln
           dotnet build Feliz.Syncfusion.sln -c Release --no-restore
           npm run fable:build
+          npm run contracts:build
           npm run verify:exports
           npm run verify:type-safety
 
