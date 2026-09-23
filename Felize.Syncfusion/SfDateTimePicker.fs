@@ -9,7 +9,7 @@ open Browser.Types
 type ISfDateTimePickerProperty = interface end
 
 module SfDateTimePicker =
-    let private syncfusionComponent: obj = import "DateTimePickerComponent" "@syncfusion/ej2-react-calendars"
+    let private syncfusionComponent: ReactElement = import "DateTimePickerComponent" "@syncfusion/ej2-react-calendars"
 
     [<AllowNullLiteral>]
     type ChangeEventArgs =
@@ -29,4 +29,4 @@ module SfDateTimePicker =
         static member inline change(callback: ChangeEventArgs -> unit) : ISfDateTimePickerProperty = unbox ("change", callback)
 
     let create (props: ISfDateTimePickerProperty list) : ReactElement =
-        ReactLegacy.createElement(unbox<ReactElement> syncfusionComponent, createObj !!props)
+        ReactLegacy.createElement(syncfusionComponent, createObj !!props)
