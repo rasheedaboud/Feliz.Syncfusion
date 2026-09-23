@@ -42,11 +42,11 @@ module SfKanban =
         static member inline actionComplete(callback: ActionEventArgs<'T> -> unit) : ISfKanbanProperty = unbox ("actionComplete", callback)
         static member inline children(value: ReactElement list) : ISfKanbanProperty = unbox ("children", value)
 
-    let inline column (column: Column) : ReactElement =
+    let column (column: Column) : ReactElement =
         ReactLegacy.createElement(unbox<ReactElement> columnDirective, createObj [ "headerText" ==> column.headerText; "keyField" ==> column.keyField ])
 
-    let inline columns (items: ReactElement list) : ReactElement =
+    let columns (items: ReactElement list) : ReactElement =
         ReactLegacy.createElement(unbox<ReactElement> columnsDirective, createObj [ "children" ==> items ])
 
-    let inline create (props: ISfKanbanProperty list) : ReactElement =
+    let create (props: ISfKanbanProperty list) : ReactElement =
         ReactLegacy.createElement(unbox<ReactElement> syncfusionComponent, createObj !!props)
