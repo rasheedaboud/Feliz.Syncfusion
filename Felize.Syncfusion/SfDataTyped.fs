@@ -20,7 +20,7 @@ module Data =
         | [<CompiledName("lessthanorequal")>] LessThanOrEqual
 
     [<Import("Predicate","@syncfusion/ej2-data")>]
-    type Predicate private (field: string, operatorName: string, value: obj, ?ignoreCase: bool) =
+    type Predicate(field: string, operatorName: string, value: obj, ?ignoreCase: bool) =
         [<Emit("$0.and($1)")>]
         member _.andAlso(other: Predicate): Predicate = jsNative
         [<Emit("$0.or($1)")>]
