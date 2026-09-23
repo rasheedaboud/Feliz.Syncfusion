@@ -10,7 +10,8 @@
     "verify:exports": "node scripts/verify-syncfusion-exports.mjs",
     "verify:type-safety": "node scripts/type-safety-budget.mjs",
     "test:browser": "playwright test",
-    "quality": "npm run verify:exports && npm run verify:type-safety && npm run test:browser"
+    "quality": "npm run verify:exports && npm run verify:type-safety && npm run test:browser",
+    "contracts:build": "dotnet fable tests/contracts --outDir artifacts/contracts --sourceMaps"
   },
   "dependencies": {
     "@syncfusion/ej2": "^34.2.0",
@@ -27,7 +28,14 @@
     "@syncfusion/ej2-react-splitbuttons": "^34.2.0",
     "react": "19.3.0",
     "react-dom": "19.3.0",
-    "@syncfusion/ej2-react-kanban": "^34.2.0"
+    "@syncfusion/ej2-react-kanban": "^34.2.0",
+    "@syncfusion/ej2-grids": "^34.2.0",
+    "@syncfusion/ej2-inputs": "^34.2.0",
+    "@syncfusion/ej2-popups": "^34.2.0",
+    "@syncfusion/ej2-dropdowns": "^34.2.0",
+    "@syncfusion/ej2-calendars": "^34.2.0",
+    "@syncfusion/ej2-splitbuttons": "^34.2.0",
+    "@syncfusion/ej2-kanban": "^34.2.0"
   },
   "devDependencies": {
     "@playwright/test": "1.63.0",
