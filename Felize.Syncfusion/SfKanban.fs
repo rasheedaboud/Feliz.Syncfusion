@@ -7,7 +7,7 @@ open Feliz
 type ISfKanbanProperty = interface end
 
 module SfKanban =
-    let private component: obj = import "KanbanComponent" "@syncfusion/ej2-react-kanban"
+    let private syncfusionComponent: obj = import "KanbanComponent" "@syncfusion/ej2-react-kanban"
     let private columnsDirective: obj = import "ColumnsDirective" "@syncfusion/ej2-react-kanban"
     let private columnDirective: obj = import "ColumnDirective" "@syncfusion/ej2-react-kanban"
 
@@ -43,10 +43,10 @@ module SfKanban =
         static member inline children(value: ReactElement list) : ISfKanbanProperty = unbox ("children", value)
 
     let inline column (column: Column) : ReactElement =
-        ReactLegacy.createElement(unbox columnDirective, createObj [ "headerText" ==> column.headerText; "keyField" ==> column.keyField ])
+        ReactLegacy.createElement(unbox<ReactElement> columnDirective, createObj [ "headerText" ==> column.headerText; "keyField" ==> column.keyField ])
 
     let inline columns (items: ReactElement list) : ReactElement =
-        ReactLegacy.createElement(unbox columnsDirective, createObj [ "children" ==> items ])
+        ReactLegacy.createElement(unbox<ReactElement> columnsDirective, createObj [ "children" ==> items ])
 
     let inline create (props: ISfKanbanProperty list) : ReactElement =
-        ReactLegacy.createElement(unbox component, createObj !!props)
+        ReactLegacy.createElement(unbox<ReactElement> syncfusionComponent, createObj !!props)
