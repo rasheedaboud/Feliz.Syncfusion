@@ -7,9 +7,9 @@ open Feliz
 type ISfKanbanProperty = interface end
 
 module SfKanban =
-    let private syncfusionComponent: obj = import "KanbanComponent" "@syncfusion/ej2-react-kanban"
-    let private columnsDirective: obj = import "ColumnsDirective" "@syncfusion/ej2-react-kanban"
-    let private columnDirective: obj = import "ColumnDirective" "@syncfusion/ej2-react-kanban"
+    let private syncfusionComponent: ReactElement = import "KanbanComponent" "@syncfusion/ej2-react-kanban"
+    let private columnsDirective: ReactElement = import "ColumnsDirective" "@syncfusion/ej2-react-kanban"
+    let private columnDirective: ReactElement = import "ColumnDirective" "@syncfusion/ej2-react-kanban"
 
     [<AllowNullLiteral>]
     type CardClickEventArgs<'T> =
@@ -43,10 +43,10 @@ module SfKanban =
         static member inline children(value: ReactElement list) : ISfKanbanProperty = unbox ("children", value)
 
     let column (column: Column) : ReactElement =
-        ReactLegacy.createElement(unbox<ReactElement> columnDirective, createObj [ "headerText" ==> column.headerText; "keyField" ==> column.keyField ])
+        ReactLegacy.createElement(columnDirective, createObj [ "headerText" ==> column.headerText; "keyField" ==> column.keyField ])
 
     let columns (items: ReactElement list) : ReactElement =
-        ReactLegacy.createElement(unbox<ReactElement> columnsDirective, createObj [ "children" ==> items ])
+        ReactLegacy.createElement(columnsDirective, createObj [ "children" ==> items ])
 
     let create (props: ISfKanbanProperty list) : ReactElement =
-        ReactLegacy.createElement(unbox<ReactElement> syncfusionComponent, createObj !!props)
+        ReactLegacy.createElement(syncfusionComponent, createObj !!props)
