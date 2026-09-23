@@ -26,7 +26,8 @@
     "@syncfusion/ej2-react-popups": "^34.2.0",
     "@syncfusion/ej2-react-splitbuttons": "^34.2.0",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "@syncfusion/ej2-react-kanban": "^34.2.0"
   },
   "devDependencies": {
     "@playwright/test": "1.63.0",
