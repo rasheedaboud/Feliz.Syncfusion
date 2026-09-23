@@ -20,6 +20,7 @@
     <PackageReleaseNotes>Modernized for .NET 10, F# 10, Fable 5.17.2, Feliz 3.3.3 and Syncfusion EJ2 34.2.x. Added binding verification and CI quality gates.</PackageReleaseNotes>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Interop.fs" />
     <Compile Include="Syncfusion.fs" />
     <Compile Include="SfListView.fs" />
     <Compile Include="SfAppBar.fs" />

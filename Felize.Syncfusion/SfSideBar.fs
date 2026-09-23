@@ -180,7 +180,7 @@ module SfSideBar =
        /// <see href="https://ej2.syncfusion.com/documentation/sidebar/docking-sidebar/"><c>Dock</c></see> documentation.
        /// </summary>
        /// <default>'auto'</default>
-       static member inline dockSize (dockSize: U2<string, float>) = Feliz.Interop.mkAttr (nameof dockSize) dockSize
+       static member inline dockSize (dockSize: U2<string, float>) = Interop.mkAttr (nameof dockSize) dockSize
        /// <summary>
        /// Specifies the media query string for resolution, which when met opens the Sidebar.
        /// <code lang="typescript">
@@ -192,70 +192,70 @@ module SfSideBar =
        /// <see href="https://ej2.syncfusion.com/documentation/sidebar/auto-close/"><c>Auto Close</c></see> documentation.
        /// </summary>
        /// <default>null</default>
-       static member inline mediaQuery  (mediaQuery: string) = Feliz.Interop.mkAttr (nameof mediaQuery) mediaQuery
+       static member inline mediaQuery  (mediaQuery: string) = Interop.mkAttr (nameof mediaQuery) mediaQuery
        /// <summary>
        /// Specifies the docking state of the component.
        /// &gt; For more details about enableDock refer to
        /// <see href="https://ej2.syncfusion.com/documentation/sidebar/docking-sidebar/"><c>Dock</c></see> documentation.
        /// </summary>
        /// <default>false</default>
-       static member inline enableDock  (enableDock: bool) = Feliz.Interop.mkAttr (nameof enableDock) enableDock
+       static member inline enableDock  (enableDock: bool) = Interop.mkAttr (nameof enableDock) enableDock
        /// <summary>
        /// Enables the expand or collapse while swiping in touch devices.
        /// This is not a sidebar property.
        /// </summary>
        /// <default>'en-US'</default>
-       static member inline locale  (locale: string) = Feliz.Interop.mkAttr (nameof locale) locale
+       static member inline locale  (locale: string) = Interop.mkAttr (nameof locale) locale
        /// <summary>
        /// Enable or disable persisting component's state between page reloads. If enabled, following list of states will be persisted.
        /// 1. Position
        /// 2. Type
        /// </summary>
        /// <default>false</default>
-       static member inline enablePersistence  (enablePersistence: bool) = Feliz.Interop.mkAttr (nameof enablePersistence) enablePersistence
+       static member inline enablePersistence  (enablePersistence: bool) = Interop.mkAttr (nameof enablePersistence) enablePersistence
        /// <summary>Enables the expand or collapse while swiping in touch devices.</summary>
        /// <default>true</default>
-       static member inline enableGestures (enableGestures: bool) = Feliz.Interop.mkAttr (nameof enableGestures) enableGestures
+       static member inline enableGestures (enableGestures: bool) = Interop.mkAttr (nameof enableGestures) enableGestures
        /// <summary>
        /// Gets or sets the Sidebar component is open or close.
        /// &gt; When the Sidebar type is set to <c>Auto</c>,
        /// the component will be expanded in the desktop and collapsed in the mobile mode regardless of the isOpen property.
        /// </summary>
        /// <default>false</default>
-       static member inline isOpen  (isOpen: bool) = Feliz.Interop.mkAttr (nameof isOpen) isOpen
+       static member inline isOpen  (isOpen: bool) = Interop.mkAttr (nameof isOpen) isOpen
        /// <summary>Specifies the Sidebar in RTL mode that displays the content in the right-to-left direction.</summary>
        /// <default>false</default>
-       static member inline enableRtl (enableRtl: bool) = Feliz.Interop.mkAttr (nameof enableRtl) enableRtl
+       static member inline enableRtl (enableRtl: bool) = Interop.mkAttr (nameof enableRtl) enableRtl
        /// <summary>Enable or disable the animation transitions on expanding or collapsing the Sidebar.</summary>
        /// <default>true</default>
-       static member inline animate (animate: bool) = Feliz.Interop.mkAttr (nameof animate) animate
+       static member inline animate (animate: bool) = Interop.mkAttr (nameof animate) animate
        /// <summary>Specifies the height of the Sidebar.</summary>
        /// <default>'auto'</default>
-       static member inline height (height: U2<string, float>) = Feliz.Interop.mkAttr (nameof height) height
+       static member inline height (height: U2<string, float>) = Interop.mkAttr (nameof height) height
        /// <summary>Specifies whether the Sidebar need to be closed or not when document area is clicked.</summary>
        /// <default>false</default>
-       static member inline closeOnDocumentClick (closeOnDocumentClick: bool) = Feliz.Interop.mkAttr (nameof closeOnDocumentClick) closeOnDocumentClick
+       static member inline closeOnDocumentClick (closeOnDocumentClick: bool) = Interop.mkAttr (nameof closeOnDocumentClick) closeOnDocumentClick
        /// <summary>
        /// Specifies the position of the Sidebar (Left/Right) corresponding to the main content.
        /// &gt; For more details about SidebarPosition refer to
        /// <see href="https://ej2.syncfusion.com/documentation/sidebar/getting-started/#position"><c>position</c></see> documentation.
        /// </summary>
        /// <default>'Left'</default>
-       static member inline position (position: SidebarPosition) = Feliz.Interop.mkAttr (nameof position) position
+       static member inline position (position: SidebarPosition) = Interop.mkAttr (nameof position) position
        /// <summary>
        /// Allows to place the sidebar inside the target element.
        /// &gt; For more details about target refer to
        /// <see href="https://ej2.syncfusion.com/documentation/sidebar/custom-context/"><c>Custom Context</c></see> documentation.
        /// </summary>
        /// <default>null</default>
-       static member inline target (target: string) = Feliz.Interop.mkAttr (nameof target) target
+       static member inline target (target: string) = Interop.mkAttr (nameof target) target
        /// <summary>
        /// Specifies the whether to apply overlay options to main content when the Sidebar is in an open state.
        /// &gt; For more details about showBackdrop refer to
        /// <see href="https://ej2.syncfusion.com/documentation/sidebar/getting-started/#enable-backdrop"><c>Backdrop</c></see> documentation.
        /// </summary>
        /// <default>false</default>
-       static member inline showBackdrop (showBackdrop: bool) = Feliz.Interop.mkAttr (nameof showBackdrop) showBackdrop
+       static member inline showBackdrop (showBackdrop: bool) = Interop.mkAttr (nameof showBackdrop) showBackdrop
        /// <summary>
        /// Specifies the expanding types of the Sidebar.
        /// * <c>Over</c> - The sidebar floats over the main content area.
@@ -267,15 +267,15 @@ module SfSideBar =
        /// <see cref="../../sidebar/variations/"><c>SidebarType</c></see> documentation.
        /// </summary>
        /// <default>'Auto'</default>
-       static member inline sidebarType (sidebarType: SidebarType) = Feliz.Interop.mkAttr "type" sidebarType
+       static member inline sidebarType (sidebarType: SidebarType) = Interop.mkAttr "type" sidebarType
        /// <summary>
        /// Specifies the width of the Sidebar. By default, the width of the Sidebar sets based on the size of its content.
        /// Width can also be set in pixel values.
        /// </summary>
        /// <default>'auto'</default>
-       static member inline width (width: string) = Feliz.Interop.mkAttr (nameof width) width
+       static member inline width (width: string) = Interop.mkAttr (nameof width) width
        /// <summary>Specifies the z-index of the Sidebar. It is applicable only when sidebar act as overlay type.</summary>
        /// <default>1000</default>
-       static member inline zIndex (zIndex: string) = Feliz.Interop.mkAttr (nameof zIndex) zIndex
-       static member inline create(props: Feliz.IReactProperty list) = Feliz.Interop.reactApi.createElement (sidebar, createObj !!props)
+       static member inline zIndex (zIndex: string) = Interop.mkAttr (nameof zIndex) zIndex
+       static member inline create(props: Feliz.IReactProperty list) = Interop.reactApi.createElement (sidebar, createObj !!props)
 

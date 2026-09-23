@@ -441,120 +441,117 @@ module SfGrid =
          allowHorizontalOverflow: bool option 
       }
 
-    module Excel = 
+    module Excel =
 
-  
-
-      type [<StringEnum>] [<RequireQualifiedAccess>] PdfExportPropertiesHierarchyExportMode =
-          | [<CompiledName "Expanded">] Expanded
-          | [<CompiledName "All">] All
-          | [<CompiledName "None">] None
+        type [<StringEnum>] [<RequireQualifiedAccess>] PdfExportPropertiesHierarchyExportMode =
+            | [<CompiledName "Expanded">] Expanded
+            | [<CompiledName "All">] All
+            | [<CompiledName "None">] None
 
         [<StringEnum(CaseRules.None)>]
         [<RequireQualifiedAccess>]
         type ExportType =
-          | AllPages
-          | CurrentPage
-
+            | AllPages
+            | CurrentPage
 
         [<StringEnum(CaseRules.None)>]
         [<RequireQualifiedAccess>]
         type ExcelHAlign =
-          | Left
-          | Right
-          | Center
-          | Fill
+            | Left
+            | Right
+            | Center
+            | Fill
 
         [<StringEnum(CaseRules.None)>]
         [<RequireQualifiedAccess>]
         type ExcelVAlign =
-          | Center
-          | Justify
-          | Top
-          | Bottom
+            | Center
+            | Justify
+            | Top
+            | Bottom
 
         [<StringEnum(CaseRules.None)>]
         [<RequireQualifiedAccess>]
         type BorderLineStyle =
-          | Thin
-          | Thick
+            | Thin
+            | Thick
 
-
-         type Border  = {
-          color: string;
-          lineStyle: BorderLineStyle;
+        type Border = {
+            color: string
+            lineStyle: BorderLineStyle
         }
-
 
         type ExcelStyle = {
-          fontColor: string;
-          fontName: string;
-          fontSize: int;
-          hAlign: ExcelHAlign;
-          vAlign: ExcelVAlign;
-          bold: bool;
-          indent: int;
-          italic: bool;
-          underline: bool;
-          backColor: string;
-          wrapText: bool;
-          borders: Border;
-          numberFormat: string;
-          ``type``: string;
+            fontColor: string
+            fontName: string
+            fontSize: int
+            hAlign: ExcelHAlign
+            vAlign: ExcelVAlign
+            bold: bool
+            indent: int
+            italic: bool
+            underline: bool
+            backColor: string
+            wrapText: bool
+            borders: Border
+            numberFormat: string
+            ``type``: string
         }
 
-        type ExcelTheme  = {
-          header: ExcelStyle;
-          record: ExcelStyle;
-          caption: ExcelStyle;
+        type ExcelTheme = {
+            header: ExcelStyle
+            record: ExcelStyle
+            caption: ExcelStyle
         }
 
         [<StringEnum(CaseRules.None)>]
         [<RequireQualifiedAccess>]
         [<Erase>]
         type ExcellCellValue =
-          | String of string
-          | Bool of bool
-          | Number of int
-          | Date of System.DateTime
+            | String of string
+            | Bool of bool
+            | Number of int
+            | Date of System.DateTime
 
-        type Hyperlink  = {
-          target: string;
-          displayText: string;
+        type Hyperlink = {
+            target: string
+            displayText: string
         }
 
         type ExcelCell = {
-          index: int;
-          colSpan: int;
-          ``value``: ExcellCellValue;
-          hyperlink: Hyperlink;
-          style: ExcelStyle;
-          rowSpan: int;
+            index: int
+            colSpan: int
+            ``value``: ExcellCellValue
+            hyperlink: Hyperlink
+            style: ExcelStyle
+            rowSpan: int
         }
 
-        type  ExcelRow = {
-          index: int;
-          cells: ExcelCell[];
-          grouping: obj;
+        type ExcelRow = {
+            index: int
+            cells: ExcelCell[]
+            grouping: obj
         }
-        type ExcelHeader  = {
-          headerRows: int;
-          rows: ExcelRow[];
+
+        type ExcelHeader = {
+            headerRows: int
+            rows: ExcelRow[]
         }
+
         type ExcelFooter = {
-          footerRows: int;
-          rows: ExcelRow[];
+            footerRows: int
+            rows: ExcelRow[]
         }
 
         [<StringEnum(CaseRules.None)>]
         [<RequireQualifiedAccess>]
         type MultipleExportType =
-          | NewSheet
-          | AppendSheet
+            | NewSheet
+            | AppendSheet
 
         type MultipleExport = {
-          ``type``: MultipleExportType;
-          blankRows: int;
+            ``type``: MultipleExportType
+            blankRows: int
         }
 
     open Excel
@@ -1644,34 +1641,34 @@ module SfGrid =
 
     [<Erase>]
     type SfGrid =
-        static member inline grid xs = Feliz.Interop.createElement "GridComponent " xs
-        static member inline grid (children: #seq<ReactElement>) = Feliz.Interop.reactElementWithChildren "GridComponent" children
-        static member inline enableAdaptiveUI (enableAdaptiveUI: bool) = Feliz.Interop.mkAttr "enableAdaptiveUI" enableAdaptiveUI  
-        static member inline dataSource (dataSource: 'a[]) =Feliz.Interop.mkAttr "dataSource"  dataSource
-        static member inline dataSource (dataSource: DataManager) =Feliz.Interop.mkAttr "dataSource"  dataSource
-        static member inline childGrid<'a> (childGrid:GridModel<'a>) =Feliz.Interop.mkAttr "childGrid"  childGrid
-        static member inline allowPaging (allowPaging: bool) =Feliz.Interop.mkAttr "allowPaging"  allowPaging
-        static member inline allowSorting (allowSorting: bool) =Feliz.Interop.mkAttr "allowSorting"  allowSorting
-        static member inline allowFiltering (allowFiltering: bool) =Feliz.Interop.mkAttr "allowFiltering"  allowFiltering
-        static member inline allowGrouping (allowGrouping: bool) =Feliz.Interop.mkAttr "allowGrouping"  allowGrouping
-        static member inline allowExcelExport (allowExcelExport: bool) =Feliz.Interop.mkAttr "allowExcelExport"  allowExcelExport
-        static member inline showColumnChooser (showColumnChooser: bool) =Feliz.Interop.mkAttr "showColumnChooser"  showColumnChooser
-        static member inline height (height: string) =Feliz.Interop.mkAttr "height"  height
-        static member inline editSettings (editSettings: EditSettingsModel) =Feliz.Interop.mkAttr "editSettings"  editSettings
-        static member inline pageSettings (pageSettings: PageSettingsModel) =Feliz.Interop.mkAttr "pageSettings"  pageSettings
-        static member inline toolbar (toolbar: ToolbarItems[]) =Feliz.Interop.mkAttr "toolbar"  toolbar
-        static member inline filterSettings(filterSettings:FilterSettingsModel) =Feliz.Interop.mkAttr "filterSettings" filterSettings
-        static member inline selectionSettings(selectionSettings:SelectionSettingsModel) =Feliz.Interop.mkAttr "selectionSettings" selectionSettings
-        static member inline actionBegin(actionBegin:(GridEvents.ActionEventArgs->unit)) =Feliz.Interop.mkAttr "actionBegin" actionBegin
-        static member inline toolbarClick(toolbarClick:(GridEvents.ClickEventArgs->unit)) =Feliz.Interop.mkAttr "toolbarClick" toolbarClick
-        static member inline rowSelected(rowSelected:(GridEvents.RowSelectEventArgs<'a>->unit)) =Feliz.Interop.mkAttr "rowSelected" rowSelected
-        static member inline rowDataBound(callback:(GridEvents.RowDataBoundEventArgs<'a>->unit)) =Feliz.Interop.mkAttr "rowDataBound" callback
-        static member inline create (props:Feliz.IReactProperty list) = Feliz.Interop.reactApi.createElement (gridComponent, createObj !!props)
+        static member inline grid xs = Interop.createElement "GridComponent " xs
+        static member inline grid (children: #seq<ReactElement>) = Interop.reactElementWithChildren "GridComponent" children
+        static member inline enableAdaptiveUI (enableAdaptiveUI: bool) = Interop.mkAttr "enableAdaptiveUI" enableAdaptiveUI  
+        static member inline dataSource (dataSource: 'a[]) =Interop.mkAttr "dataSource"  dataSource
+        static member inline dataSource (dataSource: DataManager) =Interop.mkAttr "dataSource"  dataSource
+        static member inline childGrid<'a> (childGrid:GridModel<'a>) =Interop.mkAttr "childGrid"  childGrid
+        static member inline allowPaging (allowPaging: bool) =Interop.mkAttr "allowPaging"  allowPaging
+        static member inline allowSorting (allowSorting: bool) =Interop.mkAttr "allowSorting"  allowSorting
+        static member inline allowFiltering (allowFiltering: bool) =Interop.mkAttr "allowFiltering"  allowFiltering
+        static member inline allowGrouping (allowGrouping: bool) =Interop.mkAttr "allowGrouping"  allowGrouping
+        static member inline allowExcelExport (allowExcelExport: bool) =Interop.mkAttr "allowExcelExport"  allowExcelExport
+        static member inline showColumnChooser (showColumnChooser: bool) =Interop.mkAttr "showColumnChooser"  showColumnChooser
+        static member inline height (height: string) =Interop.mkAttr "height"  height
+        static member inline editSettings (editSettings: EditSettingsModel) =Interop.mkAttr "editSettings"  editSettings
+        static member inline pageSettings (pageSettings: PageSettingsModel) =Interop.mkAttr "pageSettings"  pageSettings
+        static member inline toolbar (toolbar: ToolbarItems[]) =Interop.mkAttr "toolbar"  toolbar
+        static member inline filterSettings(filterSettings:FilterSettingsModel) =Interop.mkAttr "filterSettings" filterSettings
+        static member inline selectionSettings(selectionSettings:SelectionSettingsModel) =Interop.mkAttr "selectionSettings" selectionSettings
+        static member inline actionBegin(actionBegin:(GridEvents.ActionEventArgs->unit)) =Interop.mkAttr "actionBegin" actionBegin
+        static member inline toolbarClick(toolbarClick:(GridEvents.ClickEventArgs->unit)) =Interop.mkAttr "toolbarClick" toolbarClick
+        static member inline rowSelected(rowSelected:(GridEvents.RowSelectEventArgs<'a>->unit)) =Interop.mkAttr "rowSelected" rowSelected
+        static member inline rowDataBound(callback:(GridEvents.RowDataBoundEventArgs<'a>->unit)) =Interop.mkAttr "rowDataBound" callback
+        static member inline create (props:Feliz.IReactProperty list) = Interop.reactApi.createElement (gridComponent, createObj !!props)
 
     
     type columns =
-        static member inline columns (children: #seq<ReactElement>) = Feliz.Interop.reactElementWithChildren "ColumnsDirective" children
-        static member inline create props = Feliz.Interop.reactApi.createElement (columnsDirective, createObj !!props)
+        static member inline columns (children: #seq<ReactElement>) = Interop.reactElementWithChildren "ColumnsDirective" children
+        static member inline create props = Interop.reactApi.createElement (columnsDirective, createObj !!props)
 
     [<StringEnum>]
     type ColumnFormat =
@@ -1683,31 +1680,31 @@ module SfGrid =
 
     type column =
         static member inline validationRules (validationRules:obj )  = "validationRules" ==> validationRules
-        static member inline field (v:string) = Feliz.Interop.mkAttr "field" v
-        static member inline field (v:'a -> string)  = Feliz.Interop.mkAttr "field" (v (unbox null))
-        static member inline ``type``(``type``: ColumnFormat) = Feliz.Interop.mkAttr "type" ``type``
-        static member inline format (format: string)  = Feliz.Interop.mkAttr "format" format
-        static member inline headerText (headerText: string) =Feliz.Interop.mkAttr "headerText" headerText
-        static member inline width (width: int) =Feliz.Interop.mkAttr "width"  width
-        static member inline isVisible (visible: bool) =Feliz.Interop.mkAttr "visible"  visible
-        static member inline isCommandColumn (isCommandColumn: bool) =Feliz.Interop.mkAttr "isCommandColumn"  isCommandColumn
-        static member inline isKey (isPrimaryKey: bool) =Feliz.Interop.mkAttr "isPrimaryKey" isPrimaryKey
-        static member inline isIdentity (isIdentity: bool) =Feliz.Interop.mkAttr "isIdentity" isIdentity
+        static member inline field (v:string) = Interop.mkAttr "field" v
+        static member inline field (v:'a -> string)  = Interop.mkAttr "field" (v (unbox null))
+        static member inline ``type``(``type``: ColumnFormat) = Interop.mkAttr "type" ``type``
+        static member inline format (format: string)  = Interop.mkAttr "format" format
+        static member inline headerText (headerText: string) =Interop.mkAttr "headerText" headerText
+        static member inline width (width: int) =Interop.mkAttr "width"  width
+        static member inline isVisible (visible: bool) =Interop.mkAttr "visible"  visible
+        static member inline isCommandColumn (isCommandColumn: bool) =Interop.mkAttr "isCommandColumn"  isCommandColumn
+        static member inline isKey (isPrimaryKey: bool) =Interop.mkAttr "isPrimaryKey" isPrimaryKey
+        static member inline isIdentity (isIdentity: bool) =Interop.mkAttr "isIdentity" isIdentity
         static member inline template<'a>(footerTemplate:('a->ReactElement))  = Feliz.prop.custom("template",
           (fun x ->
             let x = footerTemplate x;
             x))
-        static member inline create props = Feliz.Interop.reactApi.createElement (columnDirective, createObj !!props)
+        static member inline create props = Interop.reactApi.createElement (columnDirective, createObj !!props)
 
     type inject =
-        static member inline services (services: obj) =Feliz.Interop.mkAttr "services" services
-        static member inline create props = Feliz.Interop.reactApi.createElement (injectService, createObj !!props)
+        static member inline services (services: obj) =Interop.mkAttr "services" services
+        static member inline create props = Interop.reactApi.createElement (injectService, createObj !!props)
 
 
 
     type aggregateColumns =
-      static member inline aggregateColumns (children: #seq<ReactElement>) = Feliz.Interop.reactElementWithChildren "AggregateColumnsDirective" children
-      static member inline create props = Feliz.Interop.reactApi.createElement (aggregateColumnsDirective, createObj !!props)
+      static member inline aggregateColumns (children: #seq<ReactElement>) = Interop.reactElementWithChildren "AggregateColumnsDirective" children
+      static member inline create props = Interop.reactApi.createElement (aggregateColumnsDirective, createObj !!props)
 
     type [<StringEnum>] [<RequireQualifiedAccess>] AggregateType =
       | [<CompiledName "sum">] Sum
@@ -1735,19 +1732,19 @@ module SfGrid =
         /// &gt; Specify the <c>type</c> value as <c>custom</c> to use custom aggregation.
         /// </summary>
         /// <default>null</default>
-        static member inline ``type`` (``type``: AggregateType) =Feliz.Interop.mkAttr "type"  ``type``
+        static member inline ``type`` (``type``: AggregateType) =Interop.mkAttr "type"  ``type``
         /// <summary>Defines the column name to perform aggregation.</summary>
         /// <default>null</default>
-        static member inline field(field: string) =Feliz.Interop.mkAttr "field"  field
+        static member inline field(field: string) =Interop.mkAttr "field"  field
         /// <summary>Defines the column name to perform aggregation.</summary>
         /// <default>null</default>
-        static member inline field (v:'a -> string)  = Feliz.Interop.mkAttr "field" (v (unbox null))
+        static member inline field (v:'a -> string)  = Interop.mkAttr "field" (v (unbox null))
         /// <summary>
         /// Defines the column name to display the aggregate value. If <c>columnName</c> is not defined,
         /// then <c>field</c> name value will be assigned to the <c>columnName</c> property.
         /// </summary>
         /// <default>null</default>
-        static member inline columnName(columnName: string) =Feliz.Interop.mkAttr "columnName"  columnName
+        static member inline columnName(columnName: string) =Interop.mkAttr "columnName"  columnName
         /// <summary>
         /// Format is applied to a calculated value before it is displayed.
         /// Gets the format from the user, which can be standard or custom
@@ -1755,7 +1752,7 @@ module SfGrid =
         /// and <see cref="../../common/internationalization/.number-formatting/"><c>date</c></see> formats.
         /// </summary>
         /// <default>null</default>
-        static member inline format(format: Format.FormatOptions) =Feliz.Interop.mkAttr "format"  format
+        static member inline format(format: Format.FormatOptions) =Interop.mkAttr "format"  format
         /// <summary>
         /// Defines the footer cell template as a string for the sum aggregate column.
         ///
@@ -1926,7 +1923,7 @@ module SfGrid =
         /// {% codeBlock src="grid/group-caption-api/index.ts" %}{% endcodeBlock %}
         /// </summary>
         /// <default>null</default>
-        static member inline groupCaptionTemplate(groupCaptionTemplate: string) =Feliz.Interop.mkAttr "groupCaptionTemplate"  groupCaptionTemplate
+        static member inline groupCaptionTemplate(groupCaptionTemplate: string) =Interop.mkAttr "groupCaptionTemplate"  groupCaptionTemplate
         /// <summary>
         /// Defines a function to calculate custom aggregate value. The <c>type</c> value should be set to <c>custom</c>.
         /// To use custom aggregate value in the template, use the key as <c>${custom}</c>.
@@ -1934,13 +1931,13 @@ module SfGrid =
         /// **Group aggregation**: This will be called with the current group details and the <c>AggregateColumn</c> object.
         /// </summary>
         /// <default>null</default>
-        static member inline customAggregate(customAggregate: string) =Feliz.Interop.mkAttr "customAggregate"  customAggregate
-        static member inline create props = Feliz.Interop.reactApi.createElement (aggregateColumnDirective, createObj !!props)
+        static member inline customAggregate(customAggregate: string) =Interop.mkAttr "customAggregate"  customAggregate
+        static member inline create props = Interop.reactApi.createElement (aggregateColumnDirective, createObj !!props)
 
     type aggregates =
-      static member inline aggregates (children: #seq<ReactElement>) = Feliz.Interop.reactElementWithChildren "AggregatesDirective" children
-      static member inline create props = Feliz.Interop.reactApi.createElement (aggregatesDirective, createObj !!props)
+      static member inline aggregates (children: #seq<ReactElement>) = Interop.reactElementWithChildren "AggregatesDirective" children
+      static member inline create props = Interop.reactApi.createElement (aggregatesDirective, createObj !!props)
 
     type aggregate =
-      static member inline aggregate (children: #seq<ReactElement>) = Feliz.Interop.reactElementWithChildren "AggregateDirective" children
-      static member inline create props = Feliz.Interop.reactApi.createElement (aggregateDirective, createObj !!props)
+      static member inline aggregate (children: #seq<ReactElement>) = Interop.reactElementWithChildren "AggregateDirective" children
+      static member inline create props = Interop.reactApi.createElement (aggregateDirective, createObj !!props)
