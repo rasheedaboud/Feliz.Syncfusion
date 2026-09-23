@@ -118,8 +118,8 @@ let private renderGrid rows =
     Grid.create [
         Grid.prop.dataSource rows
         Grid.prop.columns [|
-            { field = "id"; headerText = "ID"; width = Some 80.; visible = Some true; isPrimaryKey = Some true; columnType = Some "number"; format = None }
-            { field = "title"; headerText = "Title"; width = Some 180.; visible = Some true; isPrimaryKey = Some false; columnType = Some "string"; format = None }
+            { field = "id"; headerText = "ID"; width = Some 80.; visible = Some true; isPrimaryKey = Some true; ``type`` = Some "number"; format = None }
+            { field = "title"; headerText = "Title"; width = Some 180.; visible = Some true; isPrimaryKey = Some false; ``type`` = Some "string"; format = None }
         |]
         Grid.prop.allowPaging true
         Grid.prop.allowSorting true
