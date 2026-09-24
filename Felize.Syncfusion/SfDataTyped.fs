@@ -86,7 +86,10 @@ module Data =
 
     [<Import("DataManager","@syncfusion/ej2-data")>]
     type DataManager<'T>(options: DataManagerOptions<'T>) =
-        member _.executeLocal(?query: Query): U2<ResizeArray<'T>, CountedDataResult<'T>> = jsNative
+        [<Emit("$0.executeLocal($1)")>]
+        member _.executeLocal(query: Query): ResizeArray<'T> = jsNative
+        [<Emit("$0.executeLocal($1)")>]
+        member _.executeLocalCounted(query: Query): CountedDataResult<'T> = jsNative
 
     let createLocal (data: 'T array) =
         DataManager<'T>({ json = data; adaptor = JsonAdaptor() })
