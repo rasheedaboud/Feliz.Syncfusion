@@ -186,7 +186,7 @@ module Grid =
         static member inline rowDataBound(callback: RowDataBoundEventArgs<'T> -> unit) : IGridProperty = unbox ("rowDataBound", callback)
         static member inline detailDataBound(callback: DetailDataBoundEventArgs<'T> -> unit) : IGridProperty = unbox ("detailDataBound", callback)
         static member inline contextMenuClick(callback: ContextMenuClickEventArgs<'T> -> unit) : IGridProperty = unbox ("contextMenuClick", callback)
-        static member inline children(value: ReactElement list) : IGridProperty = unbox ("children", value)
+        static member inline children(value: ReactElement list) : IGridProperty = unbox ("children", List.toArray value)
 
     [<RequireQualifiedAccess>]
     module service =
@@ -205,7 +205,7 @@ module Grid =
         let ContextMenu: IGridService = import "ContextMenu" "@syncfusion/ej2-react-grids"
 
     let injectServices (services: IGridService list) : ReactElement =
-        ReactLegacy.createElement(injectComponent, createObj [ "services" ==> services ])
+        ReactLegacy.createElement(injectComponent, createObj [ "services" ==> List.toArray services ])
 
     let create (props: IGridProperty list) : ReactElement =
         ReactLegacy.createElement(gridComponentTyped, createObj !!props)
