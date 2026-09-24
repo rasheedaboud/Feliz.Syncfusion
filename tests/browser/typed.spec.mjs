@@ -52,11 +52,11 @@ for (const [name, assertion] of updateCases) {
 test("typed Tooltip opens and reflects updated content", async ({ page }) => {
   const errors = await openTyped(page, "Tooltip");
   const target = page.locator("#typed-tooltip-target");
-  await target.hover();
+  await target.click();
   await expect(page.locator(".e-tooltip-wrap")).toContainText("Tooltip initial");
 
   await page.evaluate(() => window.__typedUpdateComponent("Tooltip"));
-  await target.hover();
+  await target.click();
   await expect(page.locator(".e-tooltip-wrap")).toContainText("Tooltip updated");
   expect(errors).toEqual([]);
 });
