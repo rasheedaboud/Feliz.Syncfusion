@@ -20,7 +20,7 @@ jobs:
           dotnet-version: "10.0.x"
       - run: dotnet restore Feliz.Syncfusion.sln
       - run: dotnet pack Felize.Syncfusion/Feliz.Syncfusion.fsproj -c Release -o artifacts
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: nuget
           path: artifacts/*.nupkg
