@@ -31,7 +31,7 @@ module SfTooltip =
         static member inline cssClass(value: string) : ISfTooltipProperty = unbox ("cssClass", value)
         static member inline target(value: string) : ISfTooltipProperty = unbox ("target", value)
         static member inline afterOpen(callback: OpenEventArgs -> unit) : ISfTooltipProperty = unbox ("afterOpen", callback)
-        static member inline children(value: ReactElement list) : ISfTooltipProperty = unbox ("children", value)
+        static member inline children(value: ReactElement list) : ISfTooltipProperty = unbox ("children", List.toArray value)
 
     let create (props: ISfTooltipProperty list) : ReactElement =
         ReactLegacy.createElement(syncfusionComponent, createObj !!props)
