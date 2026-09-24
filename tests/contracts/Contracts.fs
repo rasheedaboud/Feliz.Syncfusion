@@ -75,8 +75,8 @@ let private renderTooltip (content: string) =
         Tooltip.prop.position Tooltip.Position.TopCenter
         Tooltip.prop.opensOn Tooltip.OpensOn.Hover
         Tooltip.prop.showTipPointer true
-        Tooltip.prop.target "button"
-        Tooltip.prop.children [ Html.button [ prop.text "Hover target" ] ]
+        Tooltip.prop.target "#typed-tooltip-target"
+        Tooltip.prop.children [ Html.button [ prop.id "typed-tooltip-target"; prop.text "Hover target" ] ]
     ]
 
 let private renderKanban rows =
