@@ -40,13 +40,13 @@ module SfKanban =
         static member inline cssClass(value: string) : ISfKanbanProperty = unbox ("cssClass", value)
         static member inline cardClick(callback: CardClickEventArgs<'T> -> unit) : ISfKanbanProperty = unbox ("cardClick", callback)
         static member inline actionComplete(callback: ActionEventArgs<'T> -> unit) : ISfKanbanProperty = unbox ("actionComplete", callback)
-        static member inline children(value: ReactElement list) : ISfKanbanProperty = unbox ("children", value)
+        static member inline children(value: ReactElement list) : ISfKanbanProperty = unbox ("children", List.toArray value)
 
     let column (column: Column) : ReactElement =
         ReactLegacy.createElement(columnDirective, createObj [ "headerText" ==> column.headerText; "keyField" ==> column.keyField ])
 
     let columns (items: ReactElement list) : ReactElement =
-        ReactLegacy.createElement(columnsDirective, createObj [ "children" ==> items ])
+        ReactLegacy.createElement(columnsDirective, createObj [ "children" ==> List.toArray items ])
 
     let create (props: ISfKanbanProperty list) : ReactElement =
         ReactLegacy.createElement(syncfusionComponent, createObj !!props)
