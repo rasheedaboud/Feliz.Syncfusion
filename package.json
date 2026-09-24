@@ -13,7 +13,8 @@
     "quality": "npm run verify:exports && npm run verify:type-safety && npm run test:browser",
     "contracts:build": "dotnet fable tests/contracts --outDir artifacts/contracts --sourceMaps",
     "playground:build": "dotnet fable examples/playground --outDir artifacts/playground",
-    "playground": "npm run playground:build && vite examples/playground --host 127.0.0.1"
+    "playground": "npm run playground:build && vite examples/playground --host 127.0.0.1",
+    "test:playground": "playwright test -c examples/playground/playwright.config.mjs"
   },
   "dependencies": {
     "@syncfusion/ej2": "34.2.8",

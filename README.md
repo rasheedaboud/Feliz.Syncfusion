@@ -12,7 +12,7 @@ npm ci
 npm run playground
 ```
 
-Open the URL printed by Vite (normally `http://127.0.0.1:5173`). The F# source is in `examples/playground/Main.fs`. It renders a DropDownList and shows the selected value. Syncfusion may display its trial banner until you [register a license key](https://ej2.syncfusion.com/react/documentation/licensing/license-key-registration); no key is stored in this repository.
+Open the URL printed by Vite (normally `http://127.0.0.1:5173`). The F# source is in `examples/playground/Main.fs`. The AppBar and Sidebar provide routes to all 34 wrapped UI controls. Syncfusion may display its trial banner until you [register a license key](https://ej2.syncfusion.com/react/documentation/licensing/license-key-registration); no key is stored in this repository.
 
 The implementation target and browser dependencies are pinned to Syncfusion EJ2 34.2.8. `audit/coverage.json` records the first-wave bindings and remaining partial API coverage.
 

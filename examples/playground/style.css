@@ -1,4 +1,26 @@
-body { margin: 0; background: #f4f6f8; color: #1e293b; font: 16px system-ui, sans-serif; }
-.card { width: min(34rem, calc(100vw - 3rem)); margin: 10vh auto; padding: 2rem; background: white; border-radius: 1rem; box-shadow: 0 12px 35px #16243b1a; }
-h1 { margin-top: 0; font-size: 1.5rem; }
-.e-ddl { width: 100%; }
+:root { font: 16px system-ui, sans-serif; color: #1e293b; background: #f4f6f8; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+.app-shell { min-height: 100vh; }
+.e-appbar { padding: 0 1rem; gap: 1rem; box-shadow: 0 1px 8px #16243b1a; position: relative; z-index: 2; }
+.menu-button { border: 1px solid #94a3b8; border-radius: .4rem; background: white; padding: .4rem .75rem; cursor: pointer; }
+.app-title { font-size: 1rem; }
+.app-count { margin-left: auto; font-size: .8rem; opacity: .75; }
+.workspace { min-height: calc(100vh - 56px); }
+.e-sidebar { border-right: 1px solid #dbe2e9; background: white; }
+.e-sidebar nav { display: grid; align-content: start; padding: 1rem .7rem 2rem; }
+.nav-heading { margin: 1.1rem .65rem .3rem; font-size: .7rem; letter-spacing: .09em; text-transform: uppercase; color: #64748b; }
+.nav-link { display: block; padding: .55rem .65rem; border-radius: .4rem; color: #334155; text-decoration: none; font-size: .9rem; }
+.nav-link:hover, .nav-link:focus-visible { background: #e8f0fb; }
+.nav-link.active { color: #0b63ce; background: #e8f0fb; font-weight: 650; }
+.content { padding: clamp(1rem, 4vw, 3rem); max-width: 980px; min-height: calc(100vh - 56px); }
+.demo-card { background: white; border: 1px solid #e2e8f0; border-radius: .8rem; padding: clamp(1.25rem, 3vw, 2rem); box-shadow: 0 12px 35px #16243b0d; }
+.eyebrow { color: #0b63ce; font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin: 0 0 .4rem; }
+h1 { margin: 0; font-size: clamp(1.5rem, 3vw, 2rem); }
+.hint { color: #526174; margin: .6rem 0 1.5rem; }
+.control-stage { min-height: 120px; max-width: 540px; padding: 1rem 0; }
+.control-stage .e-ddl, .control-stage .e-input-group { width: 100%; }
+.control-stage .e-calendar { width: 100% !important; max-width: 340px; }
+.radio-options { display: flex; gap: 1.5rem; }
+.feedback { border-top: 1px solid #e2e8f0; padding-top: 1rem; margin: 1rem 0 0; color: #475569; overflow-wrap: anywhere; }
+@media (max-width: 700px) { .content { padding: 1rem; } .app-count { display: none; } .e-sidebar { max-width: 220px; } }
