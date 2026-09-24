@@ -9,7 +9,7 @@ type ISfMultiSelectProperty = interface end
 module SfMultiSelect =
     let private syncfusionComponent: ReactElement = import "MultiSelectComponent" "@syncfusion/ej2-react-dropdowns"
 
-    [<StringEnum; RequireQualifiedAccess>]
+    [<StringEnum(CaseRules.None); RequireQualifiedAccess>]
     type Mode = Box | Default | Delimiter | CheckBox
 
     [<AllowNullLiteral>]
