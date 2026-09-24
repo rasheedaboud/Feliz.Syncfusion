@@ -172,24 +172,36 @@ let updateComponent name =
     | "Grid" -> render "typed-grid" (renderGrid updatedRows)
     | _ -> failwith $"Unknown component {name}"
 
-let private localResultCount (result: Fable.Core.U2<ResizeArray<Row>, Data.CountedDataResult<Row>>) =
-    match result with
-    | Fable.Core.U2.Case1 rows -> rows.Count
-    | Fable.Core.U2.Case2 counted -> counted.result |> Option.map (fun rows -> rows.Count) |> Option.defaultValue 0
-
 let dataQueryDiagnostics () =
     let manager = Data.createLocal initialRows
+    let allQuery = Data.Query()
     let filterQuery =
         Data.Query()
         |> Data.whereString "status" Data.FilterOperator.Equal "OPEN" true
     let countedQuery = filterQuery.clone().requiresCount()
-    {| allCount = manager.executeLocal() |> localResultCount
-       filteredCount = manager.executeLocal(filterQuery) |> localResultCount
-       countRequired = countedQuery.isCountRequired |}
+    let counted = manager.executeLocalCounted(countedQuery)
+    {| allCount = manager.executeLocal(allQuery).Count
+       filteredCount = manager.executeLocal(filterQuery).Count
+       countRequired = countedQuery.isCountRequired
+       countedCount = counted.count |> Option.defaultValue 0. |}
 
 let dataQueryCount () =
     let manager = Data.createLocal initialRows
     let query =
         Data.Query()
         |> Data.whereString "status" Data.FilterOperator.Equal "OPEN" true
-    manager.executeLocal(query) |> localResultCount
+    manager.executeLocal(query).Count
+
+
+let mountComponent name =
+    match name with
+    | "ComboBox" -> render "typed-combo" (renderCombo "Alpha")
+    | "MultiSelect" -> render "typed-multi" (renderMulti [| "One" |])
+    | "DateTimePicker" -> render "typed-datetime" (renderDateTime (DateTime(2026, 9, 23, 10, 0, 0)))
+    | "Tooltip" -> render "typed-tooltip" (renderTooltip "Tooltip initial")
+    | "Kanban" -> render "typed-kanban" (renderKanban initialRows)
+    | "DatePicker" -> render "typed-date" (renderDate (DateTime(2026, 9, 23)))
+    | "FileUploader" -> render "typed-upload" (renderUpload "upload-initial")
+    | "SplitButton" -> render "typed-split" (renderSplit "Export initial")
+    | "Grid" -> render "typed-grid" (renderGrid initialRows)
+    | _ -> failwith $"Unknown component {name}"
