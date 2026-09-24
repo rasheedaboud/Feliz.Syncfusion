@@ -103,16 +103,16 @@ module Grid =
         format: string option
     }
 
-    [<StringEnum; RequireQualifiedAccess>]
+    [<StringEnum(CaseRules.None); RequireQualifiedAccess>]
     type SortDirection = Ascending | Descending
 
-    [<StringEnum; RequireQualifiedAccess>]
+    [<StringEnum(CaseRules.None); RequireQualifiedAccess>]
     type FilterType = FilterBar | Menu | Excel | CheckBox
 
-    [<StringEnum; RequireQualifiedAccess>]
+    [<StringEnum(CaseRules.None); RequireQualifiedAccess>]
     type SelectionType = Single | Multiple
 
-    [<StringEnum; RequireQualifiedAccess>]
+    [<StringEnum(CaseRules.None); RequireQualifiedAccess>]
     type SelectionMode = Row | Cell | Both
 
     type GroupSettings = { columns: string array }
