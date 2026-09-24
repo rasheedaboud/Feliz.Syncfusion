@@ -6,6 +6,10 @@
     <ProjectReference Include="../../Felize.Syncfusion/Feliz.Syncfusion.fsproj" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="../parallel-contracts/Positive.fs" />
+    <Compile Include="../parallel-contracts/Dropdowns.fs" />
+    <Compile Include="../parallel-contracts/Calendars.fs" />
+    <Compile Include="../parallel-contracts/Inputs.fs" />
     <Compile Include="Contracts.fs" />
   </ItemGroup>
 </Project>

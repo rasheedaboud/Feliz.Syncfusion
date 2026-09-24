@@ -1,0 +1,4 @@
+body { margin: 0; background: #f4f6f8; color: #1e293b; font: 16px system-ui, sans-serif; }
+.card { width: min(34rem, calc(100vw - 3rem)); margin: 10vh auto; padding: 2rem; background: white; border-radius: 1rem; box-shadow: 0 12px 35px #16243b1a; }
+h1 { margin-top: 0; font-size: 1.5rem; }
+.e-ddl { width: 100%; }

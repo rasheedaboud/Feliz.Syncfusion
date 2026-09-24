@@ -1,0 +1,146 @@
+{
+  "syncfusionVersion": "34.2.8",
+  "scope": "Gate 0 and Gate 1 controls",
+  "source": "Published npm tarball TypeScript declarations",
+  "styleEntryUsedByRepository": "@syncfusion/ej2/material.css",
+  "controls": [
+    {
+      "name": "DropDownList",
+      "package": "@syncfusion/ej2-react-dropdowns",
+      "export": "DropDownListComponent",
+      "model": "DropDownListModel",
+      "corePackage": "@syncfusion/ej2-dropdowns",
+      "declaration": "src/drop-down-list/dropdownlist.component.d.ts",
+      "status": "partial",
+      "wave": "Gate 0"
+    },
+    {
+      "name": "ListBox",
+      "package": "@syncfusion/ej2-react-dropdowns",
+      "export": "ListBoxComponent",
+      "model": "ListBoxModel",
+      "corePackage": "@syncfusion/ej2-dropdowns",
+      "declaration": "src/list-box/listbox.component.d.ts",
+      "status": "partial",
+      "wave": "Gate 1 dropdowns"
+    },
+    {
+      "name": "DropDownTree",
+      "package": "@syncfusion/ej2-react-dropdowns",
+      "export": "DropDownTreeComponent",
+      "model": "DropDownTreeModel",
+      "corePackage": "@syncfusion/ej2-dropdowns",
+      "declaration": "src/drop-down-tree/dropdowntree.component.d.ts",
+      "status": "partial",
+      "wave": "Gate 1 dropdowns"
+    },
+    {
+      "name": "Mention",
+      "package": "@syncfusion/ej2-react-dropdowns",
+      "export": "MentionComponent",
+      "model": "MentionModel",
+      "corePackage": "@syncfusion/ej2-dropdowns",
+      "declaration": "src/mention/mention.component.d.ts",
+      "status": "partial",
+      "wave": "Gate 1 dropdowns"
+    },
+    {
+      "name": "MultiColumnComboBox",
+      "package": "@syncfusion/ej2-react-multicolumn-combobox",
+      "export": "MultiColumnComboBoxComponent",
+      "model": "MultiColumnComboBoxModel",
+      "corePackage": "@syncfusion/ej2-multicolumn-combobox",
+      "declaration": "src/multicolumn-combobox/multicolumncombobox.component.d.ts",
+      "directives": [
+        "ColumnsDirective",
+        "ColumnDirective"
+      ],
+      "status": "partial",
+      "wave": "Gate 1 dropdowns"
+    },
+    {
+      "name": "Calendar",
+      "package": "@syncfusion/ej2-react-calendars",
+      "export": "CalendarComponent",
+      "model": "CalendarModel",
+      "corePackage": "@syncfusion/ej2-calendars",
+      "declaration": "src/calendar/calendar.component.d.ts",
+      "status": "partial",
+      "wave": "Gate 1 calendars"
+    },
+    {
+      "name": "DateRangePicker",
+      "package": "@syncfusion/ej2-react-calendars",
+      "export": "DateRangePickerComponent",
+      "model": "DateRangePickerModel",
+      "corePackage": "@syncfusion/ej2-calendars",
+      "declaration": "src/daterangepicker/daterangepicker.component.d.ts",
+      "directives": [
+        "PresetsDirective",
+        "PresetDirective"
+      ],
+      "status": "partial",
+      "wave": "Gate 1 calendars"
+    },
+    {
+      "name": "TimePicker",
+      "package": "@syncfusion/ej2-react-calendars",
+      "export": "TimePickerComponent",
+      "model": "TimePickerModel",
+      "corePackage": "@syncfusion/ej2-calendars",
+      "declaration": "src/timepicker/timepicker.component.d.ts",
+      "status": "partial",
+      "wave": "Gate 1 calendars"
+    },
+    {
+      "name": "TextArea",
+      "package": "@syncfusion/ej2-react-inputs",
+      "export": "TextAreaComponent",
+      "model": "TextAreaModel",
+      "corePackage": "@syncfusion/ej2-inputs",
+      "declaration": "src/textarea/textarea.component.d.ts",
+      "status": "partial",
+      "wave": "Gate 1 inputs"
+    },
+    {
+      "name": "MaskedTextBox",
+      "package": "@syncfusion/ej2-react-inputs",
+      "export": "MaskedTextBoxComponent",
+      "model": "MaskedTextBoxModel",
+      "corePackage": "@syncfusion/ej2-inputs",
+      "declaration": "src/maskedtextbox/maskedtextbox.component.d.ts",
+      "status": "partial",
+      "wave": "Gate 1 inputs"
+    },
+    {
+      "name": "RadioButton",
+      "package": "@syncfusion/ej2-react-buttons",
+      "export": "RadioButtonComponent",
+      "model": "RadioButtonModel",
+      "corePackage": "@syncfusion/ej2-buttons",
+      "declaration": "src/radio-button/radiobutton.component.d.ts",
+      "status": "partial",
+      "wave": "Gate 1 inputs"
+    },
+    {
+      "name": "Switch",
+      "package": "@syncfusion/ej2-react-buttons",
+      "export": "SwitchComponent",
+      "model": "SwitchModel",
+      "corePackage": "@syncfusion/ej2-buttons",
+      "declaration": "src/switch/switch.component.d.ts",
+      "status": "partial",
+      "wave": "Gate 1 inputs"
+    },
+    {
+      "name": "Slider",
+      "package": "@syncfusion/ej2-react-inputs",
+      "export": "SliderComponent",
+      "model": "SliderModel",
+      "corePackage": "@syncfusion/ej2-inputs",
+      "declaration": "src/slider/slider.component.d.ts",
+      "status": "partial",
+      "wave": "Gate 1 inputs"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+namespace Syncfusion.Typed
+
+open Fable.Core
+open Fable.Core.JsInterop
+open Feliz
+
+/// Properties for a DropDownList whose items and selected value have fixed types.
+type IDropDownListProperty<'Item, 'Value> = interface end
+
+module DropDownList =
+    let private dropDownComponent: ReactElement = import "DropDownListComponent" "@syncfusion/ej2-react-dropdowns"
+
+    /// Field names are checked at the call site with nameof for ordinary record fields.
+    type Fields<'Item> = { text: string; value: string }
+
+    [<AllowNullLiteral>]
+    type ChangeEventArgs<'Item, 'Value> =
+        abstract value: 'Value option
+        abstract itemData: 'Item option
+        abstract isInteracted: bool option
+
+    [<Erase>]
+    type prop =
+        static member inline dataSource<'Item, 'Value>(items: 'Item array) : IDropDownListProperty<'Item, 'Value> =
+            unbox ("dataSource", items)
+        static member inline fields<'Item, 'Value>(fields: Fields<'Item>) : IDropDownListProperty<'Item, 'Value> =
+            unbox ("fields", fields)
+        static member inline value<'Item, 'Value>(value: 'Value) : IDropDownListProperty<'Item, 'Value> =
+            unbox ("value", value)
+        static member inline placeholder<'Item, 'Value>(value: string) : IDropDownListProperty<'Item, 'Value> =
+            unbox ("placeholder", value)
+        static member inline enabled<'Item, 'Value>(value: bool) : IDropDownListProperty<'Item, 'Value> =
+            unbox ("enabled", value)
+        static member inline allowFiltering<'Item, 'Value>(value: bool) : IDropDownListProperty<'Item, 'Value> =
+            unbox ("allowFiltering", value)
+        static member inline cssClass<'Item, 'Value>(value: string) : IDropDownListProperty<'Item, 'Value> =
+            unbox ("cssClass", value)
+        static member inline change<'Item, 'Value>(callback: ChangeEventArgs<'Item, 'Value> -> unit) : IDropDownListProperty<'Item, 'Value> =
+            unbox ("change", callback)
+
+    let create<'Item, 'Value> (props: IDropDownListProperty<'Item, 'Value> list) : ReactElement =
+        ReactLegacy.createElement(dropDownComponent, createObj !!props)

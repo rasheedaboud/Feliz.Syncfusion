@@ -4,6 +4,7 @@ import {
   mountComponent,
   updateAll,
   updateComponent,
+  unmountComponent,
   dataQueryCount,
   dataQueryDiagnostics
 } from "../../artifacts/contracts/Contracts.js";
@@ -18,5 +19,6 @@ if (component) {
 window.__typedReady = true;
 window.__typedUpdateAll = updateAll;
 window.__typedUpdateComponent = updateComponent;
+window.__typedUnmountComponent = unmountComponent;
 window.__typedDataQueryCount = dataQueryCount;
 window.__typedDataQueryDiagnostics = dataQueryDiagnostics;

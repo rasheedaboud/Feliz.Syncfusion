@@ -1,6 +1,20 @@
-# Feliz.Syncfusion 
+# Feliz.Syncfusion
 
-A wrapper around a hanfull of Syncfusion React controls.
+F# and Feliz bindings for Syncfusion EJ2 React controls. The legacy `Syncfusion.Sf*` API remains available; new typed controls live under `Syncfusion.Typed`.
+
+## Run the playground locally
+
+Install .NET SDK 10.0.401 and Node.js 24 or newer, then from the repository root:
+
+```powershell
+dotnet tool restore
+npm ci
+npm run playground
+```
+
+Open the URL printed by Vite (normally `http://127.0.0.1:5173`). The F# source is in `examples/playground/Main.fs`. It renders a DropDownList and shows the selected value. Syncfusion may display its trial banner until you [register a license key](https://ej2.syncfusion.com/react/documentation/licensing/license-key-registration); no key is stored in this repository.
+
+The implementation target and browser dependencies are pinned to Syncfusion EJ2 34.2.8. `audit/coverage.json` records the first-wave bindings and remaining partial API coverage.
 
 - ListView
 - SideBar
@@ -18,6 +32,9 @@ A wrapper around a hanfull of Syncfusion React controls.
 - MenuBar
 - Button
 - SplitButton
+- DropDownList, ListBox, DropDownTree, Mention, MultiColumnComboBox
+- Calendar, DateRangePicker, TimePicker
+- TextArea, MaskedTextBox, RadioButton, Switch, Slider
 
 ### Installation
 
@@ -69,7 +86,7 @@ These controls are a commercial product and requires a paid license for possessi
 Add the following line of code to Index.fs:
 
 ```fs
- Feliz.Syncfusion.License.register("<YOUR KEY HERE>")
+ Syncfusion.SyncfusionLicenseProvider.register("<YOUR KEY HERE>")
 ```
 
 

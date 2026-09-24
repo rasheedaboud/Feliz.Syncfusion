@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../Felize.Syncfusion/Feliz.Syncfusion.fsproj" />
+    <Compile Include="Positive.fs" />
+    <Compile Include="Dropdowns.fs" />
+    <Compile Include="Calendars.fs" />
+    <Compile Include="Inputs.fs" />
+  </ItemGroup>
+</Project>

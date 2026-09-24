@@ -7,7 +7,7 @@
     <PackageId>Feliz.Syncfusion</PackageId>
     <Title>Feliz.Syncfusion</Title>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.4.0</Version>
+    <Version>0.5.0</Version>
     <Authors>Rasheed Aboud</Authors>
     <Company>ARMM Services</Company>
     <Description>Type-safe Feliz bindings for Syncfusion EJ2 React controls.</Description>
@@ -17,7 +17,8 @@
     <RepositoryUrl>https://github.com/rasheedaboud/Feliz.Syncfusion</RepositoryUrl>
     <PackageProjectUrl>https://github.com/rasheedaboud/Feliz.Syncfusion</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageReleaseNotes>Added ARMM-complete, strongly typed Feliz bindings for ComboBox, MultiSelect, DateTimePicker, Tooltip, Kanban, DatePicker, FileUploader, SplitButton, Grid, Query, Predicate, JsonAdaptor and DataManager. Added Fable consumer compilation and Chromium mount/update contracts against supported and registry-latest Syncfusion packages.</PackageReleaseNotes>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageReleaseNotes>Added typed first-wave dropdown, calendar, and input bindings, pinned Syncfusion 34.2.8 contracts, and a runnable F# playground. Existing bindings remain available.</PackageReleaseNotes>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Interop.fs" />
@@ -36,11 +37,25 @@
     <Compile Include="SfKanban.fs" />
     <Compile Include="SfDataTyped.fs" />
     <Compile Include="SfTyped.fs" />
+    <Compile Include="SfDropDownList.fs" />
+    <Compile Include="SfDropdownListBox.fs" />
+    <Compile Include="SfDropdownTree.fs" />
+    <Compile Include="SfDropdownMention.fs" />
+    <Compile Include="SfDropdownMultiColumnComboBox.fs" />
+    <Compile Include="SfCalendar.fs" />
+    <Compile Include="SfDateRangePicker.fs" />
+    <Compile Include="SfTimePicker.fs" />
+    <Compile Include="SfTextArea.fs" />
+    <Compile Include="SfMaskedTextBox.fs" />
+    <Compile Include="SfRadioButton.fs" />
+    <Compile Include="SfSwitch.fs" />
+    <Compile Include="SfSlider.fs" />
     <Compile Include="SfModal.fs" />
     <Compile Include="SfMenuBar.fs" />
     <Compile Include="SfSideBar.fs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="../README.md" Pack="true" PackagePath="/" />
     <PackageReference Update="FSharp.Core" Version="10.1.401" />
     <PackageReference Include="Fable.Core" Version="5.2.0" />
     <PackageReference Include="Fable.Browser.Dom" Version="2.20.0" />
@@ -52,31 +67,32 @@
   </ItemGroup>
   <PropertyGroup>
     <NpmDependencies>
-      <NpmPackage Name="@syncfusion/ej2-base" Version="gte 34.2.0" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-react-navigations" Version="gte 34.2.0" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-data" Version="gte 34.2.0" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-react-grids" Version="gte 34.2.0" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-react-buttons" Version="gte 34.2.0" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-react-dropdowns" Version="gte 34.2.0" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-react-calendars" Version="gte 34.2.0" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-react-inputs" Version="gte 34.2.0" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-react-charts" Version="gte 34.2.0" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-react-popups" Version="gte 34.2.0" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-react-schedule" Version="gte 34.2.0" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-react-gantt" Version="gte 34.2.0" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-react-notifications" Version="gte 34.2.0" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-react-filemanager" Version="gte 34.2.0" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-react-treegrid" Version="gte 34.2.0" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-react-progressbar" Version="gte 34.2.0" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-react-lists" Version="gte 34.2.0" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-react-kanban" Version="gte 34.2.0" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-kanban" Version="gte 34.2.0" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-splitbuttons" Version="gte 34.2.0" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-calendars" Version="gte 34.2.0" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-dropdowns" Version="gte 34.2.0" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-popups" Version="gte 34.2.0" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-inputs" Version="gte 34.2.0" ResolutionStrategy="Max" />
-      <NpmPackage Name="@syncfusion/ej2-grids" Version="gte 34.2.0" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-base" Version="gte 34.2.8" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-react-navigations" Version="gte 34.2.8" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-data" Version="gte 34.2.8" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-react-grids" Version="gte 34.2.8" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-react-buttons" Version="gte 34.2.8" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-react-dropdowns" Version="gte 34.2.8" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-react-multicolumn-combobox" Version="gte 34.2.8" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-react-calendars" Version="gte 34.2.8" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-react-inputs" Version="gte 34.2.8" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-react-charts" Version="gte 34.2.8" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-react-popups" Version="gte 34.2.8" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-react-schedule" Version="gte 34.2.8" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-react-gantt" Version="gte 34.2.8" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-react-notifications" Version="gte 34.2.8" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-react-filemanager" Version="gte 34.2.8" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-react-treegrid" Version="gte 34.2.8" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-react-progressbar" Version="gte 34.2.8" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-react-lists" Version="gte 34.2.8" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-react-kanban" Version="gte 34.2.8" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-kanban" Version="gte 34.2.8" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-splitbuttons" Version="gte 34.2.8" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-calendars" Version="gte 34.2.8" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-dropdowns" Version="gte 34.2.8" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-popups" Version="gte 34.2.8" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-inputs" Version="gte 34.2.8" ResolutionStrategy="Max" />
+      <NpmPackage Name="@syncfusion/ej2-grids" Version="gte 34.2.8" ResolutionStrategy="Max" />
     </NpmDependencies>
   </PropertyGroup>
 </Project>
