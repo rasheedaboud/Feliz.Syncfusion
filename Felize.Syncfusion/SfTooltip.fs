@@ -10,11 +10,11 @@ type ISfTooltipProperty = interface end
 module SfTooltip =
     let private syncfusionComponent: ReactElement = import "TooltipComponent" "@syncfusion/ej2-react-popups"
 
-    [<StringEnum; RequireQualifiedAccess>]
+    [<StringEnum(CaseRules.None); RequireQualifiedAccess>]
     type Position = TopCenter | BottomCenter | LeftCenter | RightCenter | TopLeft | TopRight | BottomLeft | BottomRight
 
-    [<StringEnum; RequireQualifiedAccess>]
-    type OpensOn = Hover | Click | Focus | Auto
+    [<StringEnum(CaseRules.None); RequireQualifiedAccess>]
+    type OpensOn = Hover | Click | Focus | Auto | Custom
 
     [<AllowNullLiteral>]
     type OpenEventArgs =
