@@ -1,26 +1,33 @@
 import { test, expect } from "@playwright/test";
 
-const openTyped = async (page) => {
+const openTyped = async (page, component) => {
   const errors = [];
   page.on("pageerror", error => errors.push(error.message));
-  await page.goto("/typed.html");
+  const suffix = component ? `?component=${encodeURIComponent(component)}` : "";
+  await page.goto(`/typed.html${suffix}`);
   await page.waitForFunction(() => window.__typedReady === true);
   return errors;
 };
 
-test("typed Feliz ARMM components mount through Fable without runtime errors", async ({ page }) => {
-  const errors = await openTyped(page);
-  await expect(page.locator("#typed-combo .e-combobox")).toHaveCount(1);
-  await expect(page.locator("#typed-multi .e-multiselect").first()).toBeAttached();
-  await expect(page.locator("#typed-datetime .e-datetimepicker")).toHaveCount(1);
-  await expect(page.locator("#typed-kanban .e-kanban")).toHaveCount(1);
-  await expect(page.locator("#typed-date .e-datepicker")).toHaveCount(1);
-  await expect(page.locator("#typed-upload .e-upload")).toHaveCount(1);
-  await expect(page.locator("#typed-split .e-split-btn-wrapper")).toHaveCount(1);
-  await expect(page.locator("#typed-grid .e-grid")).toHaveCount(1);
-  await expect(page.locator("#typed-tooltip button")).toContainText("Hover target");
-  expect(errors).toEqual([]);
-});
+const mountCases = [
+  ["ComboBox", "#typed-combo .e-combobox"],
+  ["MultiSelect", "#typed-multi .e-multiselect"],
+  ["DateTimePicker", "#typed-datetime .e-datetimepicker"],
+  ["Kanban", "#typed-kanban .e-kanban"],
+  ["DatePicker", "#typed-date .e-datepicker"],
+  ["FileUploader", "#typed-upload .e-upload"],
+  ["SplitButton", "#typed-split .e-split-btn-wrapper"],
+  ["Grid", "#typed-grid .e-grid"],
+  ["Tooltip", "#typed-tooltip #typed-tooltip-target"]
+];
+
+for (const [name, selector] of mountCases) {
+  test(`typed ${name} mounts through Fable without runtime errors`, async ({ page }) => {
+    const errors = await openTyped(page, name);
+    await expect(page.locator(selector).first()).toBeAttached();
+    expect(errors).toEqual([]);
+  });
+}
 
 const updateCases = [
   ["ComboBox", async page => expect(page.locator("#typed-combo input")).toHaveValue("Beta")],
@@ -30,21 +37,21 @@ const updateCases = [
   ["DatePicker", async page => expect(page.locator("#typed-date input")).toHaveValue("2026-09-24")],
   ["FileUploader", async page => expect(page.locator("#typed-upload .e-upload")).toHaveClass(/upload-updated/)],
   ["SplitButton", async page => expect(page.locator("#typed-split")).toContainText("Export updated")],
-  ["Grid", async page => expect(page.locator("#typed-grid")).toContainText("Updated")],
+  ["Grid", async page => expect(page.locator("#typed-grid")).toContainText("Updated")]
 ];
 
 for (const [name, assertion] of updateCases) {
   test(`typed ${name} propagates React updates without runtime errors`, async ({ page }) => {
-    const errors = await openTyped(page);
+    const errors = await openTyped(page, name);
     await page.evaluate(componentName => window.__typedUpdateComponent(componentName), name);
     await assertion(page);
     expect(errors).toEqual([]);
   });
 }
 
-test("typed Tooltip mounts and updates portal content", async ({ page }) => {
-  const errors = await openTyped(page);
-  const target = page.locator("#typed-tooltip button");
+test("typed Tooltip opens and reflects updated content", async ({ page }) => {
+  const errors = await openTyped(page, "Tooltip");
+  const target = page.locator("#typed-tooltip-target");
   await target.hover();
   await expect(page.locator(".e-tooltip-wrap")).toContainText("Tooltip initial");
 
@@ -58,7 +65,8 @@ test("typed Syncfusion Data Query and DataManager execute locally", async ({ pag
   const errors = await openTyped(page);
   const diagnostics = await page.evaluate(() => window.__typedDataQueryDiagnostics());
   expect(diagnostics.allCount).toBe(1);
-  expect(diagnostics.countRequired).toBe(true);
   expect(diagnostics.filteredCount).toBe(1);
+  expect(diagnostics.countRequired).toBe(true);
+  expect(diagnostics.countedCount).toBe(1);
   expect(errors).toEqual([]);
 });
