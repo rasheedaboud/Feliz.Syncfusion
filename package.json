@@ -32,7 +32,7 @@
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "@syncfusion/ej2-react-kanban": "34.2.8",
-    "@syncfusion/ej2-grids": "34.2.8",
+    "@syncfusion/ej2-grids": "34.2.9",
     "@syncfusion/ej2-inputs": "34.2.8",
     "@syncfusion/ej2-popups": "34.2.8",
     "@syncfusion/ej2-dropdowns": "34.2.8",
