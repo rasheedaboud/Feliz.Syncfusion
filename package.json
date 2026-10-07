@@ -38,7 +38,7 @@
     "@syncfusion/ej2-dropdowns": "34.2.8",
     "@syncfusion/ej2-calendars": "34.2.8",
     "@syncfusion/ej2-splitbuttons": "34.2.8",
-    "@syncfusion/ej2-kanban": "34.2.8",
+    "@syncfusion/ej2-kanban": "35.1.37",
     "@syncfusion/ej2-react-multicolumn-combobox": "34.2.8"
   },
   "devDependencies": {
