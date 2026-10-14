@@ -56,7 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="../README.md" Pack="true" PackagePath="/" />
-    <PackageReference Update="FSharp.Core" Version="10.1.401" />
+    <PackageReference Update="FSharp.Core" Version="10.1.402" />
     <PackageReference Include="Fable.Core" Version="5.2.0" />
     <PackageReference Include="Fable.Browser.Dom" Version="2.20.0" />
     <PackageReference Include="Feliz" Version="3.3.3" />
